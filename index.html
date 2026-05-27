@@ -88,6 +88,97 @@
     overflow: hidden;
     border-bottom: 1px solid var(--border);
   }
+  /* 🆕 Interactive layers */
+  .hero-spotlight {
+    position: absolute; pointer-events: none;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(56,189,248,.08), transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease-out;
+    z-index: 0;
+  }
+  .hero-particles {
+    position: absolute; inset: 0;
+    pointer-events: none; overflow: hidden;
+    z-index: 0;
+  }
+  .hero-particle {
+    position: absolute;
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.5;
+    animation: float-particle 15s linear infinite;
+  }
+  @keyframes float-particle {
+    0% { transform: translateY(110vh) translateX(0); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.6; }
+    100% { transform: translateY(-10vh) translateX(60px); opacity: 0; }
+  }
+  .hero .wrap { position: relative; z-index: 2; }
+  /* Rotating word */
+  .rotating-word-wrap {
+    display: inline-block;
+    position: relative;
+    height: 1.05em;
+    overflow: hidden;
+    vertical-align: bottom;
+    min-width: 280px;
+  }
+  .rotating-word {
+    display: block;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: word-rotate 12s infinite;
+  }
+  @keyframes word-rotate {
+    0%, 22% { transform: translateY(0); }
+    25%, 47% { transform: translateY(-100%); }
+    50%, 72% { transform: translateY(-200%); }
+    75%, 97% { transform: translateY(-300%); }
+    100% { transform: translateY(-400%); }
+  }
+  .rotating-word span {
+    display: block; height: 1.05em;
+  }
+  /* Title fade-in on load */
+  @keyframes title-fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero h1.hero-title { animation: title-fade-up 0.7s cubic-bezier(.22,1.5,.36,1) both; }
+  .hero .hero-sub { animation: title-fade-up 0.7s cubic-bezier(.22,1.5,.36,1) 0.1s both; }
+  .hero .hero-ctas { animation: title-fade-up 0.7s cubic-bezier(.22,1.5,.36,1) 0.2s both; }
+  .hero .hero-trust { animation: title-fade-up 0.7s cubic-bezier(.22,1.5,.36,1) 0.3s both; }
+  .hero .trust-row { animation: title-fade-up 0.7s cubic-bezier(.22,1.5,.36,1) 0.4s both; }
+  .hero .hero-visual { animation: title-fade-up 0.8s cubic-bezier(.22,1.5,.36,1) 0.3s both; }
+  .hero .badge { animation: title-fade-up 0.6s cubic-bezier(.22,1.5,.36,1) both; }
+  /* Trust pill hover effect */
+  .trust-pill {
+    transition: all 0.2s ease;
+    cursor: default;
+  }
+  .trust-pill:hover {
+    background: var(--bg-3);
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+  /* Code card subtle tilt on mouse */
+  .hero-visual {
+    transition: transform 0.4s cubic-bezier(.22,1,.36,1);
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+  /* Animated counter inline (used by stats band) */
+  .stat-num {
+    transition: transform 0.3s ease;
+    cursor: default;
+  }
+  .stat-block:hover .stat-num { transform: scale(1.08); }
   .hero-grid {
     display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: center;
   }
@@ -578,12 +669,24 @@
 
 <!-- ═════════════ HERO ═════════════ -->
 <section class="hero">
+  <!-- Mouse-follow spotlight (subtle glow) -->
+  <div class="hero-spotlight" id="heroSpotlight"></div>
+  <!-- Floating particles -->
+  <div class="hero-particles" id="heroParticles"></div>
+
   <div class="wrap">
     <div class="hero-grid">
       <div>
         <div class="badge">Open for new engagements · Hyderabad, India</div>
         <h1 class="hero-title">
-          Software services for the <span class="accent">Indian internet</span>.
+          We build software for<br>
+          the <span class="rotating-word-wrap"><span class="rotating-word">
+            <span>Indian internet.</span>
+            <span>next billion users.</span>
+            <span>mobile-first Bharat.</span>
+            <span>16 Indian languages.</span>
+            <span>Indian internet.</span>
+          </span></span>
         </h1>
         <p class="hero-sub">
           Nxtspacelabs is a software services company building mobile applications,
@@ -1155,6 +1258,99 @@
     </div>
   </div>
 </footer>
+
+<script>
+  // 🆕 Interactive hero — mouse spotlight, parallax tilt, animated particles, count-up stats
+  (function () {
+    // 1) Spotlight that follows mouse in hero
+    const hero = document.querySelector('.hero');
+    const spotlight = document.getElementById('heroSpotlight');
+    if (hero && spotlight) {
+      hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        spotlight.style.transform = `translate(${x - 300}px, ${y - 300}px)`;
+      });
+      hero.addEventListener('mouseleave', () => {
+        spotlight.style.transform = 'translate(-50%, -50%)';
+      });
+    }
+
+    // 2) Subtle parallax tilt on code card
+    const visual = document.querySelector('.hero-visual');
+    if (visual) {
+      hero.addEventListener('mousemove', (e) => {
+        const rect = visual.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = (e.clientX - cx) / rect.width;
+        const dy = (e.clientY - cy) / rect.height;
+        visual.style.transform = `perspective(1200px) rotateY(${dx * 4}deg) rotateX(${-dy * 4}deg)`;
+      });
+      hero.addEventListener('mouseleave', () => {
+        visual.style.transform = 'perspective(1200px) rotateY(0) rotateX(0)';
+      });
+    }
+
+    // 3) Generate floating particles
+    const particles = document.getElementById('heroParticles');
+    if (particles) {
+      const count = window.innerWidth < 768 ? 15 : 30;
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement('div');
+        p.className = 'hero-particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.animationDelay = Math.random() * 15 + 's';
+        p.style.animationDuration = (10 + Math.random() * 15) + 's';
+        const size = 2 + Math.random() * 3;
+        p.style.width = p.style.height = size + 'px';
+        p.style.opacity = 0.2 + Math.random() * 0.5;
+        // Vary color: 70% accent, 30% accent-2
+        if (Math.random() > 0.7) p.style.background = 'var(--accent-2)';
+        particles.appendChild(p);
+      }
+    }
+
+    // 4) Count-up animation on stats when scrolled into view
+    const stats = document.querySelectorAll('.stat-num');
+    if ('IntersectionObserver' in window && stats.length) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting || entry.target.dataset.animated) return;
+          entry.target.dataset.animated = '1';
+          const text = entry.target.textContent.trim();
+          const numMatch = text.match(/\d+/);
+          if (!numMatch) return;
+          const target = parseInt(numMatch[0], 10);
+          const suffix = text.replace(/\d+/, '').trim();
+          let current = 0;
+          const step = Math.max(1, Math.ceil(target / 30));
+          const tick = () => {
+            current = Math.min(current + step, target);
+            entry.target.textContent = current + (target === current ? (suffix ? ' ' + suffix : '') : '');
+            if (current < target) requestAnimationFrame(tick);
+            else entry.target.textContent = text; // restore exact original
+          };
+          tick();
+        });
+      }, { threshold: 0.5 });
+      stats.forEach((s) => observer.observe(s));
+    }
+
+    // 5) Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if (href === '#' || href.length < 2) return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>
