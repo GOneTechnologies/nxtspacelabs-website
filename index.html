@@ -10,6 +10,9 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://nxtspacelabs.com" />
 <title>Nxtspacelabs — Software Services Company · Hyderabad, India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #060A15;
@@ -503,6 +506,93 @@
     text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;
   }
   @media (max-width: 700px) { .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; } }
+
+  /* ───── FOUNDER'S NOTE ───── */
+  .founder-note {
+    background: linear-gradient(135deg, rgba(129,140,248,.05), rgba(56,189,248,.05));
+    border: 1px solid var(--border-strong);
+    border-radius: 20px;
+    padding: 60px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .founder-note::before {
+    content: '"';
+    position: absolute;
+    top: -10px; left: 30px;
+    font-family: Georgia, serif;
+    font-size: 200px;
+    color: var(--accent);
+    opacity: 0.08;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .founder-eyebrow {
+    color: var(--accent); font-weight: 700; font-size: 11px;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    margin-bottom: 24px;
+    position: relative; z-index: 1;
+  }
+  .founder-quote {
+    font-size: clamp(18px, 2.2vw, 24px);
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.55;
+    max-width: 720px;
+    margin: 0 auto 40px;
+    font-style: italic;
+    position: relative; z-index: 1;
+  }
+  .founder-signature-block {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 6px;
+    position: relative; z-index: 1;
+  }
+  .founder-signature {
+    font-family: 'Dancing Script', 'Brush Script MT', cursive;
+    font-weight: 700;
+    font-size: clamp(40px, 5.5vw, 56px);
+    line-height: 1;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -1px;
+    padding-bottom: 8px;
+    /* hand-drawn underline */
+    border-bottom: 0;
+    position: relative;
+    display: inline-block;
+  }
+  .founder-signature::after {
+    content: '';
+    position: absolute;
+    left: 8%; right: 8%;
+    bottom: -2px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-2) 20%, var(--accent-3) 80%, transparent);
+    opacity: 0.55;
+    border-radius: 2px;
+    transform: rotate(-1.2deg);
+  }
+  .founder-nickname {
+    font-family: 'Caveat', 'Dancing Script', cursive;
+    font-size: clamp(20px, 2.5vw, 28px);
+    color: var(--muted);
+    margin-top: -4px;
+    font-weight: 500;
+  }
+  .founder-title {
+    font-size: 13px;
+    color: var(--muted-2);
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+  @media (max-width: 768px) {
+    .founder-note { padding: 40px 24px; }
+    .founder-note::before { font-size: 140px; left: 12px; }
+  }
 
   /* ───── CTA SECTION ───── */
   .cta-section {
@@ -1056,6 +1146,25 @@
           <li>Performance optimisation</li>
           <li>Migration planning</li>
         </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ FOUNDER'S NOTE ═════════════ -->
+<section id="founder">
+  <div class="wrap">
+    <div class="founder-note">
+      <div class="founder-eyebrow">A note from the founder</div>
+      <p class="founder-quote">
+        "Indian businesses deserve software built by people who truly understand
+        India — our networks, our languages, our payments, our regulations.
+        That's why I started Nxtspacelabs."
+      </p>
+      <div class="founder-signature-block">
+        <div class="founder-signature">Saidulu Shaik</div>
+        <div class="founder-nickname">(jeevan)</div>
+        <div class="founder-title">Founder · Nxtspacelabs</div>
       </div>
     </div>
   </div>
