@@ -425,87 +425,6 @@
   .process-card p { font-size: 12.5px; color: var(--text-soft); line-height: 1.55; }
   @media (max-width: 900px) { .process-list { grid-template-columns: repeat(2, 1fr); } }
 
-  /* ───── CASE STUDY ───── */
-  .case-study {
-    background: linear-gradient(135deg, rgba(56,189,248,.08), rgba(129,140,248,.06));
-    border: 1px solid var(--border-strong);
-    border-radius: 20px;
-    padding: 50px;
-    display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px;
-    align-items: center;
-    position: relative; overflow: hidden;
-  }
-  .case-tag {
-    display: inline-block;
-    background: rgba(244,114,182,.15);
-    color: var(--accent-3);
-    padding: 5px 12px; border-radius: 6px;
-    font-size: 11.5px; font-weight: 700; letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
-  .case-study h3 {
-    font-size: 30px; font-weight: 800; letter-spacing: -0.8px;
-    margin-bottom: 12px;
-  }
-  .case-study .sub {
-    color: var(--text-soft); font-size: 15px; margin-bottom: 22px;
-  }
-  .case-stats {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-    margin: 22px 0 26px;
-    padding: 20px 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-  .case-stat-num {
-    font-size: 24px; font-weight: 800;
-    background: linear-gradient(135deg, var(--accent), var(--accent-3));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .case-stat-label { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
-  .case-features { display: grid; gap: 8px; margin-bottom: 24px; }
-  .case-feature {
-    display: flex; align-items: center; gap: 10px;
-    font-size: 14px; color: var(--text-soft);
-  }
-  .check {
-    width: 18px; height: 18px; border-radius: 50%;
-    background: rgba(52,211,153,.15);
-    border: 1px solid rgba(52,211,153,.4);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 10px; color: var(--emerald); font-weight: 900;
-    flex-shrink: 0;
-  }
-  .case-mock {
-    aspect-ratio: 9/16;
-    background:
-      radial-gradient(circle at 30% 20%, rgba(236,72,153,.5), transparent 50%),
-      radial-gradient(circle at 70% 70%, rgba(124,58,237,.5), transparent 50%),
-      linear-gradient(160deg, #0F0820 0%, #1F1535 100%);
-    border-radius: 22px;
-    border: 2px solid var(--border-strong);
-    display: flex; align-items: center; justify-content: center;
-    position: relative; max-width: 260px; margin: 0 auto;
-    box-shadow: 0 30px 60px rgba(0,0,0,.4);
-  }
-  .case-mock-emoji {
-    font-size: 80px;
-    filter: drop-shadow(0 8px 24px rgba(236,72,153,.5));
-    animation: float 3s ease-in-out infinite;
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-  }
-  @media (max-width: 900px) {
-    .case-study { grid-template-columns: 1fr; padding: 36px 24px; gap: 32px; }
-    .case-study h3 { font-size: 24px; }
-    .case-stats { grid-template-columns: 1fr 1fr 1fr; gap: 12px; padding: 16px 0; }
-    .case-stat-num { font-size: 20px; }
-  }
-
   /* ───── WHY US ───── */
   .why-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
@@ -658,7 +577,7 @@
     <nav class="nav-links">
       <a href="#services">Services</a>
       <a href="#industries">Industries</a>
-      <a href="#case-study">Work</a>
+      <a href="#process">Process</a>
       <a href="#engagement">Engagement</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
@@ -695,7 +614,7 @@
         </p>
         <div class="hero-ctas">
           <a href="#contact" class="btn-primary">Start a conversation →</a>
-          <a href="#case-study" class="btn-secondary">View our work</a>
+          <a href="#services" class="btn-secondary">Explore services</a>
         </div>
         <div class="hero-trust">Trusted infrastructure partners</div>
         <div class="trust-row">
@@ -947,56 +866,6 @@
   </div>
 </section>
 
-<!-- ═════════════ CASE STUDY ═════════════ -->
-<section id="case-study" style="background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-  <div class="wrap">
-    <div class="section-eyebrow">In-house product</div>
-    <h2 class="section-title">We don't just consult — we ship products of our own.</h2>
-    <p class="section-sub">
-      Our flagship product proves the playbook we bring to client engagements.
-    </p>
-
-    <div class="case-study">
-      <div>
-        <span class="case-tag">🟢 LIVE PRODUCT</span>
-        <h3>PairNow</h3>
-        <p class="sub">
-          A vernacular voice + video calling marketplace — Indians find verified hosts
-          who speak their language and pay per minute. 16 Indian languages, native
-          Android app, full DPDP compliance, on-device AI moderation.
-        </p>
-
-        <div class="case-stats">
-          <div>
-            <div class="case-stat-num">16</div>
-            <div class="case-stat-label">Languages</div>
-          </div>
-          <div>
-            <div class="case-stat-num">100%</div>
-            <div class="case-stat-label">India-hosted data</div>
-          </div>
-          <div>
-            <div class="case-stat-num">&lt;200ms</div>
-            <div class="case-stat-label">Call setup time</div>
-          </div>
-        </div>
-
-        <div class="case-features">
-          <div class="case-feature"><span class="check">✓</span> KYC-verified hosts (PAN + UPI handshake)</div>
-          <div class="case-feature"><span class="check">✓</span> On-device AI face moderation (Google ML Kit)</div>
-          <div class="case-feature"><span class="check">✓</span> Cashfree-powered coin economy</div>
-          <div class="case-feature"><span class="check">✓</span> Native Android + Progressive Web App</div>
-          <div class="case-feature"><span class="check">✓</span> Real-time push via Firebase Cloud Messaging</div>
-        </div>
-        <a href="https://pairnow.in" target="_blank" class="btn-primary">Visit pairnow.in →</a>
-      </div>
-      <div class="case-mock">
-        <div class="case-mock-emoji">🦋</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ═════════════ TECH STACK ═════════════ -->
 <section id="tech">
   <div class="wrap">
@@ -1136,8 +1005,8 @@
       </div>
       <div class="why-card">
         <div class="why-icon">🛠️</div>
-        <h4>Ship what we'd use ourselves</h4>
-        <p>We run our own product (PairNow) on the same playbook. We feel every bug, every latency spike, every UX paper cut.</p>
+        <h4>Battle-tested playbook</h4>
+        <p>We ship production systems, not pretty prototypes. Every recommendation is grounded in real-world experience, not theory.</p>
       </div>
     </div>
   </div>
@@ -1238,10 +1107,10 @@
       <div class="footer-col">
         <h5>Company</h5>
         <a href="#about">About</a>
-        <a href="#case-study">Our work</a>
+        <a href="#industries">Industries</a>
         <a href="#process">Process</a>
         <a href="#engagement">Engagement models</a>
-        <a href="https://pairnow.in" target="_blank">PairNow ↗</a>
+        <a href="#tech">Tech stack</a>
       </div>
       <div class="footer-col">
         <h5>Get in touch</h5>
