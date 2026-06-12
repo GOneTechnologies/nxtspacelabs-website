@@ -1,0 +1,22 @@
+{
+  "rewrites": [
+    { "source": "/tradepilot",          "destination": "https://project-tcc78.vercel.app/trade" },
+    { "source": "/tradepilot/:path*",   "destination": "https://project-tcc78.vercel.app/:path*" },
+    { "source": "/login",        "destination": "https://nxtspacelabs-admin.vercel.app/login" },
+    { "source": "/dashboard",    "destination": "https://nxtspacelabs-admin.vercel.app/dashboard" },
+    { "source": "/kyc",          "destination": "https://nxtspacelabs-admin.vercel.app/kyc" },
+    { "source": "/users",        "destination": "https://nxtspacelabs-admin.vercel.app/users" },
+    { "source": "/talents",      "destination": "https://nxtspacelabs-admin.vercel.app/talents" },
+    { "source": "/payouts",      "destination": "https://nxtspacelabs-admin.vercel.app/payouts" },
+    { "source": "/reports",      "destination": "https://nxtspacelabs-admin.vercel.app/reports" },
+    { "source": "/rooms",        "destination": "https://nxtspacelabs-admin.vercel.app/rooms" },
+    { "source": "/audit",        "destination": "https://nxtspacelabs-admin.vercel.app/audit" },
+    { "source": "/api/auth/:path*", "destination": "https://nxtspacelabs-admin.vercel.app/api/auth/:path*" },
+    { "source": "/api/kyc/:path*",     "destination": "https://nxtspacelabs-admin.vercel.app/api/kyc/:path*" },
+    { "source": "/api/users/:path*",   "destination": "https://nxtspacelabs-admin.vercel.app/api/users/:path*" },
+    { "source": "/api/payouts/:path*", "destination": "https://nxtspacelabs-admin.vercel.app/api/payouts/:path*" },
+    { "source": "/api/reports/:path*", "destination": "https://nxtspacelabs-admin.vercel.app/api/reports/:path*" },
+    { "source": "/api/rooms/:path*",   "destination": "https://nxtspacelabs-admin.vercel.app/api/rooms/:path*" },
+    { "source": "/_next/:path*",   "destination": "https://nxtspacelabs-admin.vercel.app/_next/:path*" }
+  ]
+}
