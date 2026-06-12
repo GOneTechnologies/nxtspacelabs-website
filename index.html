@@ -920,64 +920,221 @@
 </div>
 
 <!-- ═════════════ PRODUCTS ═════════════ -->
-<section id="products">
+<style>
+  @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+  @keyframes shimmer-line { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+  @keyframes float-up { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+  @keyframes glow-pulse { 0%,100%{opacity:.4} 50%{opacity:.8} }
+
+  .prod-card {
+    position:relative;
+    background: linear-gradient(145deg, rgba(17,24,39,.9) 0%, rgba(11,17,32,.95) 100%);
+    border:1px solid rgba(148,163,184,.1);
+    border-radius:20px;
+    padding:32px;
+    overflow:hidden;
+    transition:transform .35s cubic-bezier(.22,1,.36,1), border-color .3s ease, box-shadow .3s ease;
+    cursor:pointer;
+    text-decoration:none;
+    color:inherit;
+    display:block;
+  }
+  .prod-card::before {
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:20px;
+    opacity:0;
+    transition:opacity .35s ease;
+    pointer-events:none;
+  }
+  .prod-card:hover { transform:translateY(-6px); }
+
+  .prod-card-pink::before  { background:radial-gradient(ellipse at 50% 0%, rgba(244,114,182,.12) 0%, transparent 70%); }
+  .prod-card-green::before { background:radial-gradient(ellipse at 50% 0%, rgba(16,185,129,.12) 0%, transparent 70%); }
+
+  .prod-card-pink:hover  { border-color:rgba(244,114,182,.4); box-shadow:0 20px 60px rgba(244,114,182,.12), 0 0 0 1px rgba(244,114,182,.15); }
+  .prod-card-green:hover { border-color:rgba(16,185,129,.4);  box-shadow:0 20px 60px rgba(16,185,129,.12),  0 0 0 1px rgba(16,185,129,.15); }
+  .prod-card-dim:hover   { border-color:rgba(99,102,241,.3);  box-shadow:0 20px 40px rgba(0,0,0,.3); }
+
+  .prod-card:hover::before { opacity:1; }
+
+  .prod-icon-wrap {
+    width:56px; height:56px; border-radius:14px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:26px; margin-bottom:20px;
+    position:relative;
+  }
+  .prod-icon-wrap-pink  { background:linear-gradient(135deg,rgba(244,114,182,.2),rgba(236,72,153,.1)); border:1px solid rgba(244,114,182,.25); }
+  .prod-icon-wrap-green { background:linear-gradient(135deg,rgba(16,185,129,.2),rgba(5,150,105,.1));   border:1px solid rgba(16,185,129,.25); }
+
+  .prod-badge {
+    display:inline-flex; align-items:center; gap:5px;
+    padding:4px 10px; border-radius:20px;
+    font-size:11px; font-weight:700; letter-spacing:.3px;
+  }
+  .prod-badge-live-pink  { background:rgba(244,114,182,.1); color:#F472B6; border:1px solid rgba(244,114,182,.25); }
+  .prod-badge-live-green { background:rgba(16,185,129,.1);  color:#10B981;  border:1px solid rgba(16,185,129,.25); }
+  .prod-badge-soon       { background:rgba(99,102,241,.1);  color:#818CF8;  border:1px solid rgba(99,102,241,.2); }
+
+  .prod-live-dot { width:6px;height:6px;border-radius:50%;display:inline-block;animation:pulse-dot 1.8s ease-in-out infinite; }
+  .prod-live-dot-pink  { background:#F472B6; }
+  .prod-live-dot-green { background:#10B981; }
+
+  .prod-tag {
+    display:inline-block;padding:3px 10px;border-radius:20px;
+    font-size:11px;font-weight:600;margin:3px 3px 3px 0;
+  }
+  .prod-tag-pink  { background:rgba(244,114,182,.08); color:rgba(244,114,182,.8); border:1px solid rgba(244,114,182,.15); }
+  .prod-tag-green { background:rgba(16,185,129,.08);  color:rgba(16,185,129,.8);   border:1px solid rgba(16,185,129,.15); }
+
+  .prod-cta {
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:13px; font-weight:700;
+    padding:9px 18px; border-radius:10px;
+    margin-top:22px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .prod-cta:hover { transform:translateX(3px); }
+  .prod-cta-green {
+    background:linear-gradient(135deg,#059669,#10B981);
+    color:#fff;
+    box-shadow:0 4px 20px rgba(16,185,129,.3);
+  }
+
+  .prod-glow {
+    position:absolute; border-radius:50%;
+    filter:blur(60px); pointer-events:none;
+    animation:glow-pulse 3s ease-in-out infinite;
+  }
+  .prod-number {
+    position:absolute; top:20px; right:24px;
+    font-size:64px; font-weight:900; opacity:.04;
+    font-family:'Inter','Segoe UI',sans-serif; line-height:1;
+  }
+  .prod-shimmer-line {
+    height:1px; width:100%; margin:20px 0;
+    background:linear-gradient(90deg, transparent, rgba(148,163,184,.15), transparent);
+    background-size:200% 100%;
+    animation:shimmer-line 3s linear infinite;
+  }
+</style>
+
+<section id="products" style="padding:96px 0;background:linear-gradient(180deg,transparent 0%,rgba(16,185,129,.02) 50%,transparent 100%);position:relative;overflow:hidden;">
+
+  <!-- Ambient background glows -->
+  <div style="position:absolute;top:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(244,114,182,.06),transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-80px;right:-80px;width:350px;height:350px;background:radial-gradient(circle,rgba(16,185,129,.06),transparent 70%);pointer-events:none;"></div>
+
   <div class="wrap">
-    <div class="section-eyebrow">Live products</div>
-    <h2 class="section-title">Platforms we've built &amp; run.</h2>
-    <p class="section-sub" style="max-width:560px;margin:0 auto 48px;text-align:center;color:var(--muted);font-size:15px;">
-      Real products used by real people — built in-house at Nxtspacelabs.
-    </p>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:960px;margin:0 auto;">
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:64px;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);padding:6px 16px;border-radius:30px;margin-bottom:20px;">
+        <span style="width:7px;height:7px;border-radius:50%;background:#10B981;display:inline-block;animation:pulse-dot 1.8s ease-in-out infinite;"></span>
+        <span style="font-size:12px;font-weight:700;color:#10B981;letter-spacing:.5px;text-transform:uppercase;">Live Products</span>
+      </div>
+      <h2 style="font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-1px;line-height:1.1;margin-bottom:16px;">
+        Platforms we've built<br>
+        <span style="background:linear-gradient(90deg,#F472B6,#818CF8,#38BDF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">&amp; run in production.</span>
+      </h2>
+      <p style="font-size:16px;color:var(--muted);max-width:480px;margin:0 auto;line-height:1.7;">
+        Real software, real users, real scale — shipped from Hyderabad to India.
+      </p>
+    </div>
 
-      <!-- PairNow -->
-      <div style="background:var(--bg-3);border:1px solid var(--border);border-radius:16px;padding:28px;transition:border-color .2s,transform .2s;cursor:pointer;"
-           onmouseover="this.style.borderColor='#F472B6';this.style.transform='translateY(-3px)'"
-           onmouseout="this.style.borderColor='rgba(148,163,184,.10)';this.style.transform='translateY(0)'">
-        <div style="font-size:36px;margin-bottom:14px;">💕</div>
-        <div style="font-weight:800;font-size:18px;margin-bottom:6px;">PairNow</div>
-        <div style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.6;">
-          Real-time voice &amp; video social platform connecting people across India. Built with Agora, Supabase &amp; React.
+    <!-- Cards Grid -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;max-width:1000px;margin:0 auto;">
+
+      <!-- ── PairNow ── -->
+      <div class="prod-card prod-card-pink">
+        <div class="prod-number">01</div>
+        <div class="prod-glow" style="width:200px;height:200px;top:-80px;left:-40px;background:radial-gradient(circle,rgba(244,114,182,.15),transparent 70%);"></div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4px;">
+          <div class="prod-icon-wrap prod-icon-wrap-pink">💕</div>
+          <span class="prod-badge prod-badge-live-pink">
+            <span class="prod-live-dot prod-live-dot-pink"></span>
+            LIVE
+          </span>
         </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
-          <span style="background:rgba(244,114,182,.1);color:#F472B6;border:1px solid rgba(244,114,182,.25);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;">React</span>
-          <span style="background:rgba(244,114,182,.1);color:#F472B6;border:1px solid rgba(244,114,182,.25);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;">Agora RTC</span>
-          <span style="background:rgba(244,114,182,.1);color:#F472B6;border:1px solid rgba(244,114,182,.25);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;">Supabase</span>
+        <div style="font-size:22px;font-weight:900;letter-spacing:-.5px;margin-bottom:8px;">PairNow</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px;">
+          Real-time voice &amp; video social platform connecting people across India. Verified profiles, live audio rooms, friend system.
         </div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <span style="width:8px;height:8px;border-radius:50%;background:#34D399;display:inline-block;"></span>
-          <span style="font-size:12px;color:#34D399;font-weight:600;">Live</span>
+        <div class="prod-shimmer-line"></div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px;">
+          <span class="prod-tag prod-tag-pink">React</span>
+          <span class="prod-tag prod-tag-pink">Agora RTC</span>
+          <span class="prod-tag prod-tag-pink">Supabase</span>
+          <span class="prod-tag prod-tag-pink">Capacitor</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:18px;">
+          <div>
+            <div style="font-size:20px;font-weight:900;color:#F472B6;">5K+</div>
+            <div style="font-size:11px;color:var(--muted);">Active users</div>
+          </div>
+          <div>
+            <div style="font-size:20px;font-weight:900;color:#F472B6;">Android</div>
+            <div style="font-size:11px;color:var(--muted);">Platform</div>
+          </div>
+          <div>
+            <div style="font-size:20px;font-weight:900;color:#F472B6;">India</div>
+            <div style="font-size:11px;color:var(--muted);">Market</div>
+          </div>
         </div>
       </div>
 
-      <!-- TradePilot -->
-      <a href="https://project-tcc78.vercel.app/trade" target="_blank" style="text-decoration:none;color:inherit;">
-      <div style="background:var(--bg-3);border:1px solid var(--border);border-radius:16px;padding:28px;transition:border-color .2s,transform .2s;cursor:pointer;"
-           onmouseover="this.style.borderColor='#10B981';this.style.transform='translateY(-3px)'"
-           onmouseout="this.style.borderColor='rgba(148,163,184,.10)';this.style.transform='translateY(0)'">
-        <div style="font-size:36px;margin-bottom:14px;">📈</div>
-        <div style="font-weight:800;font-size:18px;margin-bottom:6px;">TradePilot</div>
-        <div style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.6;">
-          AI-powered intraday trading dashboard with automated Nifty/BankNifty options strategies using VIX-based selection.
+      <!-- ── TradePilot ── -->
+      <a href="https://project-tcc78.vercel.app/trade" target="_blank" class="prod-card prod-card-green" style="animation:float-up 4s ease-in-out infinite;">
+        <div class="prod-number">02</div>
+        <div class="prod-glow" style="width:200px;height:200px;top:-80px;right:-40px;background:radial-gradient(circle,rgba(16,185,129,.18),transparent 70%);"></div>
+
+        <!-- Premium NEW badge -->
+        <div style="position:absolute;top:20px;right:64px;background:linear-gradient(135deg,#F59E0B,#F97316);color:#fff;font-size:9px;font-weight:800;padding:3px 8px;border-radius:6px;letter-spacing:.5px;text-transform:uppercase;">NEW</div>
+
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4px;">
+          <div class="prod-icon-wrap prod-icon-wrap-green">📈</div>
+          <span class="prod-badge prod-badge-live-green">
+            <span class="prod-live-dot prod-live-dot-green"></span>
+            LIVE
+          </span>
         </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
-          <span style="background:rgba(16,185,129,.1);color:#10B981;border:1px solid rgba(16,185,129,.25);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;">AI Agent</span>
-          <span style="background:rgba(16,185,129,.1);color:#10B981;border:1px solid rgba(16,185,129,.25);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;">Zerodha</span>
-          <span style="background:rgba(16,185,129,.1);color:#10B981;border:1px solid rgba(16,185,129,.25);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;">TradingView</span>
+        <div style="font-size:22px;font-weight:900;letter-spacing:-.5px;margin-bottom:8px;">TradePilot</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px;">
+          AI-powered intraday trading dashboard. Auto-selects Iron Condor, Spread or Strangle based on live India VIX. Zero emotions, maximum discipline.
         </div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <span style="width:8px;height:8px;border-radius:50%;background:#34D399;display:inline-block;"></span>
-          <span style="font-size:12px;color:#34D399;font-weight:600;">Live</span>
-          <span style="margin-left:auto;font-size:12px;color:var(--muted);">Open Dashboard →</span>
+        <div class="prod-shimmer-line"></div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px;">
+          <span class="prod-tag prod-tag-green">AI Agent</span>
+          <span class="prod-tag prod-tag-green">Zerodha Kite</span>
+          <span class="prod-tag prod-tag-green">TradingView</span>
+          <span class="prod-tag prod-tag-green">Iron Condor</span>
         </div>
-      </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:18px;">
+          <div>
+            <div style="font-size:20px;font-weight:900;color:#10B981;">3</div>
+            <div style="font-size:11px;color:var(--muted);">Strategies</div>
+          </div>
+          <div>
+            <div style="font-size:20px;font-weight:900;color:#10B981;">NSE</div>
+            <div style="font-size:11px;color:var(--muted);">Exchange</div>
+          </div>
+          <div>
+            <div style="font-size:20px;font-weight:900;color:#10B981;">Auto</div>
+            <div style="font-size:11px;color:var(--muted);">Execution</div>
+          </div>
+        </div>
+        <div class="prod-cta prod-cta-green">
+          Open Dashboard <span style="font-size:15px;">→</span>
+        </div>
       </a>
 
-      <!-- More Coming Soon -->
-      <div style="background:var(--bg-3);border:1px dashed var(--border-strong);border-radius:16px;padding:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:220px;">
-        <div style="font-size:32px;margin-bottom:12px;opacity:.4;">🚀</div>
-        <div style="font-weight:700;font-size:15px;color:var(--muted);margin-bottom:6px;">More coming soon</div>
-        <div style="font-size:13px;color:var(--muted-2);">Next product launching Q3 2026</div>
+      <!-- ── Coming Soon ── -->
+      <div class="prod-card prod-card-dim" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:300px;border-style:dashed;">
+        <div style="width:56px;height:56px;border-radius:14px;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.15);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px;animation:float-up 4s ease-in-out infinite;">🚀</div>
+        <span class="prod-badge prod-badge-soon" style="margin-bottom:14px;">Q3 2026</span>
+        <div style="font-size:18px;font-weight:800;margin-bottom:8px;">Next Product</div>
+        <div style="font-size:13px;color:var(--muted-2);max-width:200px;line-height:1.6;">Something big is in the works. Stay tuned.</div>
       </div>
 
     </div>
