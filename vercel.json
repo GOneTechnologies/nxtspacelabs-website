@@ -1,7 +1,7 @@
 {
   "rewrites": [
-    { "source": "/tradepilot",          "destination": "https://project-tcc78.vercel.app/trade" },
-    { "source": "/tradepilot/:path*",   "destination": "https://project-tcc78.vercel.app/:path*" },
+    { "source": "/tradepilot",          "destination": "https://trade-pilot-beige.vercel.app/trade" },
+    { "source": "/tradepilot/:path*",   "destination": "https://trade-pilot-beige.vercel.app/:path*" },
     { "source": "/login",        "destination": "https://nxtspacelabs-admin.vercel.app/login" },
     { "source": "/dashboard",    "destination": "https://nxtspacelabs-admin.vercel.app/dashboard" },
     { "source": "/kyc",          "destination": "https://nxtspacelabs-admin.vercel.app/kyc" },
