@@ -5,6 +5,7 @@
     { "source": "/login",        "destination": "https://nxtspacelabs-admin.vercel.app/login" },
     { "source": "/dashboard",    "destination": "https://nxtspacelabs-admin.vercel.app/dashboard" },
     { "source": "/kyc",          "destination": "https://nxtspacelabs-admin.vercel.app/kyc" },
+    { "source": "/kyc/history",  "destination": "https://nxtspacelabs-admin.vercel.app/kyc/history" },
     { "source": "/users",        "destination": "https://nxtspacelabs-admin.vercel.app/users" },
     { "source": "/talents",      "destination": "https://nxtspacelabs-admin.vercel.app/talents" },
     { "source": "/payouts",      "destination": "https://nxtspacelabs-admin.vercel.app/payouts" },
