@@ -30,6 +30,7 @@
     { "source": "/api/payments",       "destination": "https://nxtspacelabs-admin.vercel.app/api/payments" },
     { "source": "/api/payments/:path*","destination": "https://nxtspacelabs-admin.vercel.app/api/payments/:path*" },
     { "source": "/api/calls/:path*",   "destination": "https://nxtspacelabs-admin.vercel.app/api/calls/:path*" },
+    { "source": "/api/talents/:path*", "destination": "https://nxtspacelabs-admin.vercel.app/api/talents/:path*" },
     { "source": "/api/admins",         "destination": "https://nxtspacelabs-admin.vercel.app/api/admins" },
     { "source": "/api/admins/:path*",  "destination": "https://nxtspacelabs-admin.vercel.app/api/admins/:path*" },
     { "source": "/api/cron/:path*",    "destination": "https://nxtspacelabs-admin.vercel.app/api/cron/:path*" },
