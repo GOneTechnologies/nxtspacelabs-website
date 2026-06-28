@@ -23,9 +23,12 @@
     { "source": "/api/payouts/:path*", "destination": "https://nxtspacelabs-admin.vercel.app/api/payouts/:path*" },
     { "source": "/api/reports/:path*", "destination": "https://nxtspacelabs-admin.vercel.app/api/reports/:path*" },
     { "source": "/api/rooms/:path*",   "destination": "https://nxtspacelabs-admin.vercel.app/api/rooms/:path*" },
+    { "source": "/api/pricing",        "destination": "https://nxtspacelabs-admin.vercel.app/api/pricing" },
     { "source": "/api/pricing/:path*", "destination": "https://nxtspacelabs-admin.vercel.app/api/pricing/:path*" },
+    { "source": "/api/payments",       "destination": "https://nxtspacelabs-admin.vercel.app/api/payments" },
     { "source": "/api/payments/:path*","destination": "https://nxtspacelabs-admin.vercel.app/api/payments/:path*" },
     { "source": "/api/calls/:path*",   "destination": "https://nxtspacelabs-admin.vercel.app/api/calls/:path*" },
+    { "source": "/api/admins",         "destination": "https://nxtspacelabs-admin.vercel.app/api/admins" },
     { "source": "/api/admins/:path*",  "destination": "https://nxtspacelabs-admin.vercel.app/api/admins/:path*" },
     { "source": "/api/cron/:path*",    "destination": "https://nxtspacelabs-admin.vercel.app/api/cron/:path*" },
     { "source": "/_next/:path*",   "destination": "https://nxtspacelabs-admin.vercel.app/_next/:path*" }
