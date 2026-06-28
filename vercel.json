@@ -12,12 +12,22 @@
     { "source": "/rooms",        "destination": "https://nxtspacelabs-admin.vercel.app/rooms" },
     { "source": "/rooms-waitlist","destination": "https://nxtspacelabs-admin.vercel.app/rooms-waitlist" },
     { "source": "/audit",        "destination": "https://nxtspacelabs-admin.vercel.app/audit" },
+    { "source": "/pricing",      "destination": "https://nxtspacelabs-admin.vercel.app/pricing" },
+    { "source": "/admins",       "destination": "https://nxtspacelabs-admin.vercel.app/admins" },
+    { "source": "/payments",     "destination": "https://nxtspacelabs-admin.vercel.app/payments" },
+    { "source": "/live-calls",   "destination": "https://nxtspacelabs-admin.vercel.app/live-calls" },
+    { "source": "/users/:id",    "destination": "https://nxtspacelabs-admin.vercel.app/users/:id" },
     { "source": "/api/auth/:path*", "destination": "https://nxtspacelabs-admin.vercel.app/api/auth/:path*" },
     { "source": "/api/kyc/:path*",     "destination": "https://nxtspacelabs-admin.vercel.app/api/kyc/:path*" },
     { "source": "/api/users/:path*",   "destination": "https://nxtspacelabs-admin.vercel.app/api/users/:path*" },
     { "source": "/api/payouts/:path*", "destination": "https://nxtspacelabs-admin.vercel.app/api/payouts/:path*" },
     { "source": "/api/reports/:path*", "destination": "https://nxtspacelabs-admin.vercel.app/api/reports/:path*" },
     { "source": "/api/rooms/:path*",   "destination": "https://nxtspacelabs-admin.vercel.app/api/rooms/:path*" },
+    { "source": "/api/pricing/:path*", "destination": "https://nxtspacelabs-admin.vercel.app/api/pricing/:path*" },
+    { "source": "/api/payments/:path*","destination": "https://nxtspacelabs-admin.vercel.app/api/payments/:path*" },
+    { "source": "/api/calls/:path*",   "destination": "https://nxtspacelabs-admin.vercel.app/api/calls/:path*" },
+    { "source": "/api/admins/:path*",  "destination": "https://nxtspacelabs-admin.vercel.app/api/admins/:path*" },
+    { "source": "/api/cron/:path*",    "destination": "https://nxtspacelabs-admin.vercel.app/api/cron/:path*" },
     { "source": "/_next/:path*",   "destination": "https://nxtspacelabs-admin.vercel.app/_next/:path*" }
   ]
 }
