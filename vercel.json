@@ -13,6 +13,8 @@
     { "source": "/rooms",        "destination": "https://nxtspacelabs-admin.vercel.app/rooms" },
     { "source": "/rooms-waitlist","destination": "https://nxtspacelabs-admin.vercel.app/rooms-waitlist" },
     { "source": "/audit",        "destination": "https://nxtspacelabs-admin.vercel.app/audit" },
+    { "source": "/broadcast",    "destination": "https://nxtspacelabs-admin.vercel.app/broadcast" },
+    { "source": "/api/push/broadcast", "destination": "https://nxtspacelabs-admin.vercel.app/api/push/broadcast" },
     { "source": "/pricing",       "destination": "https://nxtspacelabs-admin.vercel.app/pricing" },
     { "source": "/pricing/men",   "destination": "https://nxtspacelabs-admin.vercel.app/pricing/men" },
     { "source": "/pricing/women", "destination": "https://nxtspacelabs-admin.vercel.app/pricing/women" },
