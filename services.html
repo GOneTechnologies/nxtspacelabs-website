@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<!--
+  NextSpace Labs — Services · Digital Headquarters
+  © 2026 NextSpace Labs Private Limited · All rights reserved.
+-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#020209" />
+<meta name="description" content="NextSpace Labs — services in product invention, applied intelligence, design engineering, and platform architecture. Business outcomes, authored end to end." />
+<meta property="og:title" content="Services · NextSpace Labs" />
+<meta property="og:description" content="What we make for the people who trust us with their next chapter." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nxtspacelabs.com/services.html" />
+<meta property="og:image" content="https://nxtspacelabs.com/logo.svg" />
+<link rel="canonical" href="https://nxtspacelabs.com/services.html" />
+<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+<link rel="apple-touch-icon" href="/logo.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@nxtspacelabs" />
+<meta name="twitter:creator" content="@nxtspacelabs" />
+<meta name="twitter:image" content="https://nxtspacelabs.com/logo.svg" />
+<title>Services — NextSpace Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,200..900,0..100&family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/premium.css">
+<style>
+  .service-block {
+    display: grid; grid-template-columns: 240px 1fr; gap: 60px;
+    padding: 60px 0; border-bottom: 1px solid var(--line);
+  }
+  @media (max-width: 900px) { .service-block { grid-template-columns: 1fr; gap: 32px; padding: 44px 0; } }
+  .service-num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px; letter-spacing: 3px; color: var(--dim-2);
+  }
+  .service-title {
+    font-family: "Fraunces", serif; font-weight: 300;
+    font-size: clamp(28px, 3.4vw, 44px); line-height: 1.05;
+    letter-spacing: -0.025em; margin-top: 8px;
+  }
+  .service-title .italic {
+    font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula);
+  }
+  .service-copy p { color: var(--dim); font-size: 15.5px; line-height: 1.8; margin-bottom: 14px; }
+  .service-copy p:first-child { color: var(--mist-2); font-size: 16.5px; }
+  .service-tags {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px;
+  }
+  .service-tag {
+    padding: 6px 12px; border: 1px solid var(--line-2); border-radius: 999px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px; letter-spacing: 1.5px; color: var(--dim);
+  }
+
+  .process-list {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+    margin-top: 40px;
+  }
+  @media (max-width: 900px) { .process-list { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 500px) { .process-list { grid-template-columns: 1fr; } }
+  .process-step {
+    padding: 28px 24px;
+    background: rgba(247, 245, 240, 0.02);
+    border: 1px solid var(--line-2); border-radius: 16px;
+    backdrop-filter: blur(20px);
+  }
+  .process-step .step {
+    font-family: "JetBrains Mono", monospace; color: var(--nebula);
+    font-size: 11px; letter-spacing: 2.5px; margin-bottom: 14px;
+  }
+  .process-step h5 { font-family: "Fraunces", serif; font-weight: 300; font-size: 20px; margin-bottom: 10px; }
+  .process-step h5 .italic { font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula); }
+  .process-step p { color: var(--dim); font-size: 13.5px; line-height: 1.7; }
+</style>
+</head>
+
+<body class="night">
+
+<canvas id="scene"></canvas>
+<div class="cursor-light" id="cursorLight"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div id="ns-nav"></div>
+<div id="ns-menu"></div>
+<div id="ns-sound"></div>
+
+<!-- ═══ PAGE HERO ═══ -->
+<header class="page-hero" id="main" tabindex="-1">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag reveal"><em>What we do</em> · Services</div>
+    <h1 class="page-title reveal d1">
+      Four ways we<br>
+      <span class="italic">carry the pen</span>.
+    </h1>
+    <p class="page-lede reveal d2">
+      We do not sell hours. We take responsibility for outcomes. Each engagement below is authored the same way we build our own products — from first principles, and until the answer breathes.
+    </p>
+  </div>
+</header>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="chapter">
+  <div class="wrap">
+
+    <div class="service-block reveal">
+      <div>
+        <div class="service-num">01 · Invention</div>
+        <div class="service-title">Product <span class="italic">invention</span>.</div>
+      </div>
+      <div class="service-copy">
+        <p>You have a founder-shaped hunch — a problem that keeps returning, a category that feels underserved, an audience nobody has quite heard yet. We become your first thinking partner and your first shipping partner.</p>
+        <p>We help you name the problem, decide what to build first, prototype, ship, and stay through the moments when the product finds its shape. When we are done, you carry it forward with a team that understands what you built and why.</p>
+        <div class="service-tags">
+          <span class="service-tag">First-principles product strategy</span>
+          <span class="service-tag">Zero-to-one prototyping</span>
+          <span class="service-tag">Founder-in-residence support</span>
+          <span class="service-tag">Design + engineering, one team</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-block reveal">
+      <div>
+        <div class="service-num">02 · Intelligence</div>
+        <div class="service-title">Applied <span class="italic">intelligence</span>.</div>
+      </div>
+      <div class="service-copy">
+        <p>Language models are the new water — cheap, everywhere, and easily wasted. We help teams find the shape of intelligence that actually serves their users: quiet, precise, cited, revocable.</p>
+        <p>We work through the whole stack, from evaluation harnesses and grounding layers, to the last five percent of interaction design that decides whether people trust the answer. We do not chase demos. We ship interfaces that hold up under a Tuesday.</p>
+        <div class="service-tags">
+          <span class="service-tag">Product-shaped LLM interfaces</span>
+          <span class="service-tag">Evaluation &amp; grounding</span>
+          <span class="service-tag">Model-agnostic routing</span>
+          <span class="service-tag">Feedback loops that improve over time</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-block reveal">
+      <div>
+        <div class="service-num">03 · Design engineering</div>
+        <div class="service-title">Design <span class="italic">engineered</span>.</div>
+      </div>
+      <div class="service-copy">
+        <p>Some of the most consequential product decisions live between design and engineering — in the tempo of a transition, the weight of a font, the choice to remove an element rather than add one. We work in that seam.</p>
+        <p>Bring us in when a product already ships, but does not yet sing. We rebuild the parts that need rebuilding, and leave your team with the taste, the tooling, and the language to keep going.</p>
+        <div class="service-tags">
+          <span class="service-tag">Interaction design systems</span>
+          <span class="service-tag">Motion &amp; feel</span>
+          <span class="service-tag">Accessibility as a first class</span>
+          <span class="service-tag">Pixel-honest engineering</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-block reveal" style="border-bottom: none;">
+      <div>
+        <div class="service-num">04 · Architecture</div>
+        <div class="service-title">Platform <span class="italic">architecture</span>.</div>
+      </div>
+      <div class="service-copy">
+        <p>The best products are held up by architectures nobody notices. When your team is about to double, when you are moving from one country to five, when the demand is rising faster than the code can carry it — that is when we step in.</p>
+        <p>We help you design and build the platform underneath: identity, payments, real-time, storage, observability, safety. Boring on purpose. Load-bearing by design.</p>
+        <div class="service-tags">
+          <span class="service-tag">Scaling from thousands to millions</span>
+          <span class="service-tag">Real-time &amp; presence</span>
+          <span class="service-tag">Payments &amp; ledger</span>
+          <span class="service-tag">Safety, trust &amp; identity</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ HOW WE WORK ═══ -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter Two</em> · How we work</div>
+    <h2 class="chapter-head reveal d1">
+      Four <span class="italic">rhythms</span>, in order.
+    </h2>
+    <p class="body-copy reveal d2" style="max-width: 640px;">
+      Every engagement follows the same four rhythms — but the tempo changes with the work. Some projects are weeks. Some are years. The order is always the same.
+    </p>
+
+    <div class="process-list">
+      <div class="process-step reveal">
+        <div class="step">Step 01</div>
+        <h5>Sit with the <span class="italic">question</span>.</h5>
+        <p>Before we design or code, we listen. We find the real problem underneath the requested feature. Everything follows from what we learn here.</p>
+      </div>
+      <div class="process-step reveal d1">
+        <div class="step">Step 02</div>
+        <h5>Prototype in <span class="italic">public</span>.</h5>
+        <p>We build small, working answers early — often within a week. Nothing convinces like a running product; nothing surfaces truth faster than a prototype.</p>
+      </div>
+      <div class="process-step reveal d2">
+        <div class="step">Step 03</div>
+        <h5>Ship, quietly.</h5>
+        <p>We do not launch things. We ship them. Small, honest releases. Real users. Real telemetry. Real reactions. Then we iterate on what we learn.</p>
+      </div>
+      <div class="process-step reveal d3">
+        <div class="step">Step 04</div>
+        <h5>Hand it <span class="italic">back</span>.</h5>
+        <p>We are not here to become the team you can't fire. We leave documentation, decisions, and a team that can carry the product further than we could.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ENGAGEMENT ═══ -->
+<section class="chapter">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter Three</em> · Engagement shape</div>
+    <h2 class="chapter-head reveal d1">
+      Three ways to <span class="italic">bring us in</span>.
+    </h2>
+
+    <div class="grid-3" style="margin-top: 40px;">
+      <div class="card reveal">
+        <div class="card-tag">Format 01</div>
+        <h4>Founder <span class="italic">residency</span>.</h4>
+        <p>Six-to-twelve weeks. We sit next to your team, help you decide what to build first, and ship the first cut of it. Ideal for zero-to-one work.</p>
+      </div>
+      <div class="card reveal d1">
+        <div class="card-tag">Format 02</div>
+        <h4>Product <span class="italic">partnership</span>.</h4>
+        <p>Three-to-twelve months. We take end-to-end responsibility for a product or platform surface, alongside your team. Ideal for real ambition.</p>
+      </div>
+      <div class="card reveal d2">
+        <div class="card-tag">Format 03</div>
+        <h4>Advisory <span class="italic">retainer</span>.</h4>
+        <p>A standing invitation. We stay close to your team for the moments you need a second pair of hands or a second pair of eyes. Quiet, ongoing, high signal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-block reveal">
+  <h2>Have a <span class="italic">real</span> problem?</h2>
+  <p>Tell us what you are trying to build. We will tell you honestly whether we can help.</p>
+  <a href="/contact.html" class="glass-btn" data-hover>
+    <span>Start the conversation</span>
+    <span class="arrow">→</span>
+  </a>
+</section>
+
+<div id="ns-footer"></div>
+<div id="ns-hidden"></div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js" } }
+</script>
+<script type="module" src="/assets/scene-lite.js"></script>
+<script src="/assets/partials.js"></script>
+<script src="/assets/premium.js"></script>
+
+<!-- Vercel Web Analytics + Speed Insights (privacy-first, zero-config on Vercel) -->
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

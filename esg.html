@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<!--
+  NextSpace Labs — ESG · Responsibility · Digital Headquarters
+  © 2026 NextSpace Labs Private Limited · All rights reserved.
+-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#020209" />
+<meta name="description" content="NextSpace Labs — People, Privacy, Ethics, Sustainability and AI. Our responsibility as a company that builds software for other humans." />
+<meta property="og:title" content="ESG &amp; Responsibility · NextSpace Labs" />
+<meta property="og:description" content="What we take responsibility for, publicly." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nxtspacelabs.com/esg.html" />
+<meta property="og:image" content="https://nxtspacelabs.com/logo.svg" />
+<link rel="canonical" href="https://nxtspacelabs.com/esg.html" />
+<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+<link rel="apple-touch-icon" href="/logo.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@nxtspacelabs" />
+<meta name="twitter:creator" content="@nxtspacelabs" />
+<meta name="twitter:image" content="https://nxtspacelabs.com/logo.svg" />
+<title>ESG &amp; Responsibility — NextSpace Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,200..900,0..100&family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/premium.css">
+<style>
+  .pillar {
+    display: grid; grid-template-columns: 220px 1fr; gap: 48px;
+    padding: 50px 0; border-bottom: 1px solid var(--line);
+  }
+  @media (max-width: 900px) { .pillar { grid-template-columns: 1fr; gap: 20px; } }
+  .pillar-tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; letter-spacing: 3px; color: var(--dim-2);
+  }
+  .pillar-tag em { display: block; font-family: "Instrument Serif", serif; font-style: italic; letter-spacing: 0; color: var(--nebula); font-size: 15px; margin-top: 6px; }
+  .pillar-body h3 { font-family: "Fraunces", serif; font-weight: 300; font-size: clamp(24px, 3vw, 34px); letter-spacing: -0.025em; margin-bottom: 16px; line-height: 1.1; }
+  .pillar-body h3 em { font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula); }
+  .pillar-body p { color: var(--dim); max-width: 640px; margin-bottom: 12px; line-height: 1.75; }
+  .pillar-body p:first-of-type { color: var(--mist-2); font-size: 16.5px; }
+  .pillar-body ul { list-style: none; margin-top: 20px; }
+  .pillar-body ul li {
+    padding-left: 26px; position: relative;
+    color: var(--mist-2); font-size: 14.5px; line-height: 1.75; margin-bottom: 8px;
+  }
+  .pillar-body ul li::before {
+    content: ""; position: absolute; left: 0; top: 12px;
+    width: 14px; height: 1px; background: var(--nebula);
+  }
+</style>
+</head>
+
+<body class="night">
+
+<canvas id="scene"></canvas>
+<div class="cursor-light" id="cursorLight"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div id="ns-nav"></div>
+<div id="ns-menu"></div>
+<div id="ns-sound"></div>
+
+<header class="page-hero" id="main" tabindex="-1">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag reveal"><em>Responsibility</em> · People · Planet · Practice</div>
+    <h1 class="page-title reveal d1">
+      What we<br>
+      <span class="italic">take responsibility for</span>.
+    </h1>
+    <p class="page-lede reveal d2">
+      Building software for other humans is a serious act. This page is our short, honest inventory of the responsibilities we accept, and the ways we are trying to meet them.
+    </p>
+  </div>
+</header>
+
+<section class="chapter">
+  <div class="wrap">
+
+    <div class="pillar reveal">
+      <div class="pillar-tag">01 · People<em>Employees &amp; users</em></div>
+      <div class="pillar-body">
+        <h3>The <em>humans</em> come first.</h3>
+        <p>The people who work here, and the people who use what we build, are the two audiences we serve. Everything else — press, valuation, market share — is downstream.</p>
+        <p>We commit to:</p>
+        <ul>
+          <li>Pay fairly and honestly, above market where we can.</li>
+          <li>Offer real health, mental-health and family cover from day one.</li>
+          <li>Enforce a minimum leave policy, not just a maximum.</li>
+          <li>Build our products around informed, revocable consent — for every user, in every geography.</li>
+          <li>Publish clear community guidelines and reply personally to reports.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pillar reveal">
+      <div class="pillar-tag">02 · Privacy<em>Data &amp; trust</em></div>
+      <div class="pillar-body">
+        <h3><em>Data</em> is the user's, not ours.</h3>
+        <p>We treat personal data the way we would want ours treated. This is not just a policy — it is an engineering discipline that shapes what we log, what we store, and what we throw away.</p>
+        <p>We commit to:</p>
+        <ul>
+          <li>Collect the smallest amount of data that lets the product work.</li>
+          <li>Never sell personal data. Ever.</li>
+          <li>Encrypt in transit and at rest. Rotate keys. Audit access.</li>
+          <li>Publish and update a plain-English <a href="/privacy.html" data-hover style="color:var(--nebula);border-bottom:1px solid var(--nebula);">privacy policy</a>.</li>
+          <li>Honour access, correction and deletion requests promptly and personally.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pillar reveal">
+      <div class="pillar-tag">03 · Ethics<em>How we build</em></div>
+      <div class="pillar-body">
+        <h3>The <em>right thing</em>, even when it costs.</h3>
+        <p>The internet has too many products that got the metric right and the person wrong. We would rather build slower than build something we would be embarrassed to show our families.</p>
+        <p>We commit to:</p>
+        <ul>
+          <li>Design against dark patterns — no fake urgency, no manipulated defaults, no consent by exhaustion.</li>
+          <li>Reject work that would require us to compromise trust, safety, or truth.</li>
+          <li>Say no to features that would grow a number at the expense of the person behind it.</li>
+          <li>Publish reasoning openly when a decision would benefit from public review.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pillar reveal">
+      <div class="pillar-tag">04 · Sustainability<em>Planet &amp; carbon</em></div>
+      <div class="pillar-body">
+        <h3>A <em>light</em> footprint.</h3>
+        <p>We are a small software company. Our footprint is small by nature — but not zero. We take responsibility for the carbon we cause, on- and off-screen.</p>
+        <p>We commit to:</p>
+        <ul>
+          <li>Host on providers with published renewable-energy commitments where we can.</li>
+          <li>Design software that runs efficiently on modest devices, so old phones don't need to be replaced.</li>
+          <li>Ship low-motion, low-data modes; respect <em>prefers-reduced-motion</em> and <em>save-data</em>.</li>
+          <li>Measure and, once we have real data, publish our operational carbon annually.</li>
+          <li>Prefer local hires and low-travel work over unnecessary flights.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pillar reveal" style="border-bottom: none;">
+      <div class="pillar-tag">05 · AI &amp; safety<em>Applied intelligence</em></div>
+      <div class="pillar-body">
+        <h3><em>Intelligence</em> as a promise.</h3>
+        <p>We use language models, image models, and other machine-learning systems in some of our products. That is a promise — to be careful with how those systems are trained, deployed, and audited.</p>
+        <p>We commit to:</p>
+        <ul>
+          <li>Only train or fine-tune on data we have the right to use.</li>
+          <li>Prefer smaller, task-shaped models over blunt general ones, where suitable.</li>
+          <li>Ground model outputs, cite sources when relevant, and make the answer revocable.</li>
+          <li>Never use models to make decisions that materially affect people without human review.</li>
+          <li>Publish our AI-use disclosures in-product, in plain English.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter Two</em> · Governance</div>
+    <h2 class="chapter-head reveal d1">
+      Who is <span class="italic">accountable</span>.
+    </h2>
+    <div class="grid-3" style="margin-top: 40px;">
+      <div class="card reveal">
+        <div class="card-tag">Ownership</div>
+        <h4>The <span class="italic">founder</span> holds this policy.</h4>
+        <p>Responsibility is not a committee. If any commitment on this page is not being met, the founder is answerable, personally.</p>
+      </div>
+      <div class="card reveal d1">
+        <div class="card-tag">Reporting</div>
+        <h4>An <span class="italic">annual</span> note.</h4>
+        <p>Once we have a full year of data, we will publish an annual responsibility report — short, honest, comparable year to year.</p>
+      </div>
+      <div class="card reveal d2">
+        <div class="card-tag">Accountability</div>
+        <h4>An <span class="italic">open</span> inbox.</h4>
+        <p>If you believe we are falling short of any commitment here, write to <a href="mailto:support@pairnow.in" data-hover style="color:var(--nebula);border-bottom:1px solid var(--nebula);">support@pairnow.in</a> with the subject line "Responsibility". Every note is read.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-block reveal">
+  <h2>Hold us to <span class="italic">this</span>.</h2>
+  <p>If something we do falls short of what we promise here, please tell us.</p>
+  <a href="mailto:support@pairnow.in?subject=Responsibility" class="glass-btn" data-hover>
+    <span>Write to us</span>
+    <span class="arrow">→</span>
+  </a>
+</section>
+
+<div id="ns-footer"></div>
+<div id="ns-hidden"></div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js" } }
+</script>
+<script type="module" src="/assets/scene-lite.js"></script>
+<script src="/assets/partials.js"></script>
+<script src="/assets/premium.js"></script>
+
+<!-- Vercel Web Analytics + Speed Insights (privacy-first, zero-config on Vercel) -->
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

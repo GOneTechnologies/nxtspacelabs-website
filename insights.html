@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<!--
+  NextSpace Labs — Insights · Digital Headquarters
+  © 2026 NextSpace Labs Private Limited · All rights reserved.
+-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#020209" />
+<meta name="description" content="NextSpace Labs — essays, notes, and slow writing on products, intelligence, design and the shape of the digital century." />
+<meta property="og:title" content="Insights · NextSpace Labs" />
+<meta property="og:description" content="Slow writing on products, intelligence and the shape of the digital century." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nxtspacelabs.com/insights.html" />
+<meta property="og:image" content="https://nxtspacelabs.com/logo.svg" />
+<link rel="canonical" href="https://nxtspacelabs.com/insights.html" />
+<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+<link rel="apple-touch-icon" href="/logo.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@nxtspacelabs" />
+<meta name="twitter:creator" content="@nxtspacelabs" />
+<meta name="twitter:image" content="https://nxtspacelabs.com/logo.svg" />
+<title>Insights — NextSpace Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,200..900,0..100&family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/premium.css">
+<style>
+  .filter-row {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin: 40px 0 20px;
+  }
+  .filter-chip {
+    padding: 8px 16px; border: 1px solid var(--line-2); border-radius: 999px;
+    font-family: "Inter"; font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--dim); background: rgba(247,245,240,0.02); cursor: none;
+    transition: color 0.3s, border-color 0.3s, background 0.3s;
+  }
+  .filter-chip:hover, .filter-chip.on { color: var(--nebula); border-color: var(--nebula); background: rgba(167,139,250,0.06); }
+
+  .article {
+    display: grid; grid-template-columns: 180px 1fr;
+    gap: 40px; padding: 40px 0; border-bottom: 1px solid var(--line);
+    transition: padding-left 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .article:hover { padding-left: 12px; }
+  @media (max-width: 800px) { .article { grid-template-columns: 1fr; gap: 12px; } .article:hover { padding-left: 0; } }
+  .article-meta {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; letter-spacing: 2px; color: var(--dim);
+  }
+  .article-meta em { display: block; font-family: "Instrument Serif", serif; font-style: italic; letter-spacing: 0; color: var(--nebula); font-size: 13px; margin-top: 6px; }
+  .article h3 {
+    font-family: "Fraunces", serif; font-weight: 300;
+    font-size: clamp(22px, 2.4vw, 32px); letter-spacing: -0.02em; line-height: 1.15;
+    margin-bottom: 12px;
+    transition: color 0.3s;
+  }
+  .article h3 .italic { font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula); }
+  .article:hover h3 { color: var(--nebula); }
+  .article p { color: var(--dim); font-size: 15px; max-width: 640px; line-height: 1.75; }
+  .article .read {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 16px;
+    font-family: "Instrument Serif", serif; font-style: italic;
+    font-size: 15px; color: var(--mist-2);
+  }
+  .article .read .arr { transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+  .article:hover .read .arr { transform: translateX(6px); color: var(--nebula); }
+
+  .whitepapers-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
+  @media (max-width: 800px) { .whitepapers-grid { grid-template-columns: 1fr; } }
+  .wp-card {
+    padding: 32px 28px;
+    background: rgba(247, 245, 240, 0.02);
+    border: 1px solid var(--line-2); border-radius: 18px;
+    backdrop-filter: blur(20px);
+    display: flex; flex-direction: column; gap: 12px; min-height: 220px;
+  }
+  .wp-tag { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 2px; color: var(--dim-2); }
+  .wp-card h5 { font-family: "Fraunces", serif; font-weight: 300; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em; }
+  .wp-card h5 em { font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula); }
+  .wp-card p { color: var(--dim); font-size: 14px; line-height: 1.7; flex: 1; }
+  .wp-card a {
+    font-family: "Instrument Serif", serif; font-style: italic; color: var(--mist-2);
+    border-top: 1px solid var(--line); padding-top: 14px;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .wp-card a:hover { color: var(--nebula); }
+</style>
+</head>
+
+<body class="night">
+
+<canvas id="scene"></canvas>
+<div class="cursor-light" id="cursorLight"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div id="ns-nav"></div>
+<div id="ns-menu"></div>
+<div id="ns-sound"></div>
+
+<header class="page-hero" id="main" tabindex="-1">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag reveal"><em>Slow writing</em> · Insights</div>
+    <h1 class="page-title reveal d1">
+      Notes,<br>
+      <span class="italic">not opinions</span>.
+    </h1>
+    <p class="page-lede reveal d2">
+      We write when we have something to say — not because a calendar demands it. Essays on product, intelligence, design, and the century our software will help build. Read one, come back for the next.
+    </p>
+  </div>
+</header>
+
+<section class="chapter" id="essays">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter One</em> · Essays</div>
+
+    <div class="filter-row reveal">
+      <button class="filter-chip on" data-hover>All</button>
+      <button class="filter-chip" data-hover>Product</button>
+      <button class="filter-chip" data-hover>Intelligence</button>
+      <button class="filter-chip" data-hover>Design</button>
+      <button class="filter-chip" data-hover>Field notes</button>
+    </div>
+
+    <article class="article reveal" data-hover>
+      <div class="article-meta">01 &middot; 2026-JUN<em>Product</em></div>
+      <div>
+        <h3>What we mean when we say <span class="italic">calm software</span>.</h3>
+        <p>Calm is not minimalism, and it is not silence. It is the state a product reaches when every element has earned its place. A working definition, in four parts, drawn from a decade of failing to describe it.</p>
+        <a class="read" data-hover>Read the essay <span class="arr">→</span></a>
+      </div>
+    </article>
+
+    <article class="article reveal" data-hover>
+      <div class="article-meta">02 &middot; 2026-JUN<em>Intelligence</em></div>
+      <div>
+        <h3>The <span class="italic">last five percent</span> of an LLM interface.</h3>
+        <p>Everyone can ship a chat box. Almost nobody ships an interface people trust for a decision that matters. What the last five percent looks like, and why nobody teaches it.</p>
+        <a class="read" data-hover>Read the essay <span class="arr">→</span></a>
+      </div>
+    </article>
+
+    <article class="article reveal" data-hover>
+      <div class="article-meta">03 &middot; 2026-MAY<em>Design</em></div>
+      <div>
+        <h3>An interface should behave like a <span class="italic">quiet room</span>.</h3>
+        <p>Rooms have rules you feel before you can articulate them. Software should too. Notes on tempo, weight, breath — the parts of design nobody puts in a job posting.</p>
+        <a class="read" data-hover>Read the essay <span class="arr">→</span></a>
+      </div>
+    </article>
+
+    <article class="article reveal" data-hover>
+      <div class="article-meta">04 &middot; 2026-MAY<em>Product</em></div>
+      <div>
+        <h3>Why we do not <span class="italic">launch</span>.</h3>
+        <p>We ship instead. A short essay on the difference, and why the language you use for release day shapes the product you build the week after.</p>
+        <a class="read" data-hover>Read the essay <span class="arr">→</span></a>
+      </div>
+    </article>
+
+    <article class="article reveal" data-hover>
+      <div class="article-meta">05 &middot; 2026-APR<em>Field notes</em></div>
+      <div>
+        <h3>Building for a <span class="italic">Tuesday evening</span>.</h3>
+        <p>The user we build for is not on stage. She is tired, curious, and half-distracted. What that changes about product decisions, from onboarding to empty states.</p>
+        <a class="read" data-hover>Read the essay <span class="arr">→</span></a>
+      </div>
+    </article>
+
+    <article class="article reveal" data-hover>
+      <div class="article-meta">06 &middot; 2026-APR<em>Intelligence</em></div>
+      <div>
+        <h3>Model-agnostic by <span class="italic">construction</span>.</h3>
+        <p>How we design products so the model powering them is a swap, not a rewrite. A quiet architectural note — with implications for cost, trust, and safety.</p>
+        <a class="read" data-hover>Read the essay <span class="arr">→</span></a>
+      </div>
+    </article>
+
+    <article class="article reveal" data-hover style="border-bottom: none;">
+      <div class="article-meta">07 &middot; 2026-MAR<em>Design</em></div>
+      <div>
+        <h3>Motion should <span class="italic">excuse</span> itself.</h3>
+        <p>The best animations are the ones you would never notice were missing. On tempo, easing, and the ethics of moving pixels around a screen.</p>
+        <a class="read" data-hover>Read the essay <span class="arr">→</span></a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="chapter" id="whitepapers">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter Two</em> · Whitepapers &amp; research</div>
+    <h2 class="chapter-head reveal d1">
+      Longer <span class="italic">reads</span>, when they are ready.
+    </h2>
+    <p class="body-copy reveal d2" style="max-width: 640px;">
+      Occasionally the work asks for a longer form — a whitepaper, a research note, a memo we would want on someone's desk. These are those.
+    </p>
+
+    <div class="whitepapers-grid">
+      <div class="wp-card reveal">
+        <div class="wp-tag">WHITEPAPER · 01</div>
+        <h5>The <em>consent</em>-first identity model.</h5>
+        <p>A proposed identity primitive where the user is the only authority — with no compromise to product experience. Draft, forthcoming.</p>
+        <a data-hover>Notify me when it lands →</a>
+      </div>
+      <div class="wp-card reveal d1">
+        <div class="wp-tag">WHITEPAPER · 02</div>
+        <h5>Real-time as a <em>first-class</em> primitive.</h5>
+        <p>What we learned from building presence, calls, and rooms at scale — and what we would design differently if we started tomorrow. Forthcoming.</p>
+        <a data-hover>Notify me when it lands →</a>
+      </div>
+      <div class="wp-card reveal d2">
+        <div class="wp-tag">RESEARCH NOTE</div>
+        <h5>Notes on <em>slow</em> intelligence.</h5>
+        <p>Interfaces for models that think for minutes instead of milliseconds. Early sketches, published as a running document.</p>
+        <a data-hover>Read the note →</a>
+      </div>
+      <div class="wp-card reveal d3">
+        <div class="wp-tag">MEMO</div>
+        <h5>What a <em>calm</em> API looks like.</h5>
+        <p>A short internal memo we occasionally share: how we shape errors, retries, and pagination so integrations feel like conversations, not contracts.</p>
+        <a data-hover>Ask for a copy →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-block reveal">
+  <h2>Get the <span class="italic">next essay</span> in your inbox.</h2>
+  <p>One thoughtful email when we publish. Nothing else. Ever.</p>
+  <a href="/contact.html?intent=insights" class="glass-btn" data-hover>
+    <span>Subscribe</span>
+    <span class="arrow">→</span>
+  </a>
+</section>
+
+<div id="ns-footer"></div>
+<div id="ns-hidden"></div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js" } }
+</script>
+<script type="module" src="/assets/scene-lite.js"></script>
+<script src="/assets/partials.js"></script>
+<script src="/assets/premium.js"></script>
+<script>
+  // Filter chip toggling (visual only — no article filtering yet)
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('on'));
+      chip.classList.add('on');
+    });
+  });
+</script>
+
+<!-- Vercel Web Analytics + Speed Insights (privacy-first, zero-config on Vercel) -->
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

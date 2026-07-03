@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<!--
+  NextSpace Labs — Innovation · Digital Headquarters
+  © 2026 NextSpace Labs Private Limited · All rights reserved.
+-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#020209" />
+<meta name="description" content="NextSpace Labs — how we think, how we solve problems, how we build. The lab, the horizons, the frontier." />
+<meta property="og:title" content="Innovation · NextSpace Labs" />
+<meta property="og:description" content="How we think, how we solve, how we build." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nxtspacelabs.com/innovation.html" />
+<meta property="og:image" content="https://nxtspacelabs.com/logo.svg" />
+<link rel="canonical" href="https://nxtspacelabs.com/innovation.html" />
+<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+<link rel="apple-touch-icon" href="/logo.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@nxtspacelabs" />
+<meta name="twitter:creator" content="@nxtspacelabs" />
+<meta name="twitter:image" content="https://nxtspacelabs.com/logo.svg" />
+<title>Innovation — NextSpace Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,200..900,0..100&family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/premium.css">
+<style>
+  .horizon-row {
+    display: grid; grid-template-columns: 180px 1fr; gap: 40px;
+    padding: 44px 0; border-bottom: 1px solid var(--line);
+  }
+  @media (max-width: 800px) { .horizon-row { grid-template-columns: 1fr; gap: 12px; } }
+  .horizon-when {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; letter-spacing: 2.5px; color: var(--nebula);
+  }
+  .horizon-body h4 { font-family: "Fraunces", serif; font-weight: 300; font-size: 26px; letter-spacing: -0.02em; margin-bottom: 10px; }
+  .horizon-body h4 em { font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula); }
+  .horizon-body p { color: var(--dim); max-width: 640px; line-height: 1.75; }
+
+  .frontier-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 40px; }
+  @media (max-width: 800px) { .frontier-grid { grid-template-columns: 1fr; } }
+  .frontier-card {
+    padding: 32px 28px;
+    background: linear-gradient(135deg, rgba(167,139,250,0.06), rgba(96,165,250,0.02));
+    border: 1px solid var(--line-2); border-radius: 18px;
+    backdrop-filter: blur(20px);
+  }
+  .frontier-tag { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 2px; color: var(--dim-2); margin-bottom: 16px; }
+  .frontier-card h5 { font-family: "Fraunces", serif; font-weight: 300; font-size: 22px; letter-spacing: -0.01em; margin-bottom: 10px; }
+  .frontier-card h5 em { font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula); }
+  .frontier-card p { color: var(--dim); font-size: 14px; line-height: 1.75; }
+  .frontier-card .state {
+    display: inline-block; margin-top: 18px;
+    padding: 5px 12px; border: 1px solid var(--line-2); border-radius: 999px;
+    font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 1.5px; color: var(--dim);
+  }
+</style>
+</head>
+
+<body class="night">
+
+<canvas id="scene"></canvas>
+<div class="cursor-light" id="cursorLight"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div id="ns-nav"></div>
+<div id="ns-menu"></div>
+<div id="ns-sound"></div>
+
+<header class="page-hero" id="main" tabindex="-1">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag reveal"><em>The Lab</em> · Innovation</div>
+    <h1 class="page-title reveal d1">
+      Half of what we make<br>
+      is <span class="italic">not on any roadmap</span>.
+    </h1>
+    <p class="page-lede reveal d2">
+      Innovation, for us, is not a slogan on a wall. It is a practice — a way of paying attention. Some of it becomes a product. Some of it becomes a paper. Most of it becomes discipline for the work that will come after.
+    </p>
+  </div>
+</header>
+
+<section class="chapter" id="method">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter One</em> · Method</div>
+    <h2 class="chapter-head reveal d1">
+      Four <span class="italic">practices</span>.
+    </h2>
+    <p class="body-copy reveal d2" style="max-width: 640px;">
+      We do not have an innovation team. We have four practices we all return to, whatever we are building.
+    </p>
+
+    <div class="grid-2" style="margin-top: 40px;">
+      <div class="card reveal">
+        <div class="card-tag">Practice · 01</div>
+        <h4>Read the <span class="italic">signal</span>, not the news.</h4>
+        <p>We follow research, not press releases. We read papers, watch prototypes, and pay attention to the behaviors that are quietly forming underneath the surface of a category.</p>
+      </div>
+      <div class="card reveal d1">
+        <div class="card-tag">Practice · 02</div>
+        <h4>Build the <span class="italic">smallest</span> version.</h4>
+        <p>Every hypothesis becomes a running prototype within a week. Not a slide. Not a mock. A thing you can open, use, and be surprised by.</p>
+      </div>
+      <div class="card reveal d2">
+        <div class="card-tag">Practice · 03</div>
+        <h4>Talk to <em>five</em> real people.</h4>
+        <p>Nothing replaces sitting next to a real user and watching them try the prototype. Five conversations are worth more than five surveys.</p>
+      </div>
+      <div class="card reveal d3">
+        <div class="card-tag">Practice · 04</div>
+        <h4>Keep a slow <em>notebook</em>.</h4>
+        <p>Not every insight is ready to be a product. We keep a long, slow notebook of things we noticed — and we come back to it. Half of what we ship first appeared as a line in a notebook years ago.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="horizons">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter Two</em> · Horizons</div>
+    <h2 class="chapter-head reveal d1">
+      Three <span class="italic">time horizons</span>, at once.
+    </h2>
+    <p class="body-copy reveal d2" style="max-width: 640px;">
+      At any given moment, some of our attention is on now. Some on the next twelve months. Some on the years past the horizon. All three are treated seriously.
+    </p>
+
+    <div style="margin-top: 40px;">
+      <div class="horizon-row reveal">
+        <div class="horizon-when">HORIZON · NOW</div>
+        <div class="horizon-body">
+          <h4>Ship the <em>next thing</em>.</h4>
+          <p>What is already in front of a real user, receiving real love — and how do we make it kinder, calmer, and more capable this quarter. The largest share of our energy always sits here.</p>
+        </div>
+      </div>
+      <div class="horizon-row reveal">
+        <div class="horizon-when">HORIZON · NEAR</div>
+        <div class="horizon-body">
+          <h4>Prototype the <em>next chapter</em>.</h4>
+          <p>What could be true a year from now if a few things break our way. Small teams, small budgets, small honest bets. Some of it will graduate to product. Some will not.</p>
+        </div>
+      </div>
+      <div class="horizon-row reveal" style="border-bottom: none;">
+        <div class="horizon-when">HORIZON · FAR</div>
+        <div class="horizon-body">
+          <h4>Sit with the <em>next century</em>.</h4>
+          <p>What we hope will be true in a decade. What kinds of companies, tools, interactions, and products the digital century needs. This is where we read, write, and think out loud with people we admire.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="frontier">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter Three</em> · Frontier</div>
+    <h2 class="chapter-head reveal d1">
+      Four <span class="italic">quiet</span> experiments.
+    </h2>
+    <p class="body-copy reveal d2" style="max-width: 640px;">
+      A short, honest window into what we are working on that hasn't shipped yet. Some of it will. Some of it won't. All of it teaches us something.
+    </p>
+
+    <div class="frontier-grid">
+      <div class="frontier-card reveal">
+        <div class="frontier-tag">LAB · 001</div>
+        <h5>Presence that <em>listens</em>.</h5>
+        <p>A study of what it feels like when software knows you are there without asking — attention as a channel, not a metric. Early. Uncertain. Interesting.</p>
+        <span class="state">state · exploration</span>
+      </div>
+      <div class="frontier-card reveal d1">
+        <div class="frontier-tag">LAB · 002</div>
+        <h5>Slow <em>intelligence</em>.</h5>
+        <p>Models that think for minutes instead of milliseconds — and interfaces that make the wait feel like care, not friction. Aimed at decisions that deserve weight.</p>
+        <span class="state">state · prototype</span>
+      </div>
+      <div class="frontier-card reveal d2">
+        <div class="frontier-tag">LAB · 003</div>
+        <h5>Consent by <em>default</em>.</h5>
+        <p>An identity layer where the user is the only party who can grant, revoke, or renegotiate what a product knows about them. Boring on purpose. Load-bearing by design.</p>
+        <span class="state">state · draft</span>
+      </div>
+      <div class="frontier-card reveal d3">
+        <div class="frontier-tag">LAB · 004</div>
+        <h5>Rooms that <em>compose</em>.</h5>
+        <p>Real-time audio and video primitives that treat conversation as a first-class object — recordable, replayable, transformable. A quieter, more human take on live software.</p>
+        <span class="state">state · closed research</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-block reveal">
+  <h2>Working on the <span class="italic">same frontier</span>?</h2>
+  <p>We collaborate with a small circle of researchers, founders, and labs. If you are on nearby ground, come talk to us.</p>
+  <a href="/contact.html" class="glass-btn" data-hover>
+    <span>Share your work</span>
+    <span class="arrow">→</span>
+  </a>
+</section>
+
+<div id="ns-footer"></div>
+<div id="ns-hidden"></div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js" } }
+</script>
+<script type="module" src="/assets/scene-lite.js"></script>
+<script src="/assets/partials.js"></script>
+<script src="/assets/premium.js"></script>
+
+<!-- Vercel Web Analytics + Speed Insights (privacy-first, zero-config on Vercel) -->
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

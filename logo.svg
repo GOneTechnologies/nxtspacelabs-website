@@ -1,0 +1,67 @@
+<svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" fill="none" aria-label="NextSpace Labs">
+  <defs>
+    <!-- Purple main N gradient (deep purple → vibrant violet → hint of blue) -->
+    <linearGradient id="nsl-main" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#1E1B4B"/>
+      <stop offset="45%"  stop-color="#5B21B6"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <!-- Magenta accent stroke -->
+    <linearGradient id="nsl-accent" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#EC4899"/>
+      <stop offset="60%"  stop-color="#A21CAF"/>
+      <stop offset="100%" stop-color="#5B21B6"/>
+    </linearGradient>
+    <!-- Sparkle gradient -->
+    <linearGradient id="nsl-spark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#F472B6"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ═══ Main "N" monogram — left leg + diagonal + right leg ═══ -->
+  <!-- Left vertical leg -->
+  <path d="M 40 30
+           L 40 195
+           L 78 195
+           L 78 100
+           L 78 30 Z"
+        fill="url(#nsl-main)"/>
+
+  <!-- Diagonal crossbar of N -->
+  <path d="M 65 30
+           L 158 195
+           L 195 195
+           L 105 30 Z"
+        fill="url(#nsl-main)"/>
+
+  <!-- Right vertical leg -->
+  <path d="M 158 30
+           L 158 195
+           L 195 195
+           L 195 30 Z"
+        fill="url(#nsl-main)"/>
+
+  <!-- ═══ Magenta accent — the "X" cross stroke ═══ -->
+  <!-- Diagonal from upper-right down through the N -->
+  <path d="M 178 45
+           L 195 30
+           L 210 45
+           L 132 195
+           L 100 195 Z"
+        fill="url(#nsl-accent)"
+        opacity="0.92"/>
+
+  <!-- ═══ Sparkle above the N ═══ -->
+  <g transform="translate(178, 22)">
+    <path d="M 0 -18
+             L 4 -4
+             L 18 0
+             L 4 4
+             L 0 18
+             L -4 4
+             L -18 0
+             L -4 -4 Z"
+          fill="url(#nsl-spark)"/>
+  </g>
+</svg>

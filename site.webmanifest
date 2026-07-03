@@ -1,0 +1,17 @@
+{
+  "name": "NextSpace Labs",
+  "short_name": "NextSpace",
+  "description": "An innovation lab for the new era. We shape what comes next.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020209",
+  "theme_color": "#020209",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

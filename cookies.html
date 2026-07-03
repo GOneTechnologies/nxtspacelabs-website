@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<!--
+  NextSpace Labs — Cookie Policy · Digital Headquarters
+  © 2026 NextSpace Labs Private Limited · All rights reserved.
+-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#020209" />
+<meta name="description" content="NextSpace Labs — Cookie Policy. What cookies and similar technologies we use, why, and how you control them." />
+<link rel="canonical" href="https://nxtspacelabs.com/cookies.html" />
+<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+<link rel="apple-touch-icon" href="/logo.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@nxtspacelabs" />
+<meta name="twitter:creator" content="@nxtspacelabs" />
+<meta name="twitter:image" content="https://nxtspacelabs.com/logo.svg" />
+<title>Cookie Policy — NextSpace Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,200..900,0..100&family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/premium.css">
+<style>
+  .cookie-table {
+    width: 100%; border-collapse: collapse; margin: 24px 0;
+    font-size: 14px;
+  }
+  .cookie-table th, .cookie-table td {
+    text-align: left; padding: 14px 12px;
+    border-bottom: 1px solid var(--line);
+    color: var(--mist-2);
+  }
+  .cookie-table th {
+    font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--nebula); font-weight: 500;
+  }
+  .cookie-table td em {
+    font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula);
+  }
+  @media (max-width: 700px) {
+    .cookie-table, .cookie-table thead, .cookie-table tbody, .cookie-table tr, .cookie-table th, .cookie-table td {
+      display: block;
+    }
+    .cookie-table thead { display: none; }
+    .cookie-table tr { border-bottom: 1px solid var(--line); padding: 12px 0; }
+    .cookie-table td { padding: 4px 0; border: none; }
+    .cookie-table td::before {
+      content: attr(data-label); display: block;
+      font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--nebula); margin-bottom: 4px;
+    }
+  }
+</style>
+</head>
+
+<body class="night">
+
+<canvas id="scene"></canvas>
+<div class="cursor-light" id="cursorLight"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div id="ns-nav"></div>
+<div id="ns-menu"></div>
+<div id="ns-sound"></div>
+
+<header class="page-hero" id="main" tabindex="-1">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag reveal"><em>Legal</em> · Cookie Policy</div>
+    <h1 class="page-title reveal d1">
+      Cookies.<br>
+      <span class="italic">Only what we need</span>.
+    </h1>
+    <p class="page-lede reveal d2">
+      Most of the internet is watched more than it is read. This site tries to be different — we use the smallest possible number of cookies, and only for reasons you would recognise.
+    </p>
+  </div>
+</header>
+
+<section class="chapter">
+  <div class="wrap">
+    <div class="longform reveal">
+      <span class="updated">Last updated · 3 July 2026</span>
+
+      <h2>1. What is a cookie?</h2>
+      <p>A cookie is a small text file that a website places on your device to remember something about your visit. Similar technologies include local storage, session storage, and pixel tags. We refer to all of these collectively as "cookies" in this policy.</p>
+
+      <h2>2. Categories we use</h2>
+      <p>We group cookies into three simple categories:</p>
+      <ul>
+        <li><strong>Strictly necessary</strong> — the site does not work without them. These handle authentication, security, and basic session state.</li>
+        <li><strong>Preferences</strong> — remember choices you have made (e.g. sound-on, day/night look, language).</li>
+        <li><strong>Analytics</strong> — help us understand which pages are being used, and where the site is broken. Never used to build advertising profiles.</li>
+      </ul>
+
+      <h2>3. Cookies on this website</h2>
+
+      <table class="cookie-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Purpose</th>
+            <th>Category</th>
+            <th>Retention</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Name"><em>ns_session</em></td>
+            <td data-label="Purpose">Maintains your logged-in state on <a href="/login">/login</a> and admin routes.</td>
+            <td data-label="Category">Strictly necessary</td>
+            <td data-label="Retention">Session</td>
+          </tr>
+          <tr>
+            <td data-label="Name"><em>ns_pref</em></td>
+            <td data-label="Purpose">Remembers UI preferences such as sound-on and reduced motion.</td>
+            <td data-label="Category">Preferences</td>
+            <td data-label="Retention">12 months</td>
+          </tr>
+          <tr>
+            <td data-label="Name"><em>ns_analytics</em></td>
+            <td data-label="Purpose">Anonymous, aggregated usage metrics — never joined to your identity.</td>
+            <td data-label="Category">Analytics</td>
+            <td data-label="Retention">6 months</td>
+          </tr>
+          <tr>
+            <td data-label="Name"><em>fonts.gstatic.com</em></td>
+            <td data-label="Purpose">Google Fonts CDN (Fraunces, Instrument Serif, Inter, JetBrains Mono).</td>
+            <td data-label="Category">Strictly necessary</td>
+            <td data-label="Retention">Browser-managed</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>4. Our products may set additional cookies</h2>
+      <p>If you use PairNow or another one of our products, that product may set its own cookies for its own operation. Each product's cookies are documented within the product's own settings and privacy pages.</p>
+
+      <h2>5. Choices</h2>
+      <p>You can accept, decline, or delete cookies at any time:</p>
+      <ul>
+        <li><strong>Browser settings</strong> — most browsers let you block cookies globally or on a per-site basis.</li>
+        <li><strong>Preferences</strong> — declining preference or analytics cookies will not break the site.</li>
+        <li><strong>Strictly necessary</strong> cookies cannot be turned off without breaking sign-in and other core features.</li>
+      </ul>
+
+      <h2>6. Third parties</h2>
+      <p>Where we use third parties (like Google Fonts or an analytics provider), those third parties act as processors under our written contracts. We do not sell or share your data for advertising purposes.</p>
+
+      <h2>7. Changes to this policy</h2>
+      <p>When we add or remove a cookie, we update this page and refresh the "last updated" date at the top.</p>
+
+      <h2>8. Questions</h2>
+      <p>Write to us at <a href="mailto:support@pairnow.in">support@pairnow.in</a>. We will reply personally.</p>
+
+      <p style="margin-top: 32px; font-family:'Instrument Serif', serif; font-style: italic; color: var(--dim);">
+        A quiet page for a quiet promise: your visit here is not a resource we harvest.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div id="ns-footer"></div>
+<div id="ns-hidden"></div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js" } }
+</script>
+<script type="module" src="/assets/scene-lite.js"></script>
+<script src="/assets/partials.js"></script>
+<script src="/assets/premium.js"></script>
+
+<!-- Vercel Web Analytics + Speed Insights (privacy-first, zero-config on Vercel) -->
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

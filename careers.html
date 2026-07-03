@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<!--
+  NextSpace Labs — Careers · Digital Headquarters
+  © 2026 NextSpace Labs Private Limited · All rights reserved.
+-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#020209" />
+<meta name="description" content="NextSpace Labs — small teams, real ownership, quiet ambition. Roles we are hiring for, and how we hire." />
+<meta property="og:title" content="Careers · NextSpace Labs" />
+<meta property="og:description" content="Small teams. Real ownership. Quiet ambition." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nxtspacelabs.com/careers.html" />
+<meta property="og:image" content="https://nxtspacelabs.com/logo.svg" />
+<link rel="canonical" href="https://nxtspacelabs.com/careers.html" />
+<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+<link rel="apple-touch-icon" href="/logo.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@nxtspacelabs" />
+<meta name="twitter:creator" content="@nxtspacelabs" />
+<meta name="twitter:image" content="https://nxtspacelabs.com/logo.svg" />
+<title>Careers — NextSpace Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,200..900,0..100&family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/premium.css">
+<style>
+  .role {
+    display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: baseline;
+    padding: 36px 0; border-bottom: 1px solid var(--line);
+    transition: padding-left 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .role:hover { padding-left: 12px; }
+  @media (max-width: 700px) { .role { grid-template-columns: 1fr; gap: 12px; } .role:hover { padding-left: 0; } }
+  .role h3 {
+    font-family: "Fraunces", serif; font-weight: 300;
+    font-size: clamp(22px, 2.6vw, 32px); letter-spacing: -0.02em; line-height: 1.1;
+    transition: color 0.3s;
+  }
+  .role h3 em { font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula); }
+  .role:hover h3 { color: var(--nebula); }
+  .role-meta {
+    font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 2px; color: var(--dim);
+    margin-top: 12px;
+    display: flex; flex-wrap: wrap; gap: 8px 20px;
+  }
+  .role-meta span::before { content: "·"; margin-right: 12px; color: var(--dim-2); }
+  .role-meta span:first-child::before { content: ""; margin: 0; }
+  .role-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 10px 20px; border: 1px solid var(--line-2); border-radius: 999px;
+    font-family: "Instrument Serif", serif; font-style: italic; color: var(--mist-2);
+    font-size: 14px;
+    transition: border-color 0.4s, background 0.4s, color 0.4s;
+  }
+  .role:hover .role-cta { border-color: var(--nebula); color: var(--nebula); background: rgba(167,139,250,0.06); }
+  .role-cta .arr { transition: transform 0.4s; }
+  .role:hover .role-cta .arr { transform: translateX(4px); }
+
+  .life-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+  @media (max-width: 900px) { .life-grid { grid-template-columns: 1fr; } }
+  .life-card {
+    padding: 32px 28px;
+    background: rgba(247, 245, 240, 0.02);
+    border: 1px solid var(--line-2); border-radius: 18px;
+    backdrop-filter: blur(20px);
+  }
+  .life-card .index { font-family: "JetBrains Mono", monospace; color: var(--nebula); font-size: 11px; letter-spacing: 2.5px; margin-bottom: 16px; }
+  .life-card h5 { font-family: "Fraunces", serif; font-weight: 300; font-size: 22px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 10px; }
+  .life-card h5 em { font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula); }
+  .life-card p { color: var(--dim); font-size: 14px; line-height: 1.75; }
+
+  .hiring-steps { max-width: 780px; margin-top: 40px; }
+  .hiring-steps li {
+    list-style: none; padding: 24px 0; border-bottom: 1px solid var(--line);
+    display: grid; grid-template-columns: 80px 1fr; gap: 24px;
+  }
+  .hiring-steps li:last-child { border-bottom: none; }
+  .hiring-steps .num { font-family: "JetBrains Mono", monospace; color: var(--dim-2); font-size: 12px; letter-spacing: 2px; }
+  .hiring-steps h5 { font-family: "Fraunces", serif; font-weight: 300; font-size: 22px; margin-bottom: 8px; letter-spacing: -0.01em; }
+  .hiring-steps h5 em { font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula); }
+  .hiring-steps p { color: var(--dim); font-size: 14.5px; line-height: 1.7; }
+</style>
+</head>
+
+<body class="night">
+
+<canvas id="scene"></canvas>
+<div class="cursor-light" id="cursorLight"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div id="ns-nav"></div>
+<div id="ns-menu"></div>
+<div id="ns-sound"></div>
+
+<header class="page-hero" id="main" tabindex="-1">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag reveal"><em>Working here</em> · Careers</div>
+    <h1 class="page-title reveal d1">
+      We hire<br>
+      <span class="italic">builders</span>.
+    </h1>
+    <p class="page-lede reveal d2">
+      Not resume shapes. Not seat-fillers. We are a small team, and every person here holds the pen on something that ships. If that sounds like a place you would flourish — read on.
+    </p>
+  </div>
+</header>
+
+<section class="chapter" id="who">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter One</em> · Who thrives here</div>
+    <h2 class="chapter-head reveal d1">
+      Three <span class="italic">honest</span> tests.
+    </h2>
+    <p class="body-copy reveal d2" style="max-width: 640px;">
+      No trick questions. If most of these sound like you, this will feel like the right room.
+    </p>
+
+    <div class="life-grid">
+      <div class="life-card reveal">
+        <div class="index">TEST · 01</div>
+        <h5>You care about the <em>last</em> five percent.</h5>
+        <p>The polish is not the icing. It is the load-bearing thing. You lose sleep over a badly-worded error state. You would rather ship less, better.</p>
+      </div>
+      <div class="life-card reveal d1">
+        <div class="index">TEST · 02</div>
+        <h5>You can <em>hold</em> the whole thing.</h5>
+        <p>You are not looking to be handed a ticket. You want to own a product surface — its purpose, its behavior, its craft — and be trusted to make the calls.</p>
+      </div>
+      <div class="life-card reveal d2">
+        <div class="index">TEST · 03</div>
+        <h5>You believe <em>quiet</em> can win.</h5>
+        <p>You do not need to broadcast the work. The work itself is the point. Applause is nice; a working product used by real people is nicer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="open">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter Two</em> · Open positions</div>
+    <h2 class="chapter-head reveal d1">
+      Where we are <span class="italic">hiring</span> now.
+    </h2>
+    <p class="body-copy reveal d2" style="max-width: 640px;">
+      A short list. We only open roles when we know exactly what a person will own. If the fit is right, click through and write to us — the founder reads every note.
+    </p>
+
+    <div style="margin-top: 40px;">
+      <a class="role reveal" data-hover href="mailto:support@pairnow.in?subject=Role%20%C2%B7%20Founding%20Product%20Engineer">
+        <div>
+          <h3>Founding <em>product</em> engineer.</h3>
+          <div class="role-meta">
+            <span>Hyderabad or remote</span>
+            <span>Full time</span>
+            <span>Product · Engineering</span>
+            <span>1 role</span>
+          </div>
+        </div>
+        <span class="role-cta"><span>Write to us</span><span class="arr">→</span></span>
+      </a>
+
+      <a class="role reveal" data-hover href="mailto:support@pairnow.in?subject=Role%20%C2%B7%20Design%20Engineer">
+        <div>
+          <h3>Design <em>engineer</em>.</h3>
+          <div class="role-meta">
+            <span>Hyderabad or remote</span>
+            <span>Full time</span>
+            <span>Design · Front-end</span>
+            <span>1 role</span>
+          </div>
+        </div>
+        <span class="role-cta"><span>Write to us</span><span class="arr">→</span></span>
+      </a>
+
+      <a class="role reveal" data-hover href="mailto:support@pairnow.in?subject=Role%20%C2%B7%20Platform%20Engineer">
+        <div>
+          <h3>Platform <em>engineer</em>.</h3>
+          <div class="role-meta">
+            <span>Hyderabad or remote</span>
+            <span>Full time</span>
+            <span>Backend · Infra</span>
+            <span>1 role</span>
+          </div>
+        </div>
+        <span class="role-cta"><span>Write to us</span><span class="arr">→</span></span>
+      </a>
+
+      <a class="role reveal" data-hover href="mailto:support@pairnow.in?subject=Role%20%C2%B7%20Applied%20AI%20Engineer">
+        <div>
+          <h3>Applied <em>AI</em> engineer.</h3>
+          <div class="role-meta">
+            <span>Hyderabad or remote</span>
+            <span>Full time</span>
+            <span>Product · Intelligence</span>
+            <span>1 role</span>
+          </div>
+        </div>
+        <span class="role-cta"><span>Write to us</span><span class="arr">→</span></span>
+      </a>
+
+      <a class="role reveal" data-hover href="mailto:support@pairnow.in?subject=Role%20%C2%B7%20Community%20%26%20Trust%20lead" style="border-bottom:none;">
+        <div>
+          <h3>Community &amp; <em>trust</em> lead.</h3>
+          <div class="role-meta">
+            <span>Hyderabad</span>
+            <span>Full time</span>
+            <span>Ops · Safety</span>
+            <span>1 role</span>
+          </div>
+        </div>
+        <span class="role-cta"><span>Write to us</span><span class="arr">→</span></span>
+      </a>
+    </div>
+
+    <p class="reveal" style="margin-top: 40px; font-family:'Instrument Serif', serif; font-style: italic; color: var(--dim);">
+      Don't see your role? We keep a rolling <em style="color:var(--nebula);">open application</em>. Write to us anyway — <a href="mailto:support@pairnow.in?subject=Open%20application" data-hover style="color:var(--nebula);border-bottom:1px solid var(--nebula);">support@pairnow.in</a>. If we can't hire you today, we often know someone who can.
+    </p>
+  </div>
+</section>
+
+<section class="chapter" id="how">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter Three</em> · How we hire</div>
+    <h2 class="chapter-head reveal d1">
+      A <span class="italic">calm</span>, honest process.
+    </h2>
+    <p class="body-copy reveal d2" style="max-width: 640px;">
+      From first email to signed offer, we aim to take no more than three weeks. No stunt interviews. No performative whiteboards. We look at your work, we build something small together, and we tell you the truth at every step.
+    </p>
+
+    <ol class="hiring-steps">
+      <li class="reveal">
+        <div class="num">STEP 01</div>
+        <div>
+          <h5>You <em>write</em>. We read.</h5>
+          <p>An email, a note, or a link to what you have shipped. No cover letter required. Something small that shows how you think matters more than a resume.</p>
+        </div>
+      </li>
+      <li class="reveal">
+        <div class="num">STEP 02</div>
+        <div>
+          <h5>A <em>conversation</em>.</h5>
+          <p>60 minutes with the founder. Not an interview — a conversation. What you are trying to build in your career. What we are trying to build here. Whether the two overlap.</p>
+        </div>
+      </li>
+      <li class="reveal">
+        <div class="num">STEP 03</div>
+        <div>
+          <h5>A small <em>working</em> problem.</h5>
+          <p>A paid, honest piece of real work — usually a day or two, on a real product surface. No trick problems. If you are hired, this becomes your first ship.</p>
+        </div>
+      </li>
+      <li class="reveal">
+        <div class="num">STEP 04</div>
+        <div>
+          <h5>Meet the <em>team</em>.</h5>
+          <p>Coffee or a call with two teammates. This is where you and we both decide if the day-to-day will feel right. Everyone gets a vote.</p>
+        </div>
+      </li>
+      <li class="reveal">
+        <div class="num">STEP 05</div>
+        <div>
+          <h5>Offer. And a <em>starting</em> day.</h5>
+          <p>We move fast on the offer once we know. Compensation is competitive and honest. Equity is generous and vests fairly. We help you make the choice, not pressure you into it.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="chapter" id="benefits">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter Four</em> · What comes with the role</div>
+    <div class="grid-3">
+      <div class="card reveal">
+        <div class="card-tag">01 · Comp</div>
+        <h4>Competitive salary. <span class="italic">Real</span> equity.</h4>
+        <p>Cash pays your bills. Equity aligns the long arc. We take both seriously and explain both plainly.</p>
+      </div>
+      <div class="card reveal d1">
+        <div class="card-tag">02 · Time</div>
+        <h4>Unlimited &amp; <span class="italic">honest</span> leave.</h4>
+        <p>Take the time you need. We enforce a minimum, not a maximum. Health, family, rest — always.</p>
+      </div>
+      <div class="card reveal d2">
+        <div class="card-tag">03 · Health</div>
+        <h4>Full <span class="italic">cover</span> for you &amp; family.</h4>
+        <p>Comprehensive health, mental-health, and dental coverage — for you, your partner, and dependents.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-tag">04 · Craft</div>
+        <h4>Budget for <span class="italic">learning</span>.</h4>
+        <p>Books, courses, conferences, sabbatical weeks. Craft compounds. We invest in yours as if it were our own.</p>
+      </div>
+      <div class="card reveal d1">
+        <div class="card-tag">05 · Setup</div>
+        <h4>Tools you <span class="italic">love</span>.</h4>
+        <p>Pick the machine, the peripherals, the software. If your setup is fighting you, you cannot do calm work.</p>
+      </div>
+      <div class="card reveal d2">
+        <div class="card-tag">06 · Home</div>
+        <h4>Hyderabad or <span class="italic">remote</span>.</h4>
+        <p>We have a home in Hyderabad. Most roles can be remote from anywhere in India, with quarterly in-person weeks together.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-block reveal">
+  <h2>Ready to <span class="italic">write</span>?</h2>
+  <p>The founder reads every note. Even the ones for roles we do not yet have.</p>
+  <a href="mailto:support@pairnow.in?subject=I%20would%20like%20to%20work%20with%20you" class="glass-btn" data-hover>
+    <span>Send us your note</span>
+    <span class="arrow">→</span>
+  </a>
+</section>
+
+<div id="ns-footer"></div>
+<div id="ns-hidden"></div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js" } }
+</script>
+<script type="module" src="/assets/scene-lite.js"></script>
+<script src="/assets/partials.js"></script>
+<script src="/assets/premium.js"></script>
+
+<!-- Vercel Web Analytics + Speed Insights (privacy-first, zero-config on Vercel) -->
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

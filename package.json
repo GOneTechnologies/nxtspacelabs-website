@@ -1,0 +1,13 @@
+{
+  "name": "nxtspacelabs-website",
+  "version": "1.0.0",
+  "description": "NextSpace Labs — Digital Headquarters. Static site with a single serverless contact endpoint.",
+  "private": true,
+  "license": "UNLICENSED",
+  "dependencies": {
+    "nodemailer": "^6.9.14"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

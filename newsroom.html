@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<!--
+  NextSpace Labs — Newsroom · Digital Headquarters
+  © 2026 NextSpace Labs Private Limited · All rights reserved.
+-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#020209" />
+<meta name="description" content="NextSpace Labs — announcements, releases and press materials from the company." />
+<meta property="og:title" content="Newsroom · NextSpace Labs" />
+<meta property="og:description" content="What we publish, when we publish." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nxtspacelabs.com/newsroom.html" />
+<meta property="og:image" content="https://nxtspacelabs.com/logo.svg" />
+<link rel="canonical" href="https://nxtspacelabs.com/newsroom.html" />
+<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+<link rel="apple-touch-icon" href="/logo.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@nxtspacelabs" />
+<meta name="twitter:creator" content="@nxtspacelabs" />
+<meta name="twitter:image" content="https://nxtspacelabs.com/logo.svg" />
+<title>Newsroom — NextSpace Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,200..900,0..100&family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/premium.css">
+<style>
+  .press-row {
+    display: grid; grid-template-columns: 160px 1fr 140px;
+    gap: 40px; padding: 32px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  @media (max-width: 800px) { .press-row { grid-template-columns: 1fr; gap: 8px; padding: 28px 0; } }
+  .press-date {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; letter-spacing: 2px; color: var(--dim);
+  }
+  .press-row h3 {
+    font-family: "Fraunces", serif; font-weight: 300;
+    font-size: clamp(20px, 2.2vw, 28px); letter-spacing: -0.02em; line-height: 1.15;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+  }
+  .press-row:hover h3 { color: var(--nebula); }
+  .press-row h3 em { font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula); }
+  .press-row p { color: var(--dim); font-size: 14px; max-width: 640px; line-height: 1.7; }
+  .press-type {
+    font-family: "Inter"; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--dim-2);
+    justify-self: end;
+  }
+  @media (max-width: 800px) { .press-type { justify-self: start; margin-top: 6px; } }
+
+  .kit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+  @media (max-width: 900px) { .kit-grid { grid-template-columns: 1fr; } }
+  .kit-card {
+    padding: 28px 24px;
+    background: rgba(247, 245, 240, 0.02);
+    border: 1px solid var(--line-2); border-radius: 16px;
+    backdrop-filter: blur(20px);
+  }
+  .kit-card h5 { font-family: "Fraunces", serif; font-weight: 300; font-size: 20px; margin-bottom: 10px; letter-spacing: -0.01em; }
+  .kit-card h5 em { font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula); }
+  .kit-card p { color: var(--dim); font-size: 13.5px; line-height: 1.7; margin-bottom: 16px; }
+  .kit-card a {
+    font-family: "Inter"; font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; color: var(--nebula);
+    border-bottom: 1px solid var(--line-2); padding-bottom: 2px;
+  }
+  .kit-card a:hover { border-bottom-color: var(--nebula); }
+</style>
+</head>
+
+<body class="night">
+
+<canvas id="scene"></canvas>
+<div class="cursor-light" id="cursorLight"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div id="ns-nav"></div>
+<div id="ns-menu"></div>
+<div id="ns-sound"></div>
+
+<header class="page-hero" id="main" tabindex="-1">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag reveal"><em>What we publish</em> · Newsroom</div>
+    <h1 class="page-title reveal d1">
+      Small,<br>
+      <span class="italic">honest</span> announcements.
+    </h1>
+    <p class="page-lede reveal d2">
+      Product releases, milestones, and the occasional company note. We publish when the work is ready — never a day sooner.
+    </p>
+  </div>
+</header>
+
+<section class="chapter" id="releases">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter One</em> · Releases</div>
+
+    <article class="press-row reveal" data-hover>
+      <div class="press-date">2026 · JUN · 13</div>
+      <div>
+        <h3>A ten-day path from <em>web</em> to <em>native</em>.</h3>
+        <p>A note on the sprint that took our flagship product from web to a first-class native experience — and what we learned about doing big work with a small team, on a real clock.</p>
+      </div>
+      <div class="press-type">Company note</div>
+    </article>
+
+    <article class="press-row reveal" data-hover>
+      <div class="press-date">2026 · JUN · 03</div>
+      <div>
+        <h3>NextSpace Labs incorporated in <em>Hyderabad</em>.</h3>
+        <p>Today the company becomes real on paper. A short note on why we chose the shape we chose, and what it means for the people we hope to work with.</p>
+      </div>
+      <div class="press-type">Milestone</div>
+    </article>
+
+    <article class="press-row reveal" data-hover>
+      <div class="press-date">2026 · MAY · 21</div>
+      <div>
+        <h3>Our first product moves to <em>beta</em>.</h3>
+        <p>A quiet, real-world test with a first cohort of users. A note on what we shipped, what we deliberately did not, and what we are watching for over the coming weeks.</p>
+      </div>
+      <div class="press-type">Product</div>
+    </article>
+
+    <article class="press-row reveal" data-hover>
+      <div class="press-date">2026 · APR · 10</div>
+      <div>
+        <h3>Notes from the first <em>hundred</em> users.</h3>
+        <p>What we heard, what we changed, and what we chose not to. Some of the most valuable feedback we received came from users who used the product for less than five minutes.</p>
+      </div>
+      <div class="press-type">Product</div>
+    </article>
+
+    <article class="press-row reveal" data-hover style="border-bottom: none;">
+      <div class="press-date">2026 · MAR · 02</div>
+      <div>
+        <h3>Why we picked the name <em>NextSpace Labs</em>.</h3>
+        <p>The story behind the name, the mark, and the shape of the company we are trying to build. Written in a hurry, then rewritten slowly, then finally shared.</p>
+      </div>
+      <div class="press-type">Company note</div>
+    </article>
+
+  </div>
+</section>
+
+<section class="chapter" id="press">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter Two</em> · Press &amp; media</div>
+    <h2 class="chapter-head reveal d1">
+      For <span class="italic">journalists</span> &amp; researchers.
+    </h2>
+    <p class="body-copy reveal d2" style="max-width: 640px;">
+      We are a small company. Our press relations are handled personally by the founder. For interviews, background briefings, or quiet conversations off the record — write to us directly.
+    </p>
+
+    <div class="kit-grid">
+      <div class="kit-card reveal">
+        <h5>Media <em>kit</em>.</h5>
+        <p>Logos, marks, colors, typography, boilerplate text, and approved photography for press use.</p>
+        <a data-hover>Request the kit →</a>
+      </div>
+      <div class="kit-card reveal d1">
+        <h5>Interview <em>requests</em>.</h5>
+        <p>The founder is available for on-the-record and background conversations, subject to scheduling. Expect a personal reply.</p>
+        <a href="mailto:support@pairnow.in?subject=Interview%20request" data-hover>Write directly →</a>
+      </div>
+      <div class="kit-card reveal d2">
+        <h5>Fact <em>checks</em>.</h5>
+        <p>If you are writing about NextSpace Labs or one of our products, we will happily read the relevant passages before publication and correct anything factually wrong.</p>
+        <a href="mailto:support@pairnow.in?subject=Fact%20check" data-hover>Send us a passage →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="boilerplate">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter Three</em> · Boilerplate</div>
+    <div class="reveal d1" style="max-width: 780px;">
+      <p class="body-copy" style="max-width: 100%;">
+        <strong style="color:var(--mist);">NextSpace Labs Private Limited</strong> is a product-led innovation company incorporated in Hyderabad, India in 2026. We build original products in consumer social, fintech, media, and applied intelligence. Our first shipped product is a real-time social platform used by tens of thousands of people in India, and we are quietly working on three more.
+      </p>
+      <p class="body-copy" style="max-width: 100%; color: var(--dim);">
+        For press enquiries, write to <a href="mailto:support@pairnow.in" data-hover style="color:var(--nebula);border-bottom:1px solid var(--nebula);">support@pairnow.in</a>. For company details, see our <a href="/company.html" data-hover style="color:var(--nebula);border-bottom:1px solid var(--nebula);">company page</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-block reveal">
+  <h2>Working on a <span class="italic">story</span>?</h2>
+  <p>Write to the founder. Expect a real reply, usually within a day.</p>
+  <a href="mailto:support@pairnow.in?subject=Press%20enquiry" class="glass-btn" data-hover>
+    <span>Reach the founder</span>
+    <span class="arrow">→</span>
+  </a>
+</section>
+
+<div id="ns-footer"></div>
+<div id="ns-hidden"></div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js" } }
+</script>
+<script type="module" src="/assets/scene-lite.js"></script>
+<script src="/assets/partials.js"></script>
+<script src="/assets/premium.js"></script>
+
+<!-- Vercel Web Analytics + Speed Insights (privacy-first, zero-config on Vercel) -->
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

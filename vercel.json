@@ -40,5 +40,32 @@
     { "source": "/api/admins/:path*",  "destination": "https://nxtspacelabs-admin.vercel.app/api/admins/:path*" },
     { "source": "/api/cron/:path*",    "destination": "https://nxtspacelabs-admin.vercel.app/api/cron/:path*" },
     { "source": "/_next/:path*",   "destination": "https://nxtspacelabs-admin.vercel.app/_next/:path*" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
+        { "key": "X-Content-Type-Options",    "value": "nosniff" },
+        { "key": "X-Frame-Options",           "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy",           "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy",        "value": "camera=(), microphone=(), geolocation=(), interest-cohort=(), payment=()" },
+        { "key": "Cross-Origin-Opener-Policy","value": "same-origin" },
+        { "key": "X-DNS-Prefetch-Control",    "value": "on" },
+        { "key": "Content-Security-Policy",   "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://js.hcaptcha.com https://*.hcaptcha.com https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.hcaptcha.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://cdn.jsdelivr.net https://hcaptcha.com https://*.hcaptcha.com https://vitals.vercel-insights.com; frame-src https://newassets.hcaptcha.com https://*.hcaptcha.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; media-src 'self'" }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }
+      ]
+    },
+    {
+      "source": "/(sitemap.xml|robots.txt|site.webmanifest|logo.svg)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    }
   ]
 }

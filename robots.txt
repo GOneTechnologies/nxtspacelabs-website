@@ -1,0 +1,25 @@
+# NextSpace Labs — nxtspacelabs.com
+# © 2026 NextSpace Labs Private Limited
+
+User-agent: *
+Allow: /
+
+# Admin surfaces (proxied to admin.nxtspacelabs.com) — not for indexing.
+Disallow: /login
+Disallow: /dashboard
+Disallow: /kyc
+Disallow: /users
+Disallow: /talents
+Disallow: /payouts
+Disallow: /reports
+Disallow: /rooms
+Disallow: /rooms-waitlist
+Disallow: /audit
+Disallow: /broadcast
+Disallow: /pricing
+Disallow: /admins
+Disallow: /payments
+Disallow: /live-calls
+Disallow: /api/
+
+Sitemap: https://nxtspacelabs.com/sitemap.xml

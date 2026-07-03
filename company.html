@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<!--
+  NextSpace Labs — Company · Digital Headquarters
+  © 2026 NextSpace Labs Private Limited · All rights reserved.
+  Originality: all HTML/CSS/JS/GLSL/SVG/copy authored in-house.
+-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#020209" />
+<meta name="description" content="NextSpace Labs — an innovation lab building the software the next century will run on. About, Vision & Mission, Leadership, and Culture." />
+<meta property="og:title" content="Company · NextSpace Labs" />
+<meta property="og:description" content="Who we are. What we believe. How we work." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nxtspacelabs.com/company.html" />
+<meta property="og:image" content="https://nxtspacelabs.com/logo.svg" />
+<link rel="canonical" href="https://nxtspacelabs.com/company.html" />
+<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+<link rel="apple-touch-icon" href="/logo.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@nxtspacelabs" />
+<meta name="twitter:creator" content="@nxtspacelabs" />
+<meta name="twitter:image" content="https://nxtspacelabs.com/logo.svg" />
+<title>Company — NextSpace Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,200..900,0..100&family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/premium.css">
+<style>
+  /* Page-specific: leadership + values grid */
+  .lead-card {
+    padding: 40px 32px;
+    background: rgba(247, 245, 240, 0.02);
+    border: 1px solid var(--line-2); border-radius: 20px;
+    backdrop-filter: blur(20px);
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s;
+  }
+  .lead-card:hover { border-color: var(--nebula); transform: translateY(-4px); }
+  .lead-portrait {
+    width: 110px; height: 110px; border-radius: 50%;
+    background: linear-gradient(135deg, rgba(167,139,250,0.20), rgba(236,72,153,0.10));
+    display: grid; place-items: center; margin: 0 auto 24px;
+    border: 1px solid var(--nebula);
+    font-family: "Fraunces", serif; font-weight: 300; font-size: 44px;
+    background-clip: padding-box; color: var(--mist);
+  }
+  .lead-name { font-family: "Fraunces", serif; font-size: 22px; font-weight: 400; margin-bottom: 6px; }
+  .lead-role { font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula); font-size: 14px; margin-bottom: 14px; }
+  .lead-bio { color: var(--dim); font-size: 14px; line-height: 1.7; }
+
+  .value-pair {
+    display: grid; grid-template-columns: 80px 1fr; gap: 32px;
+    padding: 36px 0; border-bottom: 1px solid var(--line);
+  }
+  @media (max-width: 700px) { .value-pair { grid-template-columns: 1fr; gap: 12px; } }
+  .value-index {
+    font-family: "JetBrains Mono", monospace; color: var(--dim-2);
+    font-size: 12px; letter-spacing: 2px;
+  }
+  .value-body h4 {
+    font-family: "Fraunces", serif; font-weight: 300;
+    font-size: 26px; letter-spacing: -0.02em; margin-bottom: 12px;
+  }
+  .value-body h4 em {
+    font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula);
+  }
+  .value-body p { color: var(--dim); max-width: 640px; line-height: 1.75; }
+
+  .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; padding: 40px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  @media (max-width: 800px) { .stat-strip { grid-template-columns: repeat(2, 1fr); gap: 24px; } }
+  .stat-num { font-family: "Fraunces", serif; font-weight: 300; font-size: 42px; line-height: 1; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #F472B6, #A78BFA, #60A5FA);
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .stat-label { font-family: "Inter"; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--dim); margin-top: 10px; }
+
+  .rule { height: 1px; background: var(--line); margin: 60px 0; }
+  .rule-narrow { max-width: 800px; margin: 60px auto; height: 1px; background: var(--line); }
+</style>
+</head>
+
+<body class="night">
+
+<canvas id="scene"></canvas>
+<div class="cursor-light" id="cursorLight"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Partials mount here (nav, menu, footer, hidden, sound) -->
+<div id="ns-nav"></div>
+<div id="ns-menu"></div>
+<div id="ns-sound"></div>
+
+<!-- ═══ PAGE HERO ═══ -->
+<header class="page-hero" id="main" tabindex="-1">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag reveal"><em>The Company</em> · Who we are</div>
+    <h1 class="page-title reveal d1">
+      A house for<br>
+      <span class="italic">quiet, ambitious</span><br>
+      work.
+    </h1>
+    <p class="page-lede reveal d2">
+      NextSpace Labs is a small, product-led innovation lab building the software the next century will run on. We work on questions that don't have obvious answers yet — and we stay with them until they do.
+    </p>
+  </div>
+</header>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="chapter" id="about">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter One</em> · About</div>
+    <div class="split">
+      <div class="reveal d1">
+        <h2 class="chapter-head">
+          Founded in Hyderabad.<br>
+          <span class="italic">Built for the world.</span>
+        </h2>
+        <p class="body-copy">
+          NextSpace Labs Private Limited was incorporated in 2026 as a technology company with a single conviction — that the best products of the next decade will not be assembled from templates, but composed from first principles.
+        </p>
+        <p class="body-copy">
+          We are a small team. We are patient. We build in-house, publish sparingly, and let the work speak. Our home is Hyderabad, India — the city where our first product, our first hire, and our first breath began.
+        </p>
+      </div>
+      <div class="split-visual reveal d2">
+        <div class="glyph">N</div>
+      </div>
+    </div>
+
+    <div class="stat-strip reveal" style="margin-top: 80px;">
+      <div><div class="stat-num">2026</div><div class="stat-label">Founded</div></div>
+      <div><div class="stat-num">01</div><div class="stat-label">Product live</div></div>
+      <div><div class="stat-num">03</div><div class="stat-label">In the lab</div></div>
+      <div><div class="stat-num">∞</div><div class="stat-label">Horizon</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VISION & MISSION ═══ -->
+<section class="chapter" id="vision">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter Two</em> · Vision &amp; Mission</div>
+    <h2 class="chapter-head reveal d1">
+      What we are here to <span class="italic">do</span>.
+    </h2>
+
+    <div class="grid-2" style="margin-top: 60px;">
+      <div class="card reveal d1">
+        <div class="card-tag">01 · Vision</div>
+        <h4>To build the <span class="italic">calm layer</span> of the digital century.</h4>
+        <p>A world where technology stops shouting for attention and starts earning it — where the best software feels less like a product and more like a room you belong in. That is the horizon we work toward.</p>
+      </div>
+      <div class="card reveal d2">
+        <div class="card-tag">02 · Mission</div>
+        <h4>To create <span class="italic">original products</span> that shape how people connect, decide, and live.</h4>
+        <p>We build products from first principles, ship with a founder's care, and treat every user like the reason the company exists. When the mission is loud in the room, the roadmap almost writes itself.</p>
+      </div>
+    </div>
+
+    <div class="rule-narrow"></div>
+
+    <div class="reveal" style="max-width:800px; margin: 0 auto; text-align:center;">
+      <p class="body-copy" style="font-family:'Instrument Serif',serif; font-style: italic; font-size:22px; color: var(--mist-2); max-width: 100%;">
+        &ldquo;We don't build to fill categories. We build to answer questions that founders and teams don't yet know how to phrase.&rdquo;
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LEADERSHIP ═══ -->
+<section class="chapter" id="leadership">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter Three</em> · Leadership</div>
+    <h2 class="chapter-head reveal d1">
+      A small circle of<br>
+      <span class="italic">builders</span> and quiet operators.
+    </h2>
+    <p class="body-copy reveal d2" style="max-width: 640px; margin-bottom: 60px;">
+      We are deliberately small. Every person here holds the pen on something that ships. Our leadership circle steers the roadmap, the craft, and the culture — but they build too.
+    </p>
+
+    <div class="grid-3">
+      <div class="lead-card reveal">
+        <div class="lead-portrait">S</div>
+        <div class="lead-name">S. K. Jeevan</div>
+        <div class="lead-role">Founder &amp; Chief Executive</div>
+        <div class="lead-bio">Founded NextSpace Labs on the belief that software should feel human before it feels smart. Leads product, partnerships, and the long arc of the company.</div>
+      </div>
+      <div class="lead-card reveal d1">
+        <div class="lead-portrait">·</div>
+        <div class="lead-name"><em style="font-family:'Instrument Serif',serif;color:var(--nebula);">Chief of Craft</em></div>
+        <div class="lead-role">In residence</div>
+        <div class="lead-bio">A seat kept open for the right engineer / designer partner — someone who cares about the last five percent as much as the first. If that sounds like you, write to us.</div>
+      </div>
+      <div class="lead-card reveal d2">
+        <div class="lead-portrait">·</div>
+        <div class="lead-name"><em style="font-family:'Instrument Serif',serif;color:var(--nebula);">Head of Research</em></div>
+        <div class="lead-role">In residence</div>
+        <div class="lead-bio">We are looking for someone to steward what we cannot yet describe — the products, models and interactions of the years just past the horizon.</div>
+      </div>
+    </div>
+
+    <p class="reveal" style="text-align:center; margin-top: 60px; font-family:'Instrument Serif',serif; font-style: italic; color: var(--dim); font-size: 15px;">
+      Interested? Write to <a href="mailto:support@pairnow.in" data-hover style="color:var(--nebula);border-bottom:1px solid var(--nebula);">support@pairnow.in</a> — the founder reads every note.
+    </p>
+  </div>
+</section>
+
+<!-- ═══ CULTURE ═══ -->
+<section class="chapter" id="culture">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter Four</em> · Culture</div>
+    <h2 class="chapter-head reveal d1">
+      Ten quiet <span class="italic">agreements</span>.
+    </h2>
+    <p class="body-copy reveal d2" style="max-width: 640px;">
+      There is no wall poster. No employee handbook. Instead, ten agreements we return to when the work gets hard. This is what it feels like to work here.
+    </p>
+
+    <div style="max-width: 920px; margin-top: 60px;">
+      <div class="value-pair reveal">
+        <div class="value-index">01</div>
+        <div class="value-body">
+          <h4>Care is a <em>discipline</em>, not a mood.</h4>
+          <p>Every button, every empty state, every error message is authored by a person who cares. When something feels off, that is the signal — never the noise.</p>
+        </div>
+      </div>
+      <div class="value-pair reveal">
+        <div class="value-index">02</div>
+        <div class="value-body">
+          <h4>Ship <em>original</em> work.</h4>
+          <p>We author our own code, our own copy, our own visuals, our own logos. If we didn't earn it, we don't ship it.</p>
+        </div>
+      </div>
+      <div class="value-pair reveal">
+        <div class="value-index">03</div>
+        <div class="value-body">
+          <h4>Small teams, <em>whole</em> ownership.</h4>
+          <p>Two people can carry a product further than a committee of ten. Give people the whole thing, and they will care about the whole thing.</p>
+        </div>
+      </div>
+      <div class="value-pair reveal">
+        <div class="value-index">04</div>
+        <div class="value-body">
+          <h4>The user is the <em>only</em> stakeholder.</h4>
+          <p>Investors, press, and roadmaps are downstream of the person who opens the app on a Tuesday evening. Build for her. Everything else follows.</p>
+        </div>
+      </div>
+      <div class="value-pair reveal">
+        <div class="value-index">05</div>
+        <div class="value-body">
+          <h4><em>Quiet</em> ambition.</h4>
+          <p>We do not announce plans. We do not perform work. We publish sparingly and let what we build speak for us.</p>
+        </div>
+      </div>
+      <div class="value-pair reveal">
+        <div class="value-index">06</div>
+        <div class="value-body">
+          <h4>Trust, then <em>verify</em>.</h4>
+          <p>People are given autonomy from day one. We measure by outcomes, not by hours. And we tell each other the truth even when it costs.</p>
+        </div>
+      </div>
+      <div class="value-pair reveal">
+        <div class="value-index">07</div>
+        <div class="value-body">
+          <h4>Ideas earn their <em>weight</em>.</h4>
+          <p>The best idea in the room wins — no matter who spoke it. Titles do not carry votes. Craft does.</p>
+        </div>
+      </div>
+      <div class="value-pair reveal">
+        <div class="value-index">08</div>
+        <div class="value-body">
+          <h4>Design and engineering are <em>one</em> craft.</h4>
+          <p>Designers write specs. Engineers argue over margins. Whoever ships the pixel is responsible for the pixel.</p>
+        </div>
+      </div>
+      <div class="value-pair reveal">
+        <div class="value-index">09</div>
+        <div class="value-body">
+          <h4>Play the <em>long</em> game.</h4>
+          <p>We plan in decades. We invest in learning. We hire people we hope to work with for many years — and we treat them like a founder would want to be treated.</p>
+        </div>
+      </div>
+      <div class="value-pair reveal">
+        <div class="value-index">10</div>
+        <div class="value-body">
+          <h4>Leave the room <em>better</em>.</h4>
+          <p>Every code review, every meeting, every deploy — leave the room in a better state than you found it. Small acts, compounded, become the culture.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-block reveal">
+  <h2>Care to <span class="italic">work with us</span>?</h2>
+  <p>The best conversations we have start with a single sentence. Say hello.</p>
+  <a href="/contact.html" class="glass-btn" data-hover>
+    <span>Say hello</span>
+    <span class="arrow">→</span>
+  </a>
+</section>
+
+<div id="ns-footer"></div>
+<div id="ns-hidden"></div>
+
+<!-- Three.js -->
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js" } }
+</script>
+<script type="module" src="/assets/scene-lite.js"></script>
+<script src="/assets/partials.js"></script>
+<script src="/assets/premium.js"></script>
+
+<!-- Vercel Web Analytics + Speed Insights (privacy-first, zero-config on Vercel) -->
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

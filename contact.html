@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<!--
+  NextSpace Labs — Contact · Digital Headquarters
+  © 2026 NextSpace Labs Private Limited · All rights reserved.
+-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#020209" />
+<meta name="description" content="NextSpace Labs — write to us. Product, press, careers, or a quiet note. The founder reads every message." />
+<meta property="og:title" content="Contact · NextSpace Labs" />
+<meta property="og:description" content="Speak to the humans behind the work." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nxtspacelabs.com/contact.html" />
+<meta property="og:image" content="https://nxtspacelabs.com/logo.svg" />
+<link rel="canonical" href="https://nxtspacelabs.com/contact.html" />
+<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+<link rel="apple-touch-icon" href="/logo.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@nxtspacelabs" />
+<meta name="twitter:creator" content="@nxtspacelabs" />
+<meta name="twitter:image" content="https://nxtspacelabs.com/logo.svg" />
+<title>Contact — NextSpace Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,200..900,0..100&family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/premium.css">
+<style>
+  .reach-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    align-items: start;
+  }
+  @media (max-width: 900px) { .reach-grid { grid-template-columns: 1fr; gap: 50px; } }
+
+  .info-block {
+    padding: 40px 32px;
+    background: rgba(247, 245, 240, 0.02);
+    border: 1px solid var(--line-2); border-radius: 20px;
+    backdrop-filter: blur(20px);
+    margin-bottom: 20px;
+  }
+  .info-block h4 { font-family: "Fraunces", serif; font-weight: 300; font-size: 22px; letter-spacing: -0.015em; margin-bottom: 10px; }
+  .info-block h4 em { font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula); }
+  .info-block p { color: var(--dim); font-size: 14.5px; line-height: 1.7; margin-bottom: 10px; }
+  .info-block a { color: var(--nebula); border-bottom: 1px solid var(--line-2); transition: border-color 0.3s; }
+  .info-block a:hover { border-bottom-color: var(--nebula); }
+
+  .hq-map {
+    position: relative; aspect-ratio: 4/3; margin-top: 40px;
+    border: 1px solid var(--line-2); border-radius: 20px; overflow: hidden;
+    background: linear-gradient(135deg, rgba(167,139,250,0.06), rgba(96,165,250,0.02));
+    backdrop-filter: blur(20px);
+  }
+  .hq-map svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hq-pin {
+    position: absolute; top: 46%; left: 62%;
+    display: grid; place-items: center;
+    width: 22px; height: 22px;
+  }
+  .hq-pin .dot { width: 12px; height: 12px; border-radius: 50%;
+    background: var(--magenta);
+    box-shadow: 0 0 0 6px rgba(236, 72, 153, 0.25), 0 0 32px rgba(236, 72, 153, 0.55);
+    animation: hqpulse 2.4s ease-in-out infinite;
+  }
+  @keyframes hqpulse {
+    0%,100% { box-shadow: 0 0 0 6px rgba(236, 72, 153, 0.25), 0 0 32px rgba(236, 72, 153, 0.55); }
+    50%     { box-shadow: 0 0 0 14px rgba(236, 72, 153, 0.05), 0 0 48px rgba(236, 72, 153, 0.75); }
+  }
+  .hq-label {
+    position: absolute; bottom: 20px; left: 24px; right: 24px;
+    display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+    font-family: "Instrument Serif", serif; font-style: italic; color: var(--mist-2);
+    font-size: 14px;
+  }
+  .hq-label span:last-child { font-family: "JetBrains Mono", monospace; font-style: normal; font-size: 10.5px; letter-spacing: 2px; color: var(--dim-2); }
+
+  .status-msg {
+    display: none; padding: 14px 18px;
+    border: 1px solid var(--line-2); background: rgba(247, 245, 240, 0.03);
+    border-radius: 12px; color: var(--mist);
+    font-family: "Instrument Serif", serif; font-style: italic; font-size: 15px;
+    margin-top: 20px;
+  }
+  .status-msg.on { display: block; }
+  .status-msg.ok { border-color: #2ED180; background: rgba(46, 209, 128, 0.08); }
+  .status-msg.err { border-color: #F472B6; background: rgba(244, 114, 182, 0.08); }
+  .form-submit:disabled { opacity: 0.6; cursor: wait; }
+</style>
+</head>
+
+<body class="night">
+
+<canvas id="scene"></canvas>
+<div class="cursor-light" id="cursorLight"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div id="ns-nav"></div>
+<div id="ns-menu"></div>
+<div id="ns-sound"></div>
+
+<header class="page-hero" id="main" tabindex="-1">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag reveal"><em>Reach us</em> · Contact</div>
+    <h1 class="page-title reveal d1">
+      Say <span class="italic">hello</span>.
+    </h1>
+    <p class="page-lede reveal d2">
+      One inbox. A real human on the other end. The founder reads every message and replies to almost all of them, usually within a day.
+    </p>
+  </div>
+</header>
+
+<section class="chapter" id="reach">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter One</em> · Ways in</div>
+
+    <div class="reach-grid">
+      <div>
+        <div class="info-block reveal">
+          <h4><em>Product</em> or partnership.</h4>
+          <p>Working on something you'd like us to help build or evaluate. Use the form on the right, or write directly.</p>
+          <a href="mailto:support@pairnow.in?subject=Product%20%2F%20partnership" data-hover>support@pairnow.in →</a>
+        </div>
+        <div class="info-block reveal d1">
+          <h4><em>Careers</em> &amp; open applications.</h4>
+          <p>Whether we have a role for you today or not — write. See <a href="/careers.html" data-hover>Careers</a> for what's open.</p>
+          <a href="mailto:support@pairnow.in?subject=Careers%20%C2%B7%20open%20application" data-hover>Send your note →</a>
+        </div>
+        <div class="info-block reveal d2">
+          <h4><em>Press</em> &amp; media.</h4>
+          <p>Interview requests, background briefings, fact-checks. Handled personally.</p>
+          <a href="mailto:support@pairnow.in?subject=Press%20enquiry" data-hover>Reach the founder →</a>
+        </div>
+        <div class="info-block reveal d3">
+          <h4>Support &amp; <em>reports</em>.</h4>
+          <p>Using one of our products and something is wrong? Trust &amp; safety concern? Please tell us.</p>
+          <a href="mailto:support@pairnow.in?subject=Support" data-hover>Open a support note →</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="reveal d1">
+          <h3 class="section-head">Write to <span class="italic">us</span> directly.</h3>
+          <p class="body-copy" style="max-width: 100%; margin-bottom: 24px;">
+            Fill in the form. It lands directly in our inbox — <a href="mailto:support@pairnow.in" data-hover style="color:var(--nebula);">support@pairnow.in</a> — and someone (usually the founder) replies personally, generally within the day.
+          </p>
+
+          <form class="form-wrap" id="contactForm" style="max-width:100%;" novalidate>
+            <div class="form-group">
+              <label for="c-name">Your name</label>
+              <input id="c-name" name="name" type="text" required maxlength="120" autocomplete="name" data-hover />
+            </div>
+            <div class="form-group">
+              <label for="c-email">Email</label>
+              <input id="c-email" name="email" type="email" required maxlength="200" autocomplete="email" data-hover />
+            </div>
+            <div class="form-group">
+              <label for="c-intent">Reason for writing</label>
+              <select id="c-intent" name="intent" data-hover>
+                <option value="Product or partnership">Product or partnership</option>
+                <option value="Careers · open application">Careers · open application</option>
+                <option value="Press enquiry">Press enquiry</option>
+                <option value="Support">Support</option>
+                <option value="Something else">Something else</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="c-message">Your note</label>
+              <textarea id="c-message" name="message" required maxlength="4000" data-hover></textarea>
+            </div>
+            <div class="honeypot" aria-hidden="true">
+              <label>Leave this field empty</label>
+              <input type="text" name="website" autocomplete="off" tabindex="-1" />
+            </div>
+
+            <!-- hCaptcha widget — invisible on load, activated on submit. Set data-sitekey via HCAPTCHA_SITEKEY at build or leave as 10000000... for local dev. -->
+            <div class="h-captcha" data-sitekey="10000000-ffff-ffff-ffff-000000000001" data-size="invisible" data-callback="onCaptchaOk"></div>
+
+            <button type="submit" class="form-submit" id="contactSubmit" data-hover>Send message →</button>
+            <div class="status-msg" id="statusMsg" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="chapter" id="hq">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter Two</em> · Headquarters</div>
+    <h2 class="chapter-head reveal d1">
+      Hyderabad, <span class="italic">India</span>.
+    </h2>
+    <p class="body-copy reveal d2" style="max-width: 640px;">
+      The Deccan plateau. A city with more history than it advertises. Our office is small on purpose — a room where the work gets done, and enough tea to keep it moving.
+    </p>
+
+    <div class="hq-map reveal d1">
+      <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="mapline" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="rgba(167,139,250,0.6)"/>
+            <stop offset="100%" stop-color="rgba(96,165,250,0.3)"/>
+          </linearGradient>
+        </defs>
+        <!-- Abstract India-ish silhouette -->
+        <path d="M 100 60 L 210 40 L 320 80 L 400 60 L 470 130 L 520 250 L 480 340 L 400 400 L 320 420 L 250 380 L 200 340 L 170 260 L 130 200 Z"
+          stroke="url(#mapline)" stroke-width="1.2" fill="rgba(167,139,250,0.05)"/>
+        <!-- Latitude lines -->
+        <line x1="80" y1="150" x2="540" y2="150" stroke="rgba(247,245,240,0.06)" stroke-width="0.6"/>
+        <line x1="80" y1="230" x2="540" y2="230" stroke="rgba(247,245,240,0.06)" stroke-width="0.6"/>
+        <line x1="80" y1="310" x2="540" y2="310" stroke="rgba(247,245,240,0.06)" stroke-width="0.6"/>
+        <line x1="180" y1="30" x2="180" y2="430" stroke="rgba(247,245,240,0.06)" stroke-width="0.6"/>
+        <line x1="300" y1="30" x2="300" y2="430" stroke="rgba(247,245,240,0.06)" stroke-width="0.6"/>
+        <line x1="420" y1="30" x2="420" y2="430" stroke="rgba(247,245,240,0.06)" stroke-width="0.6"/>
+      </svg>
+      <div class="hq-pin"><span class="dot"></span></div>
+      <div class="hq-label">
+        <span>Hyderabad · India</span>
+        <span>17.4° N · 78.4° E</span>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-top: 40px;">
+      <div class="card reveal">
+        <div class="card-tag">01 · Address</div>
+        <h4>NextSpace Labs <span class="italic">Pvt. Ltd.</span></h4>
+        <p>Hyderabad, Telangana · India.<br>Full postal address available on request.</p>
+      </div>
+      <div class="card reveal d1">
+        <div class="card-tag">02 · Hours</div>
+        <h4>Mon &ndash; Fri.<br><span class="italic">IST</span> · 09:30 &ndash; 18:30.</h4>
+        <p>Async-friendly. Real replies within one working day. Weekends we usually keep quiet.</p>
+      </div>
+      <div class="card reveal d2">
+        <div class="card-tag">03 · Direct</div>
+        <h4>Founder &amp; <span class="italic">CEO</span>.</h4>
+        <p>For a note that should reach the founder personally, mark your subject line <em style="color:var(--nebula);font-family:'Instrument Serif',serif;">"for the founder"</em>.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div id="ns-footer"></div>
+<div id="ns-hidden"></div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js" } }
+</script>
+<script type="module" src="/assets/scene-lite.js"></script>
+<script src="/assets/partials.js"></script>
+<script src="/assets/premium.js"></script>
+<!-- hCaptcha (invisible; only executes on submit) -->
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+<script>
+  (function () {
+    const form = document.getElementById('contactForm');
+    const msg = document.getElementById('statusMsg');
+    const submit = document.getElementById('contactSubmit');
+    if (!form || !msg || !submit) return;
+
+    // Prefill intent from ?intent= query param
+    const params = new URLSearchParams(window.location.search);
+    const intent = params.get('intent');
+    if (intent) {
+      const sel = document.getElementById('c-intent');
+      const map = { insights: 'Something else', press: 'Press enquiry', careers: 'Careers · open application', support: 'Support', partnership: 'Product or partnership' };
+      const val = map[intent.toLowerCase()] || intent;
+      for (const opt of sel.options) if (opt.value === val) { sel.value = val; break; }
+    }
+
+    function show(text, kind) {
+      msg.textContent = text;
+      msg.classList.remove('on','ok','err');
+      msg.classList.add('on', kind || 'ok');
+    }
+
+    async function send() {
+      const data = new FormData(form);
+      const body = Object.fromEntries(data.entries());
+      submit.disabled = true;
+      const prevLabel = submit.textContent;
+      submit.textContent = 'Sending…';
+      try {
+        const r = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        const j = await r.json().catch(() => ({}));
+        if (r.ok && j.ok) {
+          form.reset();
+          show('Message received. We will reply personally — usually within the day.', 'ok');
+          if (window.nsTrack) window.nsTrack('form_submitted', { form: 'contact', intent: body.intent });
+        } else if (r.status === 429) {
+          show('Too many messages from this network. Please try again in a little while.', 'err');
+        } else if (j.error === 'captcha_failed') {
+          show('Human check did not go through. Please try once more.', 'err');
+        } else if (j.error === 'email_invalid') {
+          show('That email address looks off. Please double-check and try again.', 'err');
+        } else if (j.error === 'message_too_short') {
+          show('Your note is a little short — a sentence or two more helps us reply usefully.', 'err');
+        } else {
+          show('Something on our side did not deliver. Please write directly to support@pairnow.in.', 'err');
+        }
+      } catch (e) {
+        show('We could not reach our server. Please write directly to support@pairnow.in.', 'err');
+      } finally {
+        submit.disabled = false;
+        submit.textContent = prevLabel;
+        if (window.hcaptcha) window.hcaptcha.reset();
+      }
+    }
+
+    // hCaptcha invisible callback (called after successful challenge)
+    window.onCaptchaOk = function () { send(); };
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      // Client-side sanity checks (UX only — server re-validates)
+      const name = form.querySelector('[name=name]').value.trim();
+      const email = form.querySelector('[name=email]').value.trim();
+      const message = form.querySelector('[name=message]').value.trim();
+      if (!name)                      { show('Please add your name.', 'err'); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { show('Please add a valid email address.', 'err'); return; }
+      if (message.length < 10)        { show('A sentence or two more helps us reply usefully.', 'err'); return; }
+      // Trigger the invisible captcha; onCaptchaOk() will call send().
+      if (window.hcaptcha) window.hcaptcha.execute();
+      else send();
+    });
+  })();
+</script>
+
+<!-- Vercel Web Analytics + Speed Insights (privacy-first, zero-config on Vercel) -->
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>
