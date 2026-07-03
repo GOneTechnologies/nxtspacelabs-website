@@ -62,6 +62,11 @@
     <a href="/services.html" data-hover class="hide-sm">Services</a>
     <a href="/insights.html" data-hover class="hide-sm">Insights</a>
     <a href="/contact.html" data-hover class="hide-sm">Contact</a>
+    <button class="search-pill" id="searchBtn" data-hover aria-label="Search — command palette (coming soon)" title="Search — coming soon">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="7" cy="7" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14" stroke-linecap="round"/></svg>
+      <span class="search-label">Search</span>
+      <kbd>&#8984;K</kbd>
+    </button>
     <button class="menu-btn" data-hover id="menuBtn" aria-label="Open menu">
       <span class="menu-btn-icon"><span></span><span></span><span></span></span>
       <span>Menu</span>
@@ -136,7 +141,7 @@
     <div class="foot-coda-mark"><span></span></div>
     <p class="foot-coda-line">
       We shape what comes <span class="italic">next</span> —<br>
-      quietly, carefully, in <span class="italic">Hyderabad</span>, for the century ahead.
+      thoughtfully crafted in <span class="italic">Hyderabad</span>, built for the century ahead.
     </p>
     <p class="foot-coda-sub">Thank you for spending a moment here. If any of this reached you, write to us. It reaches a person, not a queue.</p>
   </div>
@@ -193,6 +198,31 @@
       </ul>
     </div>
   </div>
+
+  <div class="foot-compliance">
+    <div>
+      <h6>Registered office</h6>
+      <address>
+        NextSpace Labs Private Limited<br>
+        Door No 1-60/8/A &amp; B, 3<sup>rd</sup> Floor<br>
+        KNR Square, Opp. The Platina<br>
+        Gachibowli, Kondapur<br>
+        Hyderabad &mdash; 500 032, Telangana, India
+      </address>
+    </div>
+    <div>
+      <h6>Statutory</h6>
+      <div><span style="color:var(--dim-2);font-family:Inter;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;">CIN&nbsp;&nbsp;</span><span class="value">U72900TG2026PTCXXXXXX</span></div>
+      <div><span style="color:var(--dim-2);font-family:Inter;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;">GSTIN</span>&nbsp;&nbsp;<span class="value">36XXXXXXXXXXXX1ZX</span></div>
+      <div class="value note">Statutory identifiers publish on issuance.</div>
+    </div>
+    <div>
+      <h6>Official contact</h6>
+      <div><a href="mailto:connect@nxtspacelabs.com">connect@nxtspacelabs.com</a></div>
+      <div class="value note">Direct phone line coming with the operations office.</div>
+    </div>
+  </div>
+
   <div class="foot-bottom">
     <span>© 2026 · NextSpace Labs Private Limited · Hyderabad, India</span>
     <span>Every pixel authored here. <a href="/" style="color:var(--dim-2);">Try typing &ldquo;future&rdquo;.</a></span>

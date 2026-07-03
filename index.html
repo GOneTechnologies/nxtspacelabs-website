@@ -176,6 +176,26 @@
     color: var(--dim); margin-top: 4px;
   }
   .nav-right { display: flex; align-items: center; gap: 32px; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--mist); }
+  /* Search affordance — reserves the ⌘K pattern for a future command palette. */
+  .search-pill {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 7px 14px 7px 12px;
+    border: 1px solid var(--line-2); border-radius: 999px;
+    background: rgba(247, 245, 240, 0.02);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    color: var(--dim); font-family: "Inter"; font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase;
+    transition: border-color 0.4s, color 0.4s, background 0.4s; cursor: none;
+    position: relative;
+  }
+  .search-pill:hover { border-color: var(--nebula); color: var(--mist); background: rgba(167, 139, 250, 0.06); }
+  .search-pill svg { width: 12px; height: 12px; opacity: 0.7; }
+  .search-pill kbd {
+    font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: 0;
+    padding: 2px 6px; border: 1px solid var(--line-2); border-radius: 4px;
+    color: var(--dim-2); background: rgba(247,245,240,0.02);
+  }
+  .search-pill::after { content: none; }
+  @media (max-width: 900px) { .search-pill .search-label, .search-pill kbd { display: none; } .search-pill { padding: 7px 10px; } }
   .nav-right a { position: relative; padding-bottom: 4px; }
   .nav-right a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.7, 0, 0.3, 1); }
   .nav-right a:hover::after { width: 100%; }
@@ -907,6 +927,30 @@
   }
   @media (max-width: 700px) { .foot-bottom { flex-direction: column; gap: 12px; text-align: center; } }
 
+  /* ═══ Compliance colophon — registered office, CIN, GSTIN, official contacts ═══ */
+  .foot-compliance {
+    max-width: 1360px; margin: 0 auto 40px;
+    padding: 32px 0; border-top: 1px solid var(--line);
+    display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 40px;
+    font-size: 12.5px; color: var(--dim); line-height: 1.7;
+  }
+  @media (max-width: 900px) { .foot-compliance { grid-template-columns: 1fr; gap: 24px; } }
+  .foot-compliance h6 {
+    font-family: "Inter", sans-serif;
+    font-size: 9.5px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--nebula); margin-bottom: 10px; font-weight: 500;
+  }
+  .foot-compliance .value {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11.5px; color: var(--mist-2); letter-spacing: 0.3px;
+  }
+  .foot-compliance .value.note { font-family: "Instrument Serif", serif; font-style: italic; color: var(--dim-2); font-size: 12px; letter-spacing: 0; margin-top: 4px; }
+  .foot-compliance address {
+    font-style: normal; color: var(--mist-2); font-family: "Inter"; font-size: 12.5px;
+  }
+  .foot-compliance a { color: var(--mist-2); border-bottom: 1px solid var(--line); transition: color 0.3s, border-color 0.3s; }
+  .foot-compliance a:hover { color: var(--nebula); border-bottom-color: var(--nebula); }
+
   /* ═══ Hidden mode overlay (type "future") ═══ */
   .hidden-mode {
     position: fixed; inset: 0; z-index: 400;
@@ -991,6 +1035,11 @@
     <a href="#ideas" data-hover class="hide-sm">Products</a>
     <a href="#labs" data-hover class="hide-sm">Labs</a>
     <a href="#invitation" data-hover class="hide-sm">Contact</a>
+    <button class="search-pill" id="searchBtn" data-hover aria-label="Search — command palette (coming soon)" title="Search — coming soon">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="7" cy="7" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14" stroke-linecap="round"/></svg>
+      <span class="search-label">Search</span>
+      <kbd>⌘K</kbd>
+    </button>
     <button class="menu-btn" data-hover id="menuBtn" aria-label="Open menu">
       <span class="menu-btn-icon"><span></span><span></span><span></span></span>
       <span>Menu</span>
@@ -1485,7 +1534,7 @@
     <div class="foot-coda-mark"><span></span></div>
     <p class="foot-coda-line">
       We shape what comes <span class="italic">next</span> —<br>
-      quietly, carefully, in <span class="italic">Hyderabad</span>, for the century ahead.
+      thoughtfully crafted in <span class="italic">Hyderabad</span>, built for the century ahead.
     </p>
     <p class="foot-coda-sub">Thank you for spending a moment here. If any of this reached you, write to us. It reaches a person, not a queue.</p>
   </div>
@@ -1542,6 +1591,32 @@
       </ul>
     </div>
   </div>
+
+  <!-- Compliance colophon — registered office + statutory identifiers -->
+  <div class="foot-compliance">
+    <div>
+      <h6>Registered office</h6>
+      <address>
+        NextSpace Labs Private Limited<br>
+        Door No 1-60/8/A &amp; B, 3<sup>rd</sup> Floor<br>
+        KNR Square, Opp. The Platina<br>
+        Gachibowli, Kondapur<br>
+        Hyderabad — 500 032, Telangana, India
+      </address>
+    </div>
+    <div>
+      <h6>Statutory</h6>
+      <div><span style="color:var(--dim-2);font-family:'Inter';font-size:10px;letter-spacing:1.5px;text-transform:uppercase;">CIN&nbsp;&nbsp;</span><span class="value">U72900TG2026PTCXXXXXX</span></div>
+      <div><span style="color:var(--dim-2);font-family:'Inter';font-size:10px;letter-spacing:1.5px;text-transform:uppercase;">GSTIN</span>&nbsp;&nbsp;<span class="value">36XXXXXXXXXXXX1ZX</span></div>
+      <div class="value note">Statutory identifiers publish on issuance.</div>
+    </div>
+    <div>
+      <h6>Official contact</h6>
+      <div><a href="mailto:connect@nxtspacelabs.com">connect@nxtspacelabs.com</a></div>
+      <div class="value note">Direct phone line coming with the operations office.</div>
+    </div>
+  </div>
+
   <div class="foot-bottom">
     <span>© 2026 · NextSpace Labs Private Limited · Hyderabad, India</span>
     <span>Every pixel authored here. <a href="#hero" style="color:var(--dim-2);">Try typing "future".</a></span>
@@ -1997,6 +2072,19 @@ window.addEventListener('load', () => { setTimeout(() => document.getElementById
   overlay.addEventListener('click', e => { if (e.target === overlay || e.target.classList.contains('menu-scene')) shut(); });
   document.querySelectorAll('[data-menu-close]').forEach(el => el.addEventListener('click', shut));
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('on')) shut(); });
+
+  /* Search affordance — ⌘K / Ctrl+K + search pill open the menu overlay.
+     Reserves the muscle memory for the future command palette. */
+  const search = document.getElementById('searchBtn');
+  if (search) search.addEventListener('click', open);
+  document.addEventListener('keydown', e => {
+    const inField = e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName);
+    if (inField) return;
+    if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+      e.preventDefault();
+      overlay.classList.contains('on') ? shut() : open();
+    }
+  });
 })();
 
 /* Hidden mode — type "future" */

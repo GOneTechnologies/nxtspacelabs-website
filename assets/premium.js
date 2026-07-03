@@ -105,6 +105,24 @@
     overlay.addEventListener('click', e => { if (e.target === overlay || e.target.classList.contains('menu-scene')) shut(); });
     document.querySelectorAll('[data-menu-close]').forEach(el => el.addEventListener('click', shut));
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('on')) shut(); });
+
+    /* Search affordance — reserves ⌘K / Ctrl+K for the future command palette.
+       For now the shortcut and the search pill both open the menu overlay so
+       the muscle memory is established; later this same handler filters
+       within the menu without changing the entry point. */
+    const search = document.getElementById('searchBtn');
+    if (search && !search._nsBound) {
+      search._nsBound = true;
+      search.addEventListener('click', open);
+    }
+    document.addEventListener('keydown', e => {
+      const inField = e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName);
+      if (inField) return;
+      if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+        e.preventDefault();
+        overlay.classList.contains('on') ? shut() : open();
+      }
+    });
   };
   bind();
   window.addEventListener('ns:partials-mounted', bind);

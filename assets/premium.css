@@ -105,6 +105,26 @@ nav.top {
   .nav-right .hide-sm { display: none; }
 }
 
+/* Search affordance — reserves the ⌘K pattern for a future command palette. */
+.search-pill {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 7px 14px 7px 12px;
+  border: 1px solid var(--line-2); border-radius: 999px;
+  background: rgba(247, 245, 240, 0.02);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  color: var(--dim); font-family: "Inter"; font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase;
+  transition: border-color 0.4s, color 0.4s, background 0.4s; cursor: none;
+}
+.search-pill:hover { border-color: var(--nebula); color: var(--mist); background: rgba(167, 139, 250, 0.06); }
+.search-pill svg { width: 12px; height: 12px; opacity: 0.7; }
+.search-pill kbd {
+  font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: 0;
+  padding: 2px 6px; border: 1px solid var(--line-2); border-radius: 4px;
+  color: var(--dim-2); background: rgba(247,245,240,0.02);
+}
+.nav-right .search-pill::after { content: none; }
+@media (max-width: 900px) { .search-pill .search-label, .search-pill kbd { display: none; } .search-pill { padding: 7px 10px; } }
+
 /* ═══ Menu button + full-screen menu ═══ */
 .menu-btn {
   display: inline-flex; align-items: center; gap: 12px;
@@ -476,6 +496,30 @@ footer {
 .foot-bottom-links a { color: var(--dim-2); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-family: "Inter"; font-style: normal; transition: color 0.3s; }
 .foot-bottom-links a:hover { color: var(--nebula); }
 @media (max-width: 700px) { .foot-bottom { flex-direction: column; text-align: center; } .foot-bottom-links { justify-content: center; flex-wrap: wrap; } }
+
+/* Compliance colophon — registered office, statutory identifiers, official contact */
+.foot-compliance {
+  max-width: 1360px; margin: 0 auto 40px;
+  padding: 32px 0; border-top: 1px solid var(--line);
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 40px;
+  font-size: 12.5px; color: var(--dim); line-height: 1.7;
+}
+@media (max-width: 900px) { .foot-compliance { grid-template-columns: 1fr; gap: 24px; } }
+.foot-compliance h6 {
+  font-family: "Inter", sans-serif;
+  font-size: 9.5px; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--nebula); margin-bottom: 10px; font-weight: 500;
+}
+.foot-compliance .value {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px; color: var(--mist-2); letter-spacing: 0.3px;
+}
+.foot-compliance .value.note { font-family: "Instrument Serif", serif; font-style: italic; color: var(--dim-2); font-size: 12px; letter-spacing: 0; margin-top: 4px; }
+.foot-compliance address {
+  font-style: normal; color: var(--mist-2); font-family: "Inter"; font-size: 12.5px;
+}
+.foot-compliance a { color: var(--mist-2); border-bottom: 1px solid var(--line); transition: color 0.3s, border-color 0.3s; }
+.foot-compliance a:hover { color: var(--nebula); border-bottom-color: var(--nebula); }
 
 /* ═══ Hidden mode overlay (type "future") ═══ */
 .hidden-mode {
