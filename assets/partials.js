@@ -18,7 +18,7 @@
         "alternateName": "NextSpace Labs",
         "url": "https://nxtspacelabs.com/",
         "logo": "https://nxtspacelabs.com/logo.svg",
-        "email": "support@pairnow.in",
+        "email": "connect@nxtspacelabs.com",
         "foundingDate": "2026",
         "founder": { "@type": "Person", "name": "S. K. Jeevan" },
         "address": {
@@ -122,7 +122,7 @@
       <div class="menu-group">
         <h5>Reach</h5>
         <ul>
-          <li><a href="mailto:support@pairnow.in" data-hover>support@pairnow.in</a></li>
+          <li><a href="mailto:connect@nxtspacelabs.com" data-hover>connect@nxtspacelabs.com</a></li>
           <li class="plain">Hyderabad · India</li>
         </ul>
       </div>
@@ -171,7 +171,7 @@
         <li><a href="/contact.html">Contact</a></li>
         <li><a href="/newsroom.html">Newsroom</a></li>
         <li><a href="/insights.html">Insights</a></li>
-        <li><a href="mailto:support@pairnow.in">Email us</a></li>
+        <li><a href="mailto:connect@nxtspacelabs.com">Email us</a></li>
         <li><a href="/login">Team login ↗</a></li>
       </ul>
     </div>

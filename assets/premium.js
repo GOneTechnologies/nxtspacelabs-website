@@ -191,7 +191,7 @@
         const msg = (form.querySelector('[name=message]') || {}).value || '';
         const subject = encodeURIComponent(`Enquiry from ${name || 'the website'}`);
         const body = encodeURIComponent(`From: ${name} <${email}>\n\n${msg}`);
-        window.location.href = `mailto:support@pairnow.in?subject=${subject}&body=${body}`;
+        window.location.href = `mailto:connect@nxtspacelabs.com?subject=${subject}&body=${body}`;
       });
     });
   };
