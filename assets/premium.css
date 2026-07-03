@@ -413,9 +413,41 @@ footer::before {
 /* ═══ Footer ═══ */
 footer {
   position: relative; z-index: 2;
-  padding: 100px 48px 40px;
+  padding: 140px 48px 40px;
   border-top: 1px solid var(--line);
 }
+/* Closing chapter (Coda) — treats the footer as the final page turn, not a link tray. */
+.foot-coda {
+  max-width: 900px; margin: 0 auto 100px;
+  text-align: center; padding-bottom: 80px; border-bottom: 1px solid var(--line);
+}
+.foot-coda-mark {
+  width: 60px; height: 1px; background: var(--line-2);
+  margin: 0 auto 32px; position: relative;
+}
+.foot-coda-mark span {
+  display: block; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--nebula);
+  position: absolute; top: -3px; left: 50%; transform: translateX(-50%);
+  box-shadow: 0 0 24px var(--nebula);
+}
+.foot-coda-line {
+  font-family: "Fraunces", serif; font-weight: 300;
+  font-size: clamp(22px, 3vw, 34px);
+  line-height: 1.35; letter-spacing: -0.02em;
+  color: var(--mist); margin-bottom: 28px;
+}
+.foot-coda-line .italic {
+  font-family: "Instrument Serif", serif; font-style: italic;
+  background: linear-gradient(135deg, #F472B6, #A78BFA, #60A5FA);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.foot-coda-sub {
+  font-family: "Instrument Serif", serif; font-style: italic;
+  font-size: 15px; color: var(--dim); max-width: 620px; margin: 0 auto;
+  line-height: 1.7;
+}
+@media (max-width: 700px) { .foot-coda { margin-bottom: 60px; padding-bottom: 60px; } }
 .foot-grid {
   display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: 40px;
   margin-bottom: 60px;

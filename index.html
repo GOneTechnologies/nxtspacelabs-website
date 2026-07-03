@@ -846,9 +846,41 @@
   }
   footer {
     position: relative; z-index: 2;
-    padding: 100px 48px 40px;
+    padding: 140px 48px 40px;
     border-top: 1px solid var(--line);
   }
+  .foot-coda {
+    max-width: 900px; margin: 0 auto 100px;
+    text-align: center;
+    padding-bottom: 80px; border-bottom: 1px solid var(--line);
+  }
+  .foot-coda-mark {
+    width: 60px; height: 1px; background: var(--line-2);
+    margin: 0 auto 32px; position: relative;
+  }
+  .foot-coda-mark span {
+    display: block; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--nebula);
+    position: absolute; top: -3px; left: 50%; transform: translateX(-50%);
+    box-shadow: 0 0 24px var(--nebula);
+  }
+  .foot-coda-line {
+    font-family: "Fraunces", serif; font-weight: 300;
+    font-size: clamp(22px, 3vw, 34px);
+    line-height: 1.35; letter-spacing: -0.02em;
+    color: var(--mist); margin-bottom: 28px;
+  }
+  .foot-coda-line .italic {
+    font-family: "Instrument Serif", serif; font-style: italic;
+    background: linear-gradient(135deg, #F472B6, #A78BFA, #60A5FA);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .foot-coda-sub {
+    font-family: "Instrument Serif", serif; font-style: italic;
+    font-size: 15px; color: var(--dim); max-width: 620px; margin: 0 auto;
+    line-height: 1.7;
+  }
+  @media (max-width: 700px) { .foot-coda { margin-bottom: 60px; padding-bottom: 60px; } }
   .foot-grid {
     display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 48px;
     margin-bottom: 80px;
@@ -1058,7 +1090,7 @@
       <span class="line"><span>what comes</span></span>
       <span class="line"><span class="grad">next.</span></span>
     </h1>
-    <p class="hero-sub">A studio for products where intelligence, design, and human behavior become one seamless experience.</p>
+    <p class="hero-sub">An innovation company building original products where intelligence, design, and human behavior become one seamless experience.</p>
     <a href="#invitation" class="hero-cta glass-btn" data-hover>
       <span>Start a conversation</span>
       <span class="arrow">→</span>
@@ -1145,7 +1177,7 @@
   <div class="wrap">
     <div class="ideas-head">
       <div class="chapter-tag reveal"><em>Chapter Five</em> · Living ideas</div>
-      <h2 class="chapter-head reveal d1">Not products.<br>Not portfolios.<br><span class="italic">Concepts</span> we are moving toward.</h2>
+      <h2 class="chapter-head reveal d1">Not yet products.<br>Not yet announced.<br><span class="italic">Concepts</span> we are moving toward.</h2>
     </div>
     <div class="ideas-grid">
       <div class="idea reveal" data-hover>
@@ -1404,7 +1436,7 @@
       </div>
       <div class="hq-side">
         <h3 class="reveal d1">Where the <span class="italic">future</span> takes shape.</h3>
-        <p class="body-copy reveal d2">A small studio. A long table. Whiteboards you can walk into. This is where our best days begin — and where the next hundred years get drafted, page by page.</p>
+        <p class="body-copy reveal d2">A small company. A long table. Whiteboards you can walk into. This is where our best days begin — and where the next hundred years get drafted, page by page.</p>
         <div class="hq-address reveal d3">
           NextSpace Labs Private Limited<br>
           Hyderabad · Telangana · India<br>
@@ -1447,8 +1479,16 @@
   </div></div>
 </section>
 
-<!-- ═══ FOOTER ═══ -->
+<!-- ═══ FOOTER — treated as the closing chapter, not a link tray ═══ -->
 <footer>
+  <div class="foot-coda">
+    <div class="foot-coda-mark"><span></span></div>
+    <p class="foot-coda-line">
+      We shape what comes <span class="italic">next</span> —<br>
+      quietly, carefully, in <span class="italic">Hyderabad</span>, for the century ahead.
+    </p>
+    <p class="foot-coda-sub">Thank you for spending a moment here. If any of this reached you, write to us. It reaches a person, not a queue.</p>
+  </div>
   <div class="foot-grid">
     <div class="foot-brand">
       <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" fill="none">

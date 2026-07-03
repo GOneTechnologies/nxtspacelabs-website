@@ -132,6 +132,14 @@
 
   const FOOTER_HTML = `
 <footer>
+  <div class="foot-coda">
+    <div class="foot-coda-mark"><span></span></div>
+    <p class="foot-coda-line">
+      We shape what comes <span class="italic">next</span> —<br>
+      quietly, carefully, in <span class="italic">Hyderabad</span>, for the century ahead.
+    </p>
+    <p class="foot-coda-sub">Thank you for spending a moment here. If any of this reached you, write to us. It reaches a person, not a queue.</p>
+  </div>
   <div class="foot-grid">
     <div class="foot-brand">
       <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" fill="none">
