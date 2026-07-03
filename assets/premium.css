@@ -147,17 +147,25 @@ nav.top {
 @media (max-width: 900px) {
   .menu-inner { grid-template-columns: 1fr; gap: 60px; padding: 100px 24px 40px; align-items: start; }
 }
-.menu-primary { display: flex; flex-direction: column; gap: 4px; }
+.menu-primary { display: flex; flex-direction: column; gap: 2px; }
 .menu-primary a {
-  display: flex; align-items: baseline; gap: 24px; padding: 14px 0;
+  display: grid; grid-template-columns: 40px 1fr auto;
+  align-items: baseline; gap: 24px; padding: 20px 0;
   font-family: "Fraunces", serif; font-weight: 300;
-  font-size: clamp(28px, 4vw, 52px);
-  line-height: 1; letter-spacing: -0.03em;
+  font-size: clamp(26px, 3.6vw, 46px);
+  line-height: 1.05; letter-spacing: -0.03em;
   color: var(--mist);
   border-bottom: 1px solid var(--line);
   transition: color 0.5s, padding-left 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   opacity: 0; transform: translateY(30px);
 }
+.menu-primary a .body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.menu-primary a .desc {
+  font-family: "Instrument Serif", serif; font-style: italic;
+  font-size: 13.5px; letter-spacing: 0; color: var(--dim);
+  line-height: 1.35; opacity: 0.75; transition: opacity 0.4s, color 0.4s;
+}
+.menu-primary a:hover .desc { opacity: 1; color: var(--mist-2); }
 .menu-overlay.on .menu-primary a {
   opacity: 1; transform: translateY(0);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.5s, padding-left 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -392,6 +400,15 @@ h3.section-head .italic {
 .glass-btn:hover { border-color: var(--nebula); transform: translateY(-2px); }
 .glass-btn .arrow { display: inline-block; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
 .glass-btn:hover .arrow { transform: translateX(6px); }
+
+/* ═══ Graceful end-of-scroll fade ═══
+   Feels like a soft exhale as the reader reaches the footer. */
+footer::before {
+  content: "";
+  position: absolute; left: 0; right: 0; top: -140px; height: 140px;
+  background: linear-gradient(to bottom, transparent, rgba(2, 2, 9, 0.55) 55%, rgba(2, 2, 9, 0.85));
+  pointer-events: none;
+}
 
 /* ═══ Footer ═══ */
 footer {

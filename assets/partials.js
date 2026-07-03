@@ -91,16 +91,16 @@
   </button>
   <div class="menu-inner">
     <div class="menu-primary">
-      <a href="/" data-hover><span class="num">01</span><span>Home</span><span class="arr">→</span></a>
-      <a href="/company.html" data-hover><span class="num">02</span><span>Company</span><span class="arr">→</span></a>
-      <a href="/#ideas" data-hover><span class="num">03</span><span>Products</span><span class="arr">→</span></a>
-      <a href="/services.html" data-hover><span class="num">04</span><span>Services</span><span class="arr">→</span></a>
-      <a href="/industries.html" data-hover><span class="num">05</span><span>Industries</span><span class="arr">→</span></a>
-      <a href="/innovation.html" data-hover><span class="num">06</span><span>Innovation</span><span class="arr">→</span></a>
-      <a href="/insights.html" data-hover><span class="num">07</span><span>Insights</span><span class="arr">→</span></a>
-      <a href="/newsroom.html" data-hover><span class="num">08</span><span>Newsroom</span><span class="arr">→</span></a>
-      <a href="/careers.html" data-hover><span class="num">09</span><span>Careers</span><span class="arr">→</span></a>
-      <a href="/contact.html" data-hover><span class="num">10</span><span>Contact</span><span class="arr">→</span></a>
+      <a href="/" data-hover><span class="num">01</span><span class="body"><span>Home</span><span class="desc">The digital headquarters.</span></span><span class="arr">→</span></a>
+      <a href="/company.html" data-hover><span class="num">02</span><span class="body"><span>Company</span><span class="desc">Our philosophy, people, and identity.</span></span><span class="arr">→</span></a>
+      <a href="/#ideas" data-hover><span class="num">03</span><span class="body"><span>Products</span><span class="desc">Living ideas we've shipped into the world.</span></span><span class="arr">→</span></a>
+      <a href="/services.html" data-hover><span class="num">04</span><span class="body"><span>Services</span><span class="desc">Four ways we carry the pen for teams.</span></span><span class="arr">→</span></a>
+      <a href="/industries.html" data-hover><span class="num">05</span><span class="body"><span>Industries</span><span class="desc">Where our craft lands hardest.</span></span><span class="arr">→</span></a>
+      <a href="/innovation.html" data-hover><span class="num">06</span><span class="body"><span>Innovation</span><span class="desc">How we think, prototype, and research tomorrow.</span></span><span class="arr">→</span></a>
+      <a href="/insights.html" data-hover><span class="num">07</span><span class="body"><span>Insights</span><span class="desc">Slow writing on products &amp; the digital century.</span></span><span class="arr">→</span></a>
+      <a href="/newsroom.html" data-hover><span class="num">08</span><span class="body"><span>Newsroom</span><span class="desc">Announcements, releases, and press.</span></span><span class="arr">→</span></a>
+      <a href="/careers.html" data-hover><span class="num">09</span><span class="body"><span>Careers</span><span class="desc">We hire builders. Small teams, real ownership.</span></span><span class="arr">→</span></a>
+      <a href="/contact.html" data-hover><span class="num">10</span><span class="body"><span>Contact</span><span class="desc">One inbox. A real human on the other end.</span></span><span class="arr">→</span></a>
     </div>
     <div class="menu-side">
       <div class="menu-group">

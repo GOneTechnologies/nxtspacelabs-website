@@ -115,9 +115,10 @@
   .loader {
     position: fixed; inset: 0; background: var(--void); z-index: 300;
     display: grid; place-items: center;
-    transition: opacity 1.2s cubic-bezier(0.7, 0, 0.3, 1), visibility 1.2s;
+    transition: opacity 2.2s cubic-bezier(0.65, 0, 0.35, 1), visibility 2.2s, backdrop-filter 2.2s, transform 2.2s cubic-bezier(0.65, 0, 0.35, 1);
+    backdrop-filter: blur(0px);
   }
-  .loader.done { opacity: 0; visibility: hidden; }
+  .loader.done { opacity: 0; visibility: hidden; transform: scale(1.03); backdrop-filter: blur(24px); }
   .loader-stage { position: relative; width: 220px; height: 220px; display: grid; place-items: center; }
   .loader-dot {
     position: absolute; width: 8px; height: 8px;
@@ -159,17 +160,20 @@
     opacity: 0; animation: fade-word 1s ease 3s forwards;
   }
   .brand {
-    display: flex; align-items: center; gap: 14px;
+    display: flex; align-items: center; gap: 16px;
     font-family: "Instrument Serif", serif; font-style: italic;
-    font-size: 20px; letter-spacing: -0.3px; color: var(--mist);
+    font-size: 24px; letter-spacing: -0.3px; color: var(--mist);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .brand svg { width: 32px; height: 30px; }
+  .brand:hover { transform: translateX(-2px); }
+  .brand svg { width: 44px; height: 40px; filter: drop-shadow(0 0 20px rgba(167, 139, 250, 0.25)); transition: filter 0.5s; }
+  .brand:hover svg { filter: drop-shadow(0 0 24px rgba(167, 139, 250, 0.45)); }
   .brand-text { line-height: 1.05; }
   .brand-name { display: block; }
   .brand-sub {
     font-family: "Inter", sans-serif; font-style: normal;
-    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--dim); margin-top: 3px;
+    font-size: 10px; letter-spacing: 3.5px; text-transform: uppercase;
+    color: var(--dim); margin-top: 4px;
   }
   .nav-right { display: flex; align-items: center; gap: 32px; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--mist); }
   .nav-right a { position: relative; padding-bottom: 4px; }
@@ -294,19 +298,28 @@
   @media (max-width: 900px) {
     .menu-inner { grid-template-columns: 1fr; gap: 60px; padding: 100px 24px 40px; }
   }
-  .menu-primary { display: flex; flex-direction: column; gap: 4px; }
+  .menu-primary { display: flex; flex-direction: column; gap: 2px; }
   .menu-primary a {
-    display: flex; align-items: baseline; gap: 24px;
-    padding: 14px 0;
+    display: grid; grid-template-columns: 40px 1fr auto;
+    align-items: baseline; gap: 24px;
+    padding: 20px 0;
     font-family: "Fraunces", serif; font-weight: 300;
-    font-size: clamp(28px, 4vw, 52px);
-    line-height: 1; letter-spacing: -0.03em;
+    font-size: clamp(26px, 3.6vw, 46px);
+    line-height: 1.05; letter-spacing: -0.03em;
     color: var(--mist);
     border-bottom: 1px solid var(--line);
     position: relative; overflow: hidden;
     transition: color 0.5s, padding-left 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     opacity: 0; transform: translateY(30px);
   }
+  .menu-primary a .body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .menu-primary a .desc {
+    font-family: "Instrument Serif", serif; font-style: italic;
+    font-size: 13.5px; letter-spacing: 0; color: var(--dim);
+    line-height: 1.35;
+    opacity: 0.75; transition: opacity 0.4s, color 0.4s;
+  }
+  .menu-primary a:hover .desc { opacity: 1; color: var(--mist-2); }
   .menu-overlay.on .menu-primary a { opacity: 1; transform: translateY(0); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.5s, padding-left 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
   .menu-overlay.on .menu-primary a:nth-child(1) { transition-delay: 0.15s; }
   .menu-overlay.on .menu-primary a:nth-child(2) { transition-delay: 0.20s; }
@@ -430,9 +443,9 @@
   h1.headline {
     font-family: "Fraunces", "Instrument Serif", serif;
     font-weight: 300;
-    font-size: clamp(52px, 10vw, 148px);
-    line-height: 0.94; letter-spacing: -0.045em;
-    margin-bottom: 48px;
+    font-size: clamp(50px, 9.4vw, 138px);
+    line-height: 1.04; letter-spacing: -0.042em;
+    margin-bottom: 56px;
   }
   h1.headline .line { display: block; overflow: hidden; }
   h1.headline .line span { display: inline-block; transform: translateY(115%); animation: line-up 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
@@ -448,6 +461,19 @@
     opacity: 0; animation: fade-up 1.5s cubic-bezier(0.16, 1, 0.3, 1) 4.0s forwards;
   }
   @keyframes fade-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  /* Hero CTA — appears after headline + sub have breathed, breathes gently */
+  .hero-cta {
+    margin: 40px auto 0;
+    opacity: 0;
+    animation: fade-up 1.6s cubic-bezier(0.16, 1, 0.3, 1) 4.4s forwards,
+               hero-cta-breathe 5.2s ease-in-out 6s infinite;
+    box-shadow: 0 0 0 rgba(167, 139, 250, 0);
+  }
+  @keyframes hero-cta-breathe {
+    0%, 100% { box-shadow: 0 0 0 rgba(167, 139, 250, 0), 0 0 24px rgba(167, 139, 250, 0.10); }
+    50%      { box-shadow: 0 0 0 rgba(167, 139, 250, 0), 0 0 48px rgba(167, 139, 250, 0.28); }
+  }
+  .hero-cta:hover { animation-play-state: paused; box-shadow: 0 0 60px rgba(167, 139, 250, 0.35); }
   .hero-scroll-hint {
     position: absolute; bottom: 48px; left: 50%; transform: translateX(-50%);
     font-family: "Instrument Serif", serif; font-style: italic;
@@ -812,6 +838,12 @@
   }
 
   /* ═══ Footer — full ═══ */
+  footer::before {
+    content: "";
+    position: absolute; left: 0; right: 0; top: -140px; height: 140px;
+    background: linear-gradient(to bottom, transparent, rgba(2, 2, 9, 0.55) 55%, rgba(2, 2, 9, 0.85));
+    pointer-events: none;
+  }
   footer {
     position: relative; z-index: 2;
     padding: 100px 48px 40px;
@@ -956,16 +988,16 @@
   </button>
   <div class="menu-inner">
     <div class="menu-primary">
-      <a href="#hero" data-menu-close data-hover><span class="num">01</span><span>Home</span><span class="arr">→</span></a>
-      <a href="/company.html" data-hover><span class="num">02</span><span>Company</span><span class="arr">→</span></a>
-      <a href="#ideas" data-menu-close data-hover><span class="num">03</span><span>Products</span><span class="arr">→</span></a>
-      <a href="/services.html" data-hover><span class="num">04</span><span>Services</span><span class="arr">→</span></a>
-      <a href="/industries.html" data-hover><span class="num">05</span><span>Industries</span><span class="arr">→</span></a>
-      <a href="/innovation.html" data-hover><span class="num">06</span><span>Innovation</span><span class="arr">→</span></a>
-      <a href="/insights.html" data-hover><span class="num">07</span><span>Insights</span><span class="arr">→</span></a>
-      <a href="/newsroom.html" data-hover><span class="num">08</span><span>Newsroom</span><span class="arr">→</span></a>
-      <a href="/careers.html" data-hover><span class="num">09</span><span>Careers</span><span class="arr">→</span></a>
-      <a href="/contact.html" data-hover><span class="num">10</span><span>Contact</span><span class="arr">→</span></a>
+      <a href="#hero" data-menu-close data-hover><span class="num">01</span><span class="body"><span>Home</span><span class="desc">The digital headquarters.</span></span><span class="arr">→</span></a>
+      <a href="/company.html" data-hover><span class="num">02</span><span class="body"><span>Company</span><span class="desc">Our philosophy, people, and identity.</span></span><span class="arr">→</span></a>
+      <a href="#ideas" data-menu-close data-hover><span class="num">03</span><span class="body"><span>Products</span><span class="desc">Living ideas we've shipped into the world.</span></span><span class="arr">→</span></a>
+      <a href="/services.html" data-hover><span class="num">04</span><span class="body"><span>Services</span><span class="desc">Four ways we carry the pen for teams.</span></span><span class="arr">→</span></a>
+      <a href="/industries.html" data-hover><span class="num">05</span><span class="body"><span>Industries</span><span class="desc">Where our craft lands hardest.</span></span><span class="arr">→</span></a>
+      <a href="/innovation.html" data-hover><span class="num">06</span><span class="body"><span>Innovation</span><span class="desc">How we think, prototype, and research tomorrow.</span></span><span class="arr">→</span></a>
+      <a href="/insights.html" data-hover><span class="num">07</span><span class="body"><span>Insights</span><span class="desc">Slow writing on products &amp; the digital century.</span></span><span class="arr">→</span></a>
+      <a href="/newsroom.html" data-hover><span class="num">08</span><span class="body"><span>Newsroom</span><span class="desc">Announcements, releases, and press.</span></span><span class="arr">→</span></a>
+      <a href="/careers.html" data-hover><span class="num">09</span><span class="body"><span>Careers</span><span class="desc">We hire builders. Small teams, real ownership.</span></span><span class="arr">→</span></a>
+      <a href="/contact.html" data-hover><span class="num">10</span><span class="body"><span>Contact</span><span class="desc">One inbox. A real human on the other end.</span></span><span class="arr">→</span></a>
     </div>
     <div class="menu-side">
       <div class="menu-group">
@@ -1027,6 +1059,10 @@
       <span class="line"><span class="grad">next.</span></span>
     </h1>
     <p class="hero-sub">A studio for products where intelligence, design, and human behavior become one seamless experience.</p>
+    <a href="#invitation" class="hero-cta glass-btn" data-hover>
+      <span>Start a conversation</span>
+      <span class="arrow">→</span>
+    </a>
   </div>
   <div class="hero-scroll-hint"><span>begin</span><div class="r"></div></div>
 </section>
@@ -1397,9 +1433,9 @@
     <h2 class="invite-head reveal d1">
       If you are building<br>something you cannot<br>yet <span class="italic">name</span> —
     </h2>
-    <p class="invite-sub reveal d2">We should talk. We reply personally, within a day, from Hyderabad.</p>
+    <p class="invite-sub reveal d2">Start a conversation. We reply personally, within a day, from Hyderabad.</p>
     <a href="mailto:connect@nxtspacelabs.com?subject=A%20conversation" class="glass-btn reveal d3" data-hover>
-      <span>let's talk</span>
+      <span>Start a conversation</span>
       <span class="arrow">→</span>
     </a>
     <div class="coda reveal d4">
@@ -1498,7 +1534,7 @@ import * as THREE from 'three';
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setSize(window.innerWidth, window.innerHeight);
 
-  const auroraGeo = new THREE.SphereGeometry(200, 128, 128);
+  const auroraGeo = new THREE.SphereGeometry(168, 128, 128);
   const auroraMat = new THREE.ShaderMaterial({
     uniforms: {
       uTime:{ value:0 }, uScroll:{ value:0 },
