@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<!--
+  NextSpace Labs — Open-Source Attribution · Digital Headquarters
+  © 2026 NextSpace Labs Private Limited · All rights reserved.
+-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#020209" />
+<meta name="description" content="NextSpace Labs Open-Source Attribution — the open-source software that powers this Website and our products, honestly credited." />
+<meta property="og:title" content="Open-Source Attribution · NextSpace Labs" />
+<meta property="og:description" content="The open-source software our products stand on, honestly credited." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nxtspacelabs.com/open-source.html" />
+<meta property="og:image" content="https://nxtspacelabs.com/logo.svg" />
+<link rel="canonical" href="https://nxtspacelabs.com/open-source.html" />
+<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+<link rel="apple-touch-icon" href="/logo.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@nxtspacelabs" />
+<meta name="twitter:creator" content="@nxtspacelabs" />
+<meta name="twitter:image" content="https://nxtspacelabs.com/logo.svg" />
+<title>Open-Source Attribution &mdash; NextSpace Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,200..900,0..100&family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/premium.css">
+<style>
+  .oss-table { width: 100%; border-collapse: collapse; margin: 20px 0 34px; font-family: "Inter"; font-size: 13.5px; }
+  .oss-table thead th {
+    text-align: left; padding: 12px 14px;
+    font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--dim-2); font-weight: 500;
+    border-bottom: 1px solid var(--line);
+  }
+  .oss-table tbody td {
+    padding: 12px 14px; color: var(--mist-2); vertical-align: top;
+    border-bottom: 1px solid var(--line-2);
+  }
+  .oss-table tbody tr:last-child td { border-bottom: none; }
+  .oss-table td.pkg { color: var(--mist); font-family: "JetBrains Mono", monospace; font-size: 12.5px; }
+  .oss-table td.licence { font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--dim); }
+</style>
+</head>
+
+<body class="night">
+
+<canvas id="scene"></canvas>
+<div class="cursor-light" id="cursorLight"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div id="ns-nav"></div>
+<div id="ns-menu"></div>
+<div id="ns-sound"></div>
+
+<header class="page-hero" id="main" tabindex="-1">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag reveal"><em>Governance</em> · Open-Source Attribution</div>
+    <h1 class="page-title reveal d1">
+      Credit,<br>
+      <span class="italic">where it is due</span>.
+    </h1>
+    <p class="page-lede reveal d2">
+      NextSpace Labs stands on decades of open-source work by other people. This page is our honest, standing acknowledgement of the projects our Website and products depend on, and a promise to honour their licences.
+    </p>
+    <div class="doc-actions reveal d3">
+      <a href="/legal/nxtspacelabs-open-source.pdf" class="doc-download" download>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 2v9m0 0l-3-3m3 3l3-3M3 14h10" stroke-linecap="round"/></svg>
+        <span>Download PDF</span>
+      </a>
+      <button class="doc-print" onclick="window.print()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 6V2h8v4M4 12H2V6h12v6h-2m-8 0v3h8v-3m-8 0h8"/></svg>
+        <span>Print</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="chapter">
+  <div class="wrap">
+    <div class="longform reveal">
+
+      <div class="legal-header">
+        <div class="legal-meta">
+          <div><span class="label">Effective</span> 4 July 2026</div>
+          <div><span class="label">Version</span> 1.0</div>
+          <div><span class="label">Last updated</span> 4 July 2026</div>
+          <div><span class="label">Contact</span> connect@nxtspacelabs.com</div>
+        </div>
+        <div class="legal-note">
+          <strong>Living record.</strong> This page lists the material open-source dependencies of the corporate Website (<em>nxtspacelabs.com</em>). Each product ships its own credits screen with the full, versioned dependency list for that product; where a licence requires the full text to be shipped with the software, we do so in the product itself.
+        </div>
+      </div>
+
+      <h2>1. Our commitment</h2>
+      <p>We honour the licences of every open-source project we build with. That means preserving copyright notices, including licence text where required, respecting attribution obligations, and complying with any share-alike terms that apply. Where we contribute back to the open-source ecosystem, we do so under a licence appropriate to the contribution and publish from our public repositories.</p>
+      <p>If you believe we have failed to honour an attribution or licence obligation on this Website or in any of our products, please tell us &mdash; the correction is a priority for us. Write to <a href="mailto:connect@nxtspacelabs.com?subject=Open%20Source%20Attribution">connect@nxtspacelabs.com</a> with the subject line &ldquo;Open Source Attribution&rdquo; and we will act promptly.</p>
+
+      <h2>2. This Website &mdash; material dependencies</h2>
+      <p>The Website is largely hand-authored. It uses a small number of open-source components, listed below with their upstream licence.</p>
+
+      <table class="oss-table">
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Purpose</th>
+            <th>Licence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="pkg">three.js</td>
+            <td>WebGL rendering for the ambient starfield scene.</td>
+            <td class="licence">MIT</td>
+          </tr>
+          <tr>
+            <td class="pkg">Google Fonts (Fraunces, Instrument Serif, Inter, JetBrains Mono)</td>
+            <td>Typography.</td>
+            <td class="licence">SIL Open Font Licence 1.1</td>
+          </tr>
+          <tr>
+            <td class="pkg">hCaptcha</td>
+            <td>Anti-bot challenge for the contact form. Proprietary service; open web-widget.</td>
+            <td class="licence">Vendor terms</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Where a component above is a proprietary service (not open-source), we include it so the list is complete and honest, and mark it as vendor-licensed.</p>
+
+      <h2>3. In-product credits</h2>
+      <p>Our applications &mdash; including the <em>PairNow</em> Android application &mdash; ship with a dedicated &ldquo;Open-Source Licences&rdquo; screen inside the product. That screen enumerates every direct and transitive open-source dependency, its version, and the licence under which it is distributed. Where a licence (for example, Apache 2.0 or LGPL) requires the licence text to be included with the software, that full text is shipped inside the product.</p>
+      <p>Categories of open-source software that our products currently rely on include, without limitation:</p>
+      <ul>
+        <li>Android platform libraries and Jetpack components published by the Android Open Source Project;</li>
+        <li>The Kotlin standard library and Kotlin coroutines;</li>
+        <li>Networking stacks such as OkHttp;</li>
+        <li>Image and media libraries such as Coil;</li>
+        <li>Server-side runtime, framework, and data-access components;</li>
+        <li>Cryptographic libraries used for transport and application-layer encryption.</li>
+      </ul>
+      <p>The precise list evolves with each release. The version shipped inside each product is the authoritative record.</p>
+
+      <h2>4. Third-party trademarks</h2>
+      <p>Open-source projects and their trademarks are the property of their respective owners. Their names are used here for identification and attribution only, and do not imply endorsement of NextSpace Labs by those projects, or vice versa. See our <a href="/ip.html">Intellectual Property Notice</a> for our broader policy on third-party marks.</p>
+
+      <h2>5. Requesting source or a licence copy</h2>
+      <p>If you would like a copy of the source code for an open-source component we distribute inside a product, or a copy of a specific licence text, write to <a href="mailto:connect@nxtspacelabs.com?subject=Open%20Source%20Source%20Request">connect@nxtspacelabs.com</a> with the component name and the product version. Where a licence obligates us to provide such a copy, we will do so at no charge, using the delivery mechanism most appropriate to the licence.</p>
+
+      <h2>6. Our own open contributions</h2>
+      <p>Where we release code, plug-ins, or fixes back to the open-source community, we do so from our public repositories, under a licence appropriate to the contribution. Contribution activity is not made under this Website&rsquo;s Terms &mdash; the licence and CLA of the receiving project governs.</p>
+
+      <h2>7. Changes to this page</h2>
+      <p>We update this page as our material Website dependencies change. Product-level dependencies are reflected in the in-product credits screen rather than here.</p>
+
+      <h2>8. Contact</h2>
+      <ul>
+        <li><strong>Attribution corrections:</strong> <a href="mailto:connect@nxtspacelabs.com?subject=Open%20Source%20Attribution">connect@nxtspacelabs.com</a></li>
+        <li><strong>Postal:</strong> NextSpace Labs Private Limited, Door No 1-60/8/A &amp; B, 3<sup>rd</sup> Floor, KNR Square, Opp. The Platina, Gachibowli, Kondapur, Hyderabad &mdash; 500 032, Telangana, India</li>
+      </ul>
+
+      <div class="legal-version-history">
+        <h4>Version history</h4>
+        <ul>
+          <li><strong>Version 1.0</strong> &mdash; effective 4 July 2026 &mdash; first publication.</li>
+        </ul>
+      </div>
+
+      <div class="legal-signoff">
+        <em>Every product we ship is downstream of code somebody else wrote for free. This page is one of the ways we thank them.</em>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div id="ns-footer"></div>
+<div id="ns-hidden"></div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js" } }
+</script>
+<script type="module" src="/assets/scene-lite.js"></script>
+<script src="/assets/partials.js"></script>
+<script src="/assets/premium.js"></script>
+
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

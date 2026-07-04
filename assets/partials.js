@@ -195,10 +195,13 @@
         <li><a href="/privacy.html">Privacy Policy</a></li>
         <li><a href="/terms.html">Terms of use</a></li>
         <li><a href="/cookies.html">Cookies</a></li>
+        <li><a href="/acceptable-use.html">Acceptable Use</a></li>
+        <li><a href="/refunds.html">Refunds &amp; Cancellation</a></li>
+        <li><a href="/ip.html">Intellectual Property</a></li>
         <li><a href="/security.html">Security</a></li>
         <li><a href="/responsible-ai.html">Responsible AI</a></li>
         <li><a href="/accessibility.html">Accessibility</a></li>
-        <li><a href="/ip.html">Intellectual Property</a></li>
+        <li><a href="/open-source.html">Open-Source Attribution</a></li>
         <li><a href="/esg.html">People &amp; ESG</a></li>
         <li><a href="#" data-cookie-open>Cookie preferences</a></li>
       </ul>
