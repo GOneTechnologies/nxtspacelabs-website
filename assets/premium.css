@@ -561,6 +561,83 @@ footer {
   padding: 12px 18px; border: 1px solid var(--line-2); border-radius: 999px;
   display: inline-block; margin-bottom: 40px;
 }
+.longform .legal-header { margin: 24px 0 60px; }
+.longform .legal-meta {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px 32px;
+  padding: 22px 26px; border: 1px solid var(--line-2); border-radius: 14px;
+  background: rgba(247, 245, 240, 0.02);
+  margin-bottom: 20px;
+}
+.longform .legal-meta > div { font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: 0.3px; color: var(--mist-2); line-height: 1.6; }
+.longform .legal-meta .label {
+  display: block; font-family: "Inter"; font-size: 9.5px;
+  letter-spacing: 2.5px; text-transform: uppercase; color: var(--nebula);
+  margin-bottom: 6px; font-weight: 500;
+}
+.longform .legal-note {
+  padding: 20px 24px; border: 1px dashed var(--line-2); border-radius: 14px;
+  background: rgba(251, 191, 36, 0.04);
+  font-family: "Instrument Serif", serif; font-style: italic;
+  color: var(--mist-2); font-size: 14.5px; line-height: 1.75;
+}
+.longform .legal-note strong { color: var(--amber); font-family: "Inter", sans-serif; font-style: normal; font-weight: 500; letter-spacing: 0.3px; }
+.longform .legal-signoff {
+  margin-top: 60px; padding: 32px; border-top: 1px solid var(--line);
+  font-family: "Instrument Serif", serif; font-style: italic;
+  color: var(--dim); font-size: 15.5px; line-height: 1.75; text-align: center;
+}
+
+/* Document download / print actions in the page hero */
+.doc-actions { margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap; }
+.doc-download, .doc-print {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 22px; border-radius: 999px;
+  border: 1px solid var(--line-2);
+  background: rgba(247, 245, 240, 0.02);
+  backdrop-filter: blur(20px);
+  color: var(--mist-2); font-family: "Inter"; font-size: 11.5px;
+  letter-spacing: 2px; text-transform: uppercase; cursor: none;
+  transition: border-color 0.4s, background 0.4s, color 0.4s, transform 0.4s;
+}
+.doc-download:hover, .doc-print:hover {
+  border-color: var(--nebula); background: rgba(167, 139, 250, 0.08);
+  color: var(--mist); transform: translateY(-1px);
+}
+.doc-download svg, .doc-print svg { width: 14px; height: 14px; opacity: 0.8; }
+
+/* Print stylesheet — legal docs read cleanly as PDF via browser Save-as-PDF */
+@media print {
+  body, body.night {
+    background: white !important; color: #111 !important;
+    cursor: auto !important;
+  }
+  #scene, .grain, .vignette, .cursor-dot, .cursor-ring, .cursor-light,
+  nav.top, .menu-overlay, .sound-toggle, .doc-actions, .skip-link,
+  .time-tag, #ns-nav, #ns-menu, #ns-sound, #ns-hidden, footer::before,
+  .foot-coda, .foot-grid, .foot-bottom { display: none !important; }
+  .page-hero { min-height: auto !important; padding: 0 0 20px !important; }
+  .page-hero-tag, .page-title, .page-lede { color: #111 !important; }
+  .page-hero-tag em, .page-title .italic { color: #6B21A8 !important; background: none !important; -webkit-text-fill-color: #6B21A8 !important; }
+  .chapter { padding: 0 !important; }
+  .longform { max-width: 100% !important; padding: 0 !important; }
+  .longform h2, .longform h3 { color: #111 !important; page-break-after: avoid; }
+  .longform h3 { color: #6B21A8 !important; }
+  .longform p, .longform li { color: #333 !important; font-size: 11pt !important; line-height: 1.6 !important; }
+  .longform a { color: #6B21A8 !important; text-decoration: underline !important; }
+  .longform strong { color: #111 !important; }
+  .longform em { color: #6B21A8 !important; }
+  .longform .legal-meta { background: #f6f4ef !important; border-color: #d4cfc0 !important; }
+  .longform .legal-meta > div, .longform .legal-meta .label { color: #333 !important; }
+  .longform .legal-note { background: #fff8e5 !important; border-color: #d4a017 !important; color: #444 !important; }
+  .longform .legal-note strong { color: #8a5a00 !important; }
+  .longform .legal-signoff { color: #666 !important; border-color: #ddd !important; }
+  .cookie-table th, .cookie-table td { color: #333 !important; border-color: #ddd !important; }
+  .cookie-table th { color: #6B21A8 !important; }
+  @page { margin: 22mm 18mm 20mm; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #666; }
+  a[href^="mailto:"]::after, a[href^="#"]::after { content: ""; }
+}
 
 /* ═══ Contact form ═══ */
 .form-wrap { max-width: 640px; margin: 0 auto; }
