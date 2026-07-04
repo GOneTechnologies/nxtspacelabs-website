@@ -64,6 +64,56 @@
   }
   .cc-section-title em { font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula); }
   .cc-section-lede { color: var(--dim); font-size: 15px; max-width: 640px; line-height: 1.7; }
+
+  /* ─── Search / filter ─── */
+  .cc-searchwrap { margin: 40px 0 8px; }
+  .cc-searchlabel {
+    display: block; font-family: "JetBrains Mono", monospace; font-size: 10px;
+    letter-spacing: 3px; text-transform: uppercase; color: var(--dim-2);
+    margin-bottom: 12px; font-weight: 500;
+  }
+  .cc-searchbox {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 18px; border: 1px solid var(--line);
+    border-radius: 12px; background: rgba(255,255,255,0.015);
+    transition: border-color .25s ease, background .25s ease;
+  }
+  .cc-searchbox:focus-within {
+    border-color: var(--nebula); background: rgba(255,255,255,0.03);
+  }
+  .cc-searchbox svg { width: 16px; height: 16px; color: var(--dim); flex: 0 0 auto; }
+  .cc-searchbox input {
+    flex: 1 1 auto;
+    background: transparent; border: none; outline: none;
+    color: var(--mist); font-family: "Inter"; font-size: 15px;
+    padding: 0; caret-color: var(--nebula);
+  }
+  .cc-searchbox input::placeholder { color: var(--dim-2); }
+  .cc-searchbox input::-webkit-search-cancel-button { display: none; }
+  .cc-searchclear {
+    flex: 0 0 auto; width: 24px; height: 24px;
+    border: none; background: transparent; color: var(--dim);
+    cursor: pointer; font-size: 20px; line-height: 1;
+    padding: 0; border-radius: 999px;
+    transition: color .2s ease, background .2s ease;
+  }
+  .cc-searchclear:hover { color: var(--mist); background: rgba(255,255,255,0.06); }
+  .cc-searchempty {
+    padding: 20px 0 0; color: var(--dim); font-size: 14.5px; line-height: 1.65;
+  }
+  .cc-searchempty a { color: var(--nebula); border-bottom: 1px solid var(--nebula); }
+
+  /* When filtering, non-matching cards + their section headings hide */
+  body.cc-filtering .cc-card.cc-hidden { display: none; }
+  body.cc-filtering .cc-section-empty { display: none; }
+
+  /* ─── Versioning disclaimer ─── */
+  .cc-disclaimer { padding: 60px 0 80px; }
+  .cc-disclaimer p {
+    max-width: 720px; margin: 0 auto; text-align: center;
+    color: var(--dim); font-size: 13.5px; line-height: 1.7;
+    font-family: "Inter"; font-style: italic;
+  }
 </style>
 </head>
 
@@ -88,7 +138,7 @@
       <span class="italic">every commitment</span>.
     </h1>
     <p class="page-lede reveal d2">
-      Every legal, security, ethical, and accessibility commitment NextSpace Labs makes &mdash; gathered here so you never have to hunt for the version that applies to you. Each document is versioned, dated, and open to challenge.
+      Whether you&rsquo;re a customer, partner, researcher, regulator, or applicant, this is where you&rsquo;ll find the commitments that govern how NextSpace Labs operates &mdash; every legal, security, ethical, and accessibility document, versioned, dated, and open to challenge.
     </p>
   </div>
 </header>
@@ -96,16 +146,26 @@
 <section class="chapter">
   <div class="wrap">
 
+    <div class="reveal cc-searchwrap">
+      <label class="cc-searchlabel" for="ccSearch">Find a document</label>
+      <div class="cc-searchbox">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14" stroke-linecap="round"/></svg>
+        <input type="search" id="ccSearch" placeholder="Try &ldquo;refund&rdquo;, &ldquo;GDPR&rdquo;, &ldquo;disclosure&rdquo;&hellip;" autocomplete="off" aria-label="Search compliance documents">
+        <button type="button" class="cc-searchclear" id="ccSearchClear" aria-label="Clear search" hidden>&times;</button>
+      </div>
+      <div class="cc-searchempty" id="ccSearchEmpty" hidden>No document matches that search. Try a different word, or write to <a href="mailto:connect@nxtspacelabs.com?subject=Compliance">connect@nxtspacelabs.com</a>.</div>
+    </div>
+
     <div class="reveal">
       <h2 class="cc-section-title"><em>Legal</em> foundations</h2>
-      <p class="cc-section-lede">The three documents that govern how you and NextSpace Labs relate to each other, and how personal data flows through our products.</p>
+      <p class="cc-section-lede">The core documents that govern the relationship between you and NextSpace Labs, and how personal data flows through our products.</p>
     </div>
 
     <div class="cc-grid">
-      <a href="/privacy.html" class="cc-card reveal" data-hover>
+      <a href="/privacy.html" class="cc-card reveal" data-hover data-cc-terms="privacy data personal information gdpr dpdp ccpa cpra lgpd rights delete consent">
         <div class="cc-num">01 · Data protection</div>
         <h3>Privacy <em>Policy</em></h3>
-        <p>How we collect, use, share, retain, and protect personal information under India&rsquo;s DPDP Act 2023, EU/UK GDPR, California CCPA/CPRA, Brazil&rsquo;s LGPD, and equivalent laws.</p>
+        <p>Learn how we collect, use, protect, and delete your personal information.</p>
         <div class="cc-tags">
           <span class="cc-tag">DPDP 2023</span>
           <span class="cc-tag">GDPR</span>
@@ -115,10 +175,10 @@
         <span class="cc-arrow">Read the policy &rarr;</span>
       </a>
 
-      <a href="/terms.html" class="cc-card reveal d1" data-hover>
+      <a href="/terms.html" class="cc-card reveal d1" data-hover data-cc-terms="terms use contract agreement rules governing law dispute jurisdiction arbitration hyderabad india consumer">
         <div class="cc-num">02 · Contract</div>
         <h3>Terms of <em>Use</em></h3>
-        <p>The contract between you and NextSpace Labs when you use our Website, applications, or services. Governing law, dispute resolution, statutory consumer rights.</p>
+        <p>The rules for using our Website, applications, and services.</p>
         <div class="cc-tags">
           <span class="cc-tag">India</span>
           <span class="cc-tag">Hyderabad seat</span>
@@ -127,10 +187,10 @@
         <span class="cc-arrow">Read the terms &rarr;</span>
       </a>
 
-      <a href="/cookies.html" class="cc-card reveal d2" data-hover>
+      <a href="/cookies.html" class="cc-card reveal d2" data-hover data-cc-terms="cookies trackers preferences analytics necessary strictly gpc dnt do-not-track eprivacy consent banner">
         <div class="cc-num">03 · Trackers</div>
         <h3>Cookie <em>Policy</em></h3>
-        <p>Every cookie and similar technology we use, why, and how to control them. GPC and Do-Not-Track honoured. No advertising or cross-site tracking.</p>
+        <p>Every cookie we set, why we set it, and how to control your consent.</p>
         <div class="cc-tags">
           <span class="cc-tag">GPC</span>
           <span class="cc-tag">DNT</span>
@@ -139,10 +199,10 @@
         <span class="cc-arrow">Read the cookie policy &rarr;</span>
       </a>
 
-      <a href="/acceptable-use.html" class="cc-card reveal d3" data-hover>
+      <a href="/acceptable-use.html" class="cc-card reveal d3" data-hover data-cc-terms="acceptable use aup conduct moderation enforcement appeals abuse reports harassment safety">
         <div class="cc-num">04 · Conduct</div>
         <h3>Acceptable <em>Use</em></h3>
-        <p>What you can and cannot do on our Services &mdash; prohibited conduct, moderation, enforcement, appeals. Incorporated by reference into the Terms.</p>
+        <p>The rules for how you behave on our Services &mdash; what&rsquo;s allowed, what isn&rsquo;t, and how appeals work.</p>
         <div class="cc-tags">
           <span class="cc-tag">Enforcement</span>
           <span class="cc-tag">Appeals</span>
@@ -151,10 +211,10 @@
         <span class="cc-arrow">Read the AUP &rarr;</span>
       </a>
 
-      <a href="/refunds.html" class="cc-card reveal" data-hover>
+      <a href="/refunds.html" class="cc-card reveal" data-hover data-cc-terms="refund refunds cancellation cancel money subscription payment chargeback butterflies in-app purchase pro">
         <div class="cc-num">05 · Money</div>
         <h3>Refunds &amp; <em>Cancellation</em></h3>
-        <p>Subscription cancellations, in-app currency, chargebacks, app-store refunds, and every statutory right you hold under law that applies to you.</p>
+        <p>How to cancel a subscription, request a refund, or dispute a charge.</p>
         <div class="cc-tags">
           <span class="cc-tag">Statutory rights</span>
           <span class="cc-tag">7-day window</span>
@@ -163,10 +223,10 @@
         <span class="cc-arrow">Read the refund policy &rarr;</span>
       </a>
 
-      <a href="/ip.html" class="cc-card reveal d1" data-hover>
+      <a href="/ip.html" class="cc-card reveal d1" data-hover data-cc-terms="intellectual property ip copyright trademark logo brand takedown dmca licence licensing pairnow">
         <div class="cc-num">06 · Copyright &amp; IP</div>
         <h3>Intellectual <em>Property</em></h3>
-        <p>Our trademarks, copyright, permitted reuse of our content, third-party marks, and how to submit a takedown or licensing request.</p>
+        <p>Our trademarks and copyright &mdash; what you can reuse, and how to file a takedown or licensing request.</p>
         <div class="cc-tags">
           <span class="cc-tag">DMCA</span>
           <span class="cc-tag">IT Act 2000</span>
@@ -182,10 +242,10 @@
     </div>
 
     <div class="cc-grid">
-      <a href="/security.html" class="cc-card reveal" data-hover>
+      <a href="/security.html" class="cc-card reveal" data-hover data-cc-terms="security infrastructure encryption tls hsts headers rls access control secrets breach">
         <div class="cc-num">07 · Infrastructure</div>
         <h3>Security <em>Overview</em></h3>
-        <p>Our security posture at a high level: encryption in transit and at rest, access controls, secrets management, and the frameworks we align to.</p>
+        <p>How we protect your data &mdash; encryption, access controls, and the security frameworks we follow.</p>
         <div class="cc-tags">
           <span class="cc-tag">TLS 1.3</span>
           <span class="cc-tag">RLS</span>
@@ -194,10 +254,10 @@
         <span class="cc-arrow">Read the overview &rarr;</span>
       </a>
 
-      <a href="/security.html#disclosure" class="cc-card reveal d1" data-hover>
+      <a href="/security.html#disclosure" class="cc-card reveal d1" data-hover data-cc-terms="vulnerability disclosure bug bounty security report safe harbour researcher pgp cvd disclosure">
         <div class="cc-num">08 · Vulnerability disclosure</div>
         <h3>Responsible <em>Disclosure</em></h3>
-        <p>How to report a security issue to us safely, what we commit to in return, and the safe-harbour language that protects good-faith researchers.</p>
+        <p>How to report a security issue safely, and the protections you have when you do.</p>
         <div class="cc-tags">
           <span class="cc-tag">Safe harbour</span>
           <span class="cc-tag">CVD</span>
@@ -213,10 +273,10 @@
     </div>
 
     <div class="cc-grid">
-      <a href="/responsible-ai.html" class="cc-card reveal" data-hover>
+      <a href="/responsible-ai.html" class="cc-card reveal" data-hover data-cc-terms="ai artificial intelligence machine learning llm models responsible oversight transparency fairness bias">
         <div class="cc-num">09 · Applied intelligence</div>
         <h3>Responsible <em>AI</em></h3>
-        <p>Our five operating principles for machine-learning systems: human oversight, privacy, transparency, fairness, and security.</p>
+        <p>The principles we apply when we build with AI &mdash; oversight, privacy, transparency, fairness, and security.</p>
         <div class="cc-tags">
           <span class="cc-tag">Oversight</span>
           <span class="cc-tag">Privacy</span>
@@ -227,10 +287,10 @@
         <span class="cc-arrow">Read the principles &rarr;</span>
       </a>
 
-      <a href="/accessibility.html" class="cc-card reveal d1" data-hover>
+      <a href="/accessibility.html" class="cc-card reveal d1" data-hover data-cc-terms="accessibility a11y wcag disability screen reader keyboard contrast reduced motion assistive">
         <div class="cc-num">10 · Inclusive design</div>
         <h3>Accessibility <em>Statement</em></h3>
-        <p>Our commitment to WCAG 2.2 AA, what we already meet, what we are still working on, and how to reach us when the Website falls short for you.</p>
+        <p>How we design for everyone &mdash; and how to reach us when the Website falls short for you.</p>
         <div class="cc-tags">
           <span class="cc-tag">WCAG 2.2 AA</span>
           <span class="cc-tag">RPwD 2016</span>
@@ -239,10 +299,10 @@
         <span class="cc-arrow">Read the statement &rarr;</span>
       </a>
 
-      <a href="/open-source.html" class="cc-card reveal d2" data-hover>
+      <a href="/open-source.html" class="cc-card reveal d2" data-hover data-cc-terms="open source oss attribution credits licence license mit apache ofl fonts three.js">
         <div class="cc-num">11 · Attribution</div>
         <h3>Open-Source <em>Attribution</em></h3>
-        <p>The open-source projects our Website and products stand on, honestly credited. Full per-product credits ship inside each application.</p>
+        <p>Credit for the open-source projects our Website and products stand on.</p>
         <div class="cc-tags">
           <span class="cc-tag">MIT</span>
           <span class="cc-tag">Apache 2.0</span>
@@ -251,10 +311,10 @@
         <span class="cc-arrow">Read the attribution &rarr;</span>
       </a>
 
-      <a href="/esg.html" class="cc-card reveal d3" data-hover>
+      <a href="/esg.html" class="cc-card reveal d3" data-hover data-cc-terms="esg environment social governance people planet sustainability ethics annual report climate">
         <div class="cc-num">12 · Environment &amp; society</div>
         <h3>People &amp; <em>ESG</em></h3>
-        <p>What we take responsibility for &mdash; publicly. People, privacy, ethics, sustainability, and AI safety, with an annual reporting cadence.</p>
+        <p>What we take responsibility for &mdash; publicly. People, ethics, sustainability, and AI safety, with an annual reporting cadence.</p>
         <div class="cc-tags">
           <span class="cc-tag">Annual report</span>
           <span class="cc-tag">Founder-owned</span>
@@ -262,10 +322,10 @@
         <span class="cc-arrow">Read our responsibilities &rarr;</span>
       </a>
 
-      <a href="/contact.html" class="cc-card reveal" data-hover>
+      <a href="/contact.html" class="cc-card reveal" data-hover data-cc-terms="grievance officer dpo escalation contact complaint report help support inbox">
         <div class="cc-num">13 · Governance contact</div>
         <h3>Grievance <em>&amp; escalation</em></h3>
-        <p>The Grievance Officer under India&rsquo;s IT Rules 2021, the DPO surface under DPDP, and the general compliance inbox. One human on the other end.</p>
+        <p>The Grievance Officer under India&rsquo;s IT Rules 2021 and the general compliance inbox. Every report is reviewed and routed to the appropriate team.</p>
         <div class="cc-tags">
           <span class="cc-tag">Grievance Officer</span>
           <span class="cc-tag">DPO</span>
@@ -291,8 +351,8 @@
       </div>
       <div class="card reveal d1">
         <div class="card-tag">Advertising</div>
-        <h4>No third-party <span class="italic">ad tech</span>.</h4>
-        <p>No advertising cookies, no cross-site tracking pixels, no data brokers. Analytics is first-party and anonymised only.</p>
+        <h4>No third-party <span class="italic">ad tech</span> today.</h4>
+        <p>We do not currently use advertising cookies, cross-site tracking pixels, or data brokers. Analytics is first-party and anonymised. If this ever changes, users will be told before it does.</p>
       </div>
       <div class="card reveal d2">
         <div class="card-tag">Coercion</div>
@@ -305,11 +365,17 @@
 
 <section class="cta-block reveal">
   <h2>See something <span class="italic">off</span>?</h2>
-  <p>If any document here reads incorrectly, or any behaviour on our Website contradicts what we&rsquo;ve committed to, write to us. Every note is read.</p>
+  <p>If any document here reads incorrectly, or any behaviour on our Website contradicts what we&rsquo;ve committed to, write to us. Every report is reviewed and routed to the appropriate team.</p>
   <a href="mailto:connect@nxtspacelabs.com?subject=Compliance" class="glass-btn" data-hover>
     <span>Write to compliance</span>
     <span class="arrow">&rarr;</span>
   </a>
+</section>
+
+<section class="cc-disclaimer reveal">
+  <div class="wrap">
+    <p>These policies evolve alongside our products and applicable laws. The latest version published on this page supersedes previous versions. Each document carries its own version number, effective date, and change log.</p>
+  </div>
 </section>
 
 <div id="ns-footer"></div>
@@ -321,6 +387,68 @@
 <script type="module" src="/assets/scene-lite.js"></script>
 <script src="/assets/partials.js"></script>
 <script src="/assets/premium.js"></script>
+
+<script>
+/* Compliance Center — client-side card filter.
+   Matches against each card's title, description, tags, and data-cc-terms alias list.
+   When a section has zero matching cards, its heading+lede also hide.
+   All keyed off body.cc-filtering so styles remain simple. */
+(function ccFilter() {
+  const input = document.getElementById('ccSearch');
+  const clear = document.getElementById('ccSearchClear');
+  const empty = document.getElementById('ccSearchEmpty');
+  if (!input) return;
+
+  const cards = Array.from(document.querySelectorAll('.cc-card'));
+  const searchable = cards.map(c => ({
+    el: c,
+    haystack: (
+      (c.textContent || '') + ' ' + (c.dataset.ccTerms || '')
+    ).toLowerCase()
+  }));
+
+  // Pair each section-heading block with the .cc-grid that follows it,
+  // so we can hide the heading when its grid has zero visible cards.
+  const sections = Array.from(document.querySelectorAll('.cc-section-title'))
+    .map(title => {
+      const headBlock = title.parentElement;
+      let grid = headBlock ? headBlock.nextElementSibling : null;
+      while (grid && !grid.classList.contains('cc-grid')) grid = grid.nextElementSibling;
+      return { headBlock, grid };
+    })
+    .filter(s => s.headBlock && s.grid);
+
+  function apply() {
+    const q = input.value.trim().toLowerCase();
+    clear.hidden = q.length === 0;
+    if (q === '') {
+      document.body.classList.remove('cc-filtering');
+      cards.forEach(c => c.classList.remove('cc-hidden'));
+      sections.forEach(s => s.headBlock.classList.remove('cc-section-empty'));
+      empty.hidden = true;
+      return;
+    }
+    document.body.classList.add('cc-filtering');
+    let anyVisible = false;
+    searchable.forEach(({ el, haystack }) => {
+      const hit = haystack.includes(q);
+      el.classList.toggle('cc-hidden', !hit);
+      if (hit) anyVisible = true;
+    });
+    sections.forEach(({ headBlock, grid }) => {
+      const visibleInSection = grid.querySelectorAll('.cc-card:not(.cc-hidden)').length;
+      headBlock.classList.toggle('cc-section-empty', visibleInSection === 0);
+    });
+    empty.hidden = anyVisible;
+  }
+
+  input.addEventListener('input', apply);
+  clear.addEventListener('click', () => { input.value = ''; apply(); input.focus(); });
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && input.value) { input.value = ''; apply(); }
+  });
+})();
+</script>
 
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
