@@ -189,12 +189,18 @@
       </ul>
     </div>
     <div class="foot-col">
-      <h5>Responsibility</h5>
+      <h5>Compliance</h5>
       <ul>
-        <li><a href="/esg.html">People &amp; ESG</a></li>
+        <li><a href="/compliance.html"><strong>Compliance Center</strong> &rarr;</a></li>
         <li><a href="/privacy.html">Privacy Policy</a></li>
         <li><a href="/terms.html">Terms of use</a></li>
         <li><a href="/cookies.html">Cookies</a></li>
+        <li><a href="/security.html">Security</a></li>
+        <li><a href="/responsible-ai.html">Responsible AI</a></li>
+        <li><a href="/accessibility.html">Accessibility</a></li>
+        <li><a href="/ip.html">Intellectual Property</a></li>
+        <li><a href="/esg.html">People &amp; ESG</a></li>
+        <li><a href="#" data-cookie-open>Cookie preferences</a></li>
       </ul>
     </div>
   </div>
@@ -243,6 +249,49 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="16" y1="9" x2="22" y2="15" stroke-linecap="round"/><line x1="22" y1="9" x2="16" y2="15" stroke-linecap="round"/></svg>
 </button>`;
 
+  const COOKIE_HTML = `
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie preferences" hidden>
+  <div class="cookie-inner">
+    <div class="cookie-copy">
+      <h4>A short word about <span class="italic">cookies</span>.</h4>
+      <p>We use a small set of first-party cookies to keep the site working and, with your consent, to understand which pages people read. No advertising cookies. No cross-site tracking. Ever.</p>
+      <p class="cookie-links">
+        <a href="/cookies.html" data-hover>Read the Cookie Policy</a>
+        &middot;
+        <a href="/privacy.html" data-hover>Read the Privacy Policy</a>
+      </p>
+    </div>
+    <div class="cookie-actions">
+      <button class="cookie-btn cookie-manage" type="button" id="cookieManage" data-hover>Manage preferences</button>
+      <button class="cookie-btn cookie-reject" type="button" id="cookieReject" data-hover>Reject non-essential</button>
+      <button class="cookie-btn cookie-accept" type="button" id="cookieAccept" data-hover>Accept all</button>
+    </div>
+    <div class="cookie-prefs" id="cookiePrefs" hidden>
+      <div class="cookie-pref">
+        <label>
+          <input type="checkbox" checked disabled>
+          <span><strong>Strictly necessary</strong> &mdash; required for the site to load and remember your consent. Cannot be disabled.</span>
+        </label>
+      </div>
+      <div class="cookie-pref">
+        <label>
+          <input type="checkbox" id="cookiePrefPreferences">
+          <span><strong>Preferences</strong> &mdash; remembers small choices like sound-atmosphere on or off.</span>
+        </label>
+      </div>
+      <div class="cookie-pref">
+        <label>
+          <input type="checkbox" id="cookiePrefAnalytics">
+          <span><strong>Analytics</strong> &mdash; anonymous first-party page counts via Vercel. No individual profiling.</span>
+        </label>
+      </div>
+      <div class="cookie-prefs-actions">
+        <button class="cookie-btn cookie-save" type="button" id="cookieSave" data-hover>Save my choices</button>
+      </div>
+    </div>
+  </div>
+</div>`;
+
   function mount() {
     const navSlot = document.getElementById('ns-nav');
     const menuSlot = document.getElementById('ns-menu');
@@ -254,6 +303,11 @@
     if (footerSlot)  footerSlot.outerHTML = FOOTER_HTML;
     if (hiddenSlot)  hiddenSlot.outerHTML = HIDDEN_HTML;
     if (soundSlot)   soundSlot.outerHTML = SOUND_HTML;
+
+    // Cookie banner — inject once at end of body, wire behaviour.
+    if (!document.getElementById('cookieBanner')) {
+      document.body.insertAdjacentHTML('beforeend', COOKIE_HTML);
+    }
 
     // Skip-to-content link for keyboard users — first focusable on the page.
     if (!document.querySelector('.skip-link')) {
@@ -270,8 +324,84 @@
 
     // Wire the menu directly — inline handlers avoid any timing races with premium.js.
     wireMenu();
+    wireCookieBanner();
     // Fire the shared event so premium.js re-binds cursor / reveal handlers against the new DOM.
     window.dispatchEvent(new CustomEvent('ns:partials-mounted'));
+  }
+
+  /* ─────────── Cookie consent ───────────
+     Stored as JSON in localStorage['ns_cookie_consent'] with shape:
+       { v:1, ts:<epoch ms>, necessary:true, preferences:bool, analytics:bool }
+     Absence of the key = banner surfaces on the next page load.
+     Any of the three actions (Accept all / Reject / Save) closes the banner and
+     persists a decision. A "Cookie preferences" link in the footer re-opens it. */
+  const CONSENT_KEY = 'ns_cookie_consent';
+  function readConsent() {
+    try { const r = JSON.parse(localStorage.getItem(CONSENT_KEY)); return r && r.v === 1 ? r : null; }
+    catch (_) { return null; }
+  }
+  function writeConsent(preferences, analytics) {
+    const row = { v: 1, ts: Date.now(), necessary: true, preferences: !!preferences, analytics: !!analytics };
+    try { localStorage.setItem(CONSENT_KEY, JSON.stringify(row)); } catch (_) {}
+    document.documentElement.dataset.cookiePreferences = row.preferences ? '1' : '0';
+    document.documentElement.dataset.cookieAnalytics = row.analytics ? '1' : '0';
+    window.dispatchEvent(new CustomEvent('ns:consent-changed', { detail: row }));
+    return row;
+  }
+  function wireCookieBanner() {
+    const banner = document.getElementById('cookieBanner');
+    if (!banner) return;
+    const prefs = document.getElementById('cookiePrefs');
+    const cbPref = document.getElementById('cookiePrefPreferences');
+    const cbAnal = document.getElementById('cookiePrefAnalytics');
+    const btnManage = document.getElementById('cookieManage');
+    const btnReject = document.getElementById('cookieReject');
+    const btnAccept = document.getElementById('cookieAccept');
+    const btnSave   = document.getElementById('cookieSave');
+
+    const show = () => { banner.hidden = false; requestAnimationFrame(() => banner.classList.add('on')); };
+    const hide = () => { banner.classList.remove('on'); setTimeout(() => { banner.hidden = true; }, 260); };
+
+    // Detect Global Privacy Control — treat as "reject non-essential" per Cookie Policy.
+    const gpc = navigator.globalPrivacyControl === true;
+    const existing = readConsent();
+    if (!existing) {
+      if (gpc) {
+        writeConsent(false, false);           // honour GPC silently, do not surface the banner
+      } else {
+        show();
+      }
+    } else {
+      document.documentElement.dataset.cookiePreferences = existing.preferences ? '1' : '0';
+      document.documentElement.dataset.cookieAnalytics = existing.analytics ? '1' : '0';
+    }
+
+    btnManage && btnManage.addEventListener('click', () => {
+      const opening = prefs.hidden;
+      prefs.hidden = !opening;
+      btnManage.setAttribute('aria-expanded', opening ? 'true' : 'false');
+      if (opening && existing) {
+        cbPref.checked = !!existing.preferences;
+        cbAnal.checked = !!existing.analytics;
+      }
+    });
+    btnReject && btnReject.addEventListener('click', () => { writeConsent(false, false); hide(); });
+    btnAccept && btnAccept.addEventListener('click', () => { writeConsent(true, true);   hide(); });
+    btnSave   && btnSave.addEventListener('click',   () => { writeConsent(!!cbPref.checked, !!cbAnal.checked); hide(); });
+
+    // Any footer link with [data-cookie-open] re-opens the banner.
+    document.querySelectorAll('[data-cookie-open]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const cur = readConsent();
+        if (cur) {
+          if (cbPref) cbPref.checked = !!cur.preferences;
+          if (cbAnal) cbAnal.checked = !!cur.analytics;
+          if (prefs) prefs.hidden = false;
+        }
+        show();
+      });
+    });
   }
 
   function wireMenu() {

@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<!--
+  NextSpace Labs — Responsible AI Statement · Digital Headquarters
+  © 2026 NextSpace Labs Private Limited · All rights reserved.
+-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#020209" />
+<meta name="description" content="NextSpace Labs Responsible AI Statement — five operating principles for machine-learning systems: human oversight, privacy, transparency, fairness, and security." />
+<meta property="og:title" content="Responsible AI · NextSpace Labs" />
+<meta property="og:description" content="Five operating principles for how we build with machine-learning systems." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nxtspacelabs.com/responsible-ai.html" />
+<meta property="og:image" content="https://nxtspacelabs.com/logo.svg" />
+<link rel="canonical" href="https://nxtspacelabs.com/responsible-ai.html" />
+<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+<link rel="apple-touch-icon" href="/logo.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@nxtspacelabs" />
+<meta name="twitter:creator" content="@nxtspacelabs" />
+<meta name="twitter:image" content="https://nxtspacelabs.com/logo.svg" />
+<title>Responsible AI &mdash; NextSpace Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,200..900,0..100&family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/premium.css">
+</head>
+
+<body class="night">
+
+<canvas id="scene"></canvas>
+<div class="cursor-light" id="cursorLight"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div id="ns-nav"></div>
+<div id="ns-menu"></div>
+<div id="ns-sound"></div>
+
+<header class="page-hero" id="main" tabindex="-1">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag reveal"><em>Governance</em> · Responsible AI</div>
+    <h1 class="page-title reveal d1">
+      Intelligence,<br>
+      <span class="italic">handled carefully</span>.
+    </h1>
+    <p class="page-lede reveal d2">
+      Language models, image models, and other machine-learning systems appear inside several NextSpace Labs products. This page is our short, clear statement of the principles we apply when we build with them.
+    </p>
+    <div class="doc-actions reveal d3">
+      <a href="/legal/nxtspacelabs-responsible-ai.pdf" class="doc-download" download>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 2v9m0 0l-3-3m3 3l3-3M3 14h10" stroke-linecap="round"/></svg>
+        <span>Download PDF</span>
+      </a>
+      <button class="doc-print" onclick="window.print()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 6V2h8v4M4 12H2V6h12v6h-2m-8 0v3h8v-3m-8 0h8"/></svg>
+        <span>Print</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="chapter">
+  <div class="wrap">
+    <div class="longform reveal">
+
+      <div class="legal-header">
+        <div class="legal-meta">
+          <div><span class="label">Effective</span> 4 July 2026</div>
+          <div><span class="label">Version</span> 1.0</div>
+          <div><span class="label">Last updated</span> 4 July 2026</div>
+          <div><span class="label">Contact</span> connect@nxtspacelabs.com</div>
+        </div>
+        <div class="legal-note">
+          <strong>Statement of intent.</strong> These are commitments about how we operate, not marketing lines. Where a specific product deploys AI, additional in-product notices apply.
+        </div>
+      </div>
+
+      <h2>1. Why this page exists</h2>
+      <p>Machine-learning systems can accelerate useful work &mdash; and they can quietly cause harm at scale. We do not treat &ldquo;AI&rdquo; as a marketing decoration. Where we use it, we do so with intent, with named principles, and with a clear line of human accountability. This page is our public commitment to those principles.</p>
+      <p>We align our practice with widely-recognised frameworks such as the <em>OECD AI Principles</em>, the <em>NIST AI Risk Management Framework (AI RMF 1.0)</em>, the <em>UNESCO Recommendation on the Ethics of Artificial Intelligence</em>, the <em>EU AI Act</em>, and, in India, the emerging obligations under the DPDP Act 2023 and the guidance being developed by MeitY. Where these frameworks require more of us than the strict letter of the law, we apply the higher bar.</p>
+
+      <h2>2. Our five principles</h2>
+
+      <h3>2.1 Human oversight</h3>
+      <p>Every consequential decision made by or with a machine-learning system inside our products is subject to human oversight. In practice:</p>
+      <ul>
+        <li>Model outputs that materially affect a person&rsquo;s access to a service, safety, earnings, or reputation are gated by a human review step, not shipped straight to the user.</li>
+        <li>Where a fully-automated decision is unavoidable, we describe it plainly to the user, and we provide a route to human review under Article 22 GDPR, the DPDP Rules, and equivalent laws.</li>
+        <li>We name an internal owner for each production model &mdash; a person, not a team &mdash; who is answerable for its behaviour.</li>
+      </ul>
+
+      <h3>2.2 Privacy by construction</h3>
+      <p>We treat training data and inference data with the same discipline we apply to any other personal information.</p>
+      <ul>
+        <li>We only train or fine-tune on data we have a lawful basis to use, minimising personal data where possible and preferring synthetic or licensed corpora.</li>
+        <li>User conversations, generated content, or model prompts are not used to train third-party foundation models by default. Where a user opts in to help us improve a feature, the opt-in is explicit and revocable.</li>
+        <li>We prefer providers whose data-processing terms guarantee that our inference traffic will not be used to train their models.</li>
+        <li>Where a feature can run against a local, on-device model without loss of quality, we prefer that.</li>
+      </ul>
+
+      <h3>2.3 Transparency</h3>
+      <p>Users have the right to know when they are talking to a machine.</p>
+      <ul>
+        <li>Any product surface where an AI system authors, ranks, or moderates content is labelled clearly, in-product, in plain English.</li>
+        <li>Where a suggestion, translation, or summary comes from a model, we disclose that fact next to the output &mdash; not buried in a policy page.</li>
+        <li>We publish an <em>AI Use Register</em> inside each product describing which features rely on which model families, at what layer of the stack.</li>
+        <li>We do not simulate a human identity to gain a user&rsquo;s trust.</li>
+      </ul>
+
+      <h3>2.4 Fairness</h3>
+      <p>A model that only works well for the majority of users is a broken model. Our commitments:</p>
+      <ul>
+        <li>We evaluate models against the actual population of users a product will reach &mdash; including language, gender, region, and accessibility axes &mdash; and we do not ship a system that materially under-performs for a protected group without a documented reason and a mitigation plan.</li>
+        <li>We test models against known bias benchmarks appropriate to the modality and log the results.</li>
+        <li>Where a moderation model is involved, we make the reasoning visible to users on request, and we provide a clear appeal route.</li>
+        <li>We do not build automated ranking or matchmaking that uses caste, religion, or sensitive personal attributes as an input.</li>
+      </ul>
+
+      <h3>2.5 Security</h3>
+      <p>Machine-learning systems introduce new attack surfaces &mdash; prompt injection, data extraction, model theft. We treat those as first-class security concerns.</p>
+      <ul>
+        <li>We validate and sanitise inputs to model calls, and we constrain what a model is permitted to do downstream (no unbounded tool access, no unreviewed code execution).</li>
+        <li>Model outputs that trigger side effects (sending a message, making a payment, changing a setting) are subject to authorisation checks that do not depend on the model itself.</li>
+        <li>We monitor for anomalous prompts, data-exfiltration patterns, and known prompt-injection attack shapes.</li>
+        <li>Our responsible-disclosure programme &mdash; see the <a href="/security.html">Security page</a> &mdash; covers our AI systems as well as our conventional surfaces.</li>
+      </ul>
+
+      <h2>3. Things we will not do</h2>
+      <ul>
+        <li>We will not use models to make decisions that materially affect a person&rsquo;s liberty, livelihood, health, or safety without a human accountable for that decision.</li>
+        <li>We will not build systems that identify individuals in public spaces without their consent, or that generate biometric inferences (emotion, sexuality, political opinion) from voice, video, or text.</li>
+        <li>We will not use synthetic voices or faces to impersonate a real person without their explicit, revocable consent.</li>
+        <li>We will not generate content designed to deceive users about the source of the content (deep-fake defamation, synthetic evidence).</li>
+        <li>We will not use dark patterns, engagement optimisation, or personalisation that we would not be willing to describe openly to the affected user.</li>
+      </ul>
+
+      <h2>4. Accountability</h2>
+      <ul>
+        <li>The founder personally holds this policy. If any commitment on this page is not being met, the founder is answerable.</li>
+        <li>We keep an internal register of our production models: purpose, data sources, evaluation results, and named owner. Extracts from that register are published inside the product that uses the model.</li>
+        <li>We aim to publish an annual AI transparency note as our deployment matures &mdash; short, honest, comparable year to year.</li>
+      </ul>
+
+      <h2>5. Reporting a concern</h2>
+      <p>If you believe one of our AI-driven features has behaved unfairly, unsafely, or in a way inconsistent with this page:</p>
+      <ul>
+        <li>Write to <a href="mailto:connect@nxtspacelabs.com?subject=Responsible%20AI">connect@nxtspacelabs.com</a> with the subject line &ldquo;Responsible AI&rdquo;.</li>
+        <li>Include the product, the feature, the input that produced the output, and what the correct behaviour would have looked like.</li>
+        <li>We aim to acknowledge these reports within three business days and to investigate them in good faith.</li>
+      </ul>
+
+      <div class="legal-version-history">
+        <h4>Version history</h4>
+        <ul>
+          <li><strong>Version 1.0</strong> &mdash; effective 4 July 2026 &mdash; first publication.</li>
+        </ul>
+      </div>
+
+      <div class="legal-signoff">
+        <em>Every model we ship is a promise about the world we would like to build. This page names the promises we are willing to be held to.</em>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div id="ns-footer"></div>
+<div id="ns-hidden"></div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js" } }
+</script>
+<script type="module" src="/assets/scene-lite.js"></script>
+<script src="/assets/partials.js"></script>
+<script src="/assets/premium.js"></script>
+
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

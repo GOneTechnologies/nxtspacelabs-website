@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<!--
+  NextSpace Labs — Compliance Center · Digital Headquarters
+  © 2026 NextSpace Labs Private Limited · All rights reserved.
+-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#020209" />
+<meta name="description" content="NextSpace Labs Compliance Center — one place for every legal, ethical, and security commitment we make: Privacy, Terms, Cookies, Security, Responsible AI, Accessibility, Intellectual Property, ESG, and Vulnerability Disclosure." />
+<meta property="og:title" content="Compliance Center · NextSpace Labs" />
+<meta property="og:description" content="Every legal, security, and governance document — in one place." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nxtspacelabs.com/compliance.html" />
+<meta property="og:image" content="https://nxtspacelabs.com/logo.svg" />
+<link rel="canonical" href="https://nxtspacelabs.com/compliance.html" />
+<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+<link rel="apple-touch-icon" href="/logo.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@nxtspacelabs" />
+<meta name="twitter:creator" content="@nxtspacelabs" />
+<meta name="twitter:image" content="https://nxtspacelabs.com/logo.svg" />
+<title>Compliance Center &mdash; NextSpace Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,200..900,0..100&family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/premium.css">
+<style>
+  .cc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 40px; }
+  @media (max-width: 780px) { .cc-grid { grid-template-columns: 1fr; } }
+  .cc-card {
+    display: block; padding: 28px 26px; border: 1px solid var(--line);
+    border-radius: 14px; background: rgba(255,255,255,0.015);
+    transition: border-color .3s ease, transform .3s ease, background .3s ease;
+    text-decoration: none;
+  }
+  .cc-card:hover { border-color: var(--nebula); background: rgba(255,255,255,0.03); transform: translateY(-2px); }
+  .cc-card .cc-num {
+    font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 3px;
+    color: var(--dim-2); text-transform: uppercase;
+  }
+  .cc-card h3 {
+    font-family: "Fraunces", serif; font-weight: 300; font-size: 22px; line-height: 1.2;
+    letter-spacing: -0.02em; margin: 10px 0 8px; color: var(--mist);
+  }
+  .cc-card h3 em { font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula); }
+  .cc-card p { color: var(--dim); font-size: 14.5px; line-height: 1.65; margin-bottom: 14px; }
+  .cc-card .cc-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .cc-card .cc-tag {
+    display: inline-block; padding: 3px 10px; border: 1px solid var(--line);
+    border-radius: 999px; font-family: "JetBrains Mono", monospace; font-size: 10px;
+    color: var(--dim-2); letter-spacing: 1px;
+  }
+  .cc-card .cc-arrow {
+    display: block; margin-top: 16px; font-family: "JetBrains Mono", monospace;
+    font-size: 12px; color: var(--nebula);
+  }
+  .cc-section-title {
+    font-family: "Fraunces", serif; font-weight: 300;
+    font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.03em;
+    margin: 60px 0 8px; color: var(--mist);
+  }
+  .cc-section-title em { font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula); }
+  .cc-section-lede { color: var(--dim); font-size: 15px; max-width: 640px; line-height: 1.7; }
+</style>
+</head>
+
+<body class="night">
+
+<canvas id="scene"></canvas>
+<div class="cursor-light" id="cursorLight"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div id="ns-nav"></div>
+<div id="ns-menu"></div>
+<div id="ns-sound"></div>
+
+<header class="page-hero" id="main" tabindex="-1">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag reveal"><em>Governance</em> · Compliance Center</div>
+    <h1 class="page-title reveal d1">
+      One place for<br>
+      <span class="italic">every commitment</span>.
+    </h1>
+    <p class="page-lede reveal d2">
+      Every legal, security, ethical, and accessibility commitment NextSpace Labs makes &mdash; gathered here so you never have to hunt for the version that applies to you. Each document is versioned, dated, and open to challenge.
+    </p>
+  </div>
+</header>
+
+<section class="chapter">
+  <div class="wrap">
+
+    <div class="reveal">
+      <h2 class="cc-section-title"><em>Legal</em> foundations</h2>
+      <p class="cc-section-lede">The three documents that govern how you and NextSpace Labs relate to each other, and how personal data flows through our products.</p>
+    </div>
+
+    <div class="cc-grid">
+      <a href="/privacy.html" class="cc-card reveal" data-hover>
+        <div class="cc-num">01 · Data protection</div>
+        <h3>Privacy <em>Policy</em></h3>
+        <p>How we collect, use, share, retain, and protect personal information under India&rsquo;s DPDP Act 2023, EU/UK GDPR, California CCPA/CPRA, Brazil&rsquo;s LGPD, and equivalent laws.</p>
+        <div class="cc-tags">
+          <span class="cc-tag">DPDP 2023</span>
+          <span class="cc-tag">GDPR</span>
+          <span class="cc-tag">CCPA/CPRA</span>
+          <span class="cc-tag">LGPD</span>
+        </div>
+        <span class="cc-arrow">Read the policy &rarr;</span>
+      </a>
+
+      <a href="/terms.html" class="cc-card reveal d1" data-hover>
+        <div class="cc-num">02 · Contract</div>
+        <h3>Terms of <em>Use</em></h3>
+        <p>The contract between you and NextSpace Labs when you use our Website, applications, or services. Governing law, dispute resolution, statutory consumer rights.</p>
+        <div class="cc-tags">
+          <span class="cc-tag">India</span>
+          <span class="cc-tag">Hyderabad seat</span>
+          <span class="cc-tag">Arbitration</span>
+        </div>
+        <span class="cc-arrow">Read the terms &rarr;</span>
+      </a>
+
+      <a href="/cookies.html" class="cc-card reveal d2" data-hover>
+        <div class="cc-num">03 · Trackers</div>
+        <h3>Cookie <em>Policy</em></h3>
+        <p>Every cookie and similar technology we use, why, and how to control them. GPC and Do-Not-Track honoured. No advertising or cross-site tracking.</p>
+        <div class="cc-tags">
+          <span class="cc-tag">GPC</span>
+          <span class="cc-tag">DNT</span>
+          <span class="cc-tag">ePrivacy</span>
+        </div>
+        <span class="cc-arrow">Read the cookie policy &rarr;</span>
+      </a>
+
+      <a href="/ip.html" class="cc-card reveal d3" data-hover>
+        <div class="cc-num">04 · Copyright &amp; IP</div>
+        <h3>Intellectual <em>Property</em></h3>
+        <p>Our trademarks, copyright, permitted reuse of our content, third-party marks, and how to submit a takedown or licensing request.</p>
+        <div class="cc-tags">
+          <span class="cc-tag">DMCA</span>
+          <span class="cc-tag">IT Act 2000</span>
+          <span class="cc-tag">Berne</span>
+        </div>
+        <span class="cc-arrow">Read the IP notice &rarr;</span>
+      </a>
+    </div>
+
+    <div class="reveal">
+      <h2 class="cc-section-title"><em>Security</em> &amp; safety</h2>
+      <p class="cc-section-lede">How we protect the systems that hold your data, and how to reach the people who own that protection.</p>
+    </div>
+
+    <div class="cc-grid">
+      <a href="/security.html" class="cc-card reveal" data-hover>
+        <div class="cc-num">05 · Infrastructure</div>
+        <h3>Security <em>Overview</em></h3>
+        <p>Our security posture at a high level: encryption in transit and at rest, access controls, secrets management, and the frameworks we align to.</p>
+        <div class="cc-tags">
+          <span class="cc-tag">TLS 1.3</span>
+          <span class="cc-tag">RLS</span>
+          <span class="cc-tag">Least privilege</span>
+        </div>
+        <span class="cc-arrow">Read the overview &rarr;</span>
+      </a>
+
+      <a href="/security.html#disclosure" class="cc-card reveal d1" data-hover>
+        <div class="cc-num">06 · Vulnerability disclosure</div>
+        <h3>Responsible <em>Disclosure</em></h3>
+        <p>How to report a security issue to us safely, what we commit to in return, and the safe-harbour language that protects good-faith researchers.</p>
+        <div class="cc-tags">
+          <span class="cc-tag">Safe harbour</span>
+          <span class="cc-tag">CVD</span>
+          <span class="cc-tag">Good faith</span>
+        </div>
+        <span class="cc-arrow">Report an issue &rarr;</span>
+      </a>
+    </div>
+
+    <div class="reveal">
+      <h2 class="cc-section-title"><em>Ethics</em> &amp; responsibility</h2>
+      <p class="cc-section-lede">The commitments we make beyond what the law strictly requires &mdash; because building for people demands more than the minimum.</p>
+    </div>
+
+    <div class="cc-grid">
+      <a href="/responsible-ai.html" class="cc-card reveal" data-hover>
+        <div class="cc-num">07 · Applied intelligence</div>
+        <h3>Responsible <em>AI</em></h3>
+        <p>Our five operating principles for machine-learning systems: human oversight, privacy, transparency, fairness, and security.</p>
+        <div class="cc-tags">
+          <span class="cc-tag">Oversight</span>
+          <span class="cc-tag">Privacy</span>
+          <span class="cc-tag">Transparency</span>
+          <span class="cc-tag">Fairness</span>
+          <span class="cc-tag">Security</span>
+        </div>
+        <span class="cc-arrow">Read the principles &rarr;</span>
+      </a>
+
+      <a href="/accessibility.html" class="cc-card reveal d1" data-hover>
+        <div class="cc-num">08 · Inclusive design</div>
+        <h3>Accessibility <em>Statement</em></h3>
+        <p>Our commitment to WCAG 2.2 AA, what we already meet, what we are still working on, and how to reach us when the Website falls short for you.</p>
+        <div class="cc-tags">
+          <span class="cc-tag">WCAG 2.2 AA</span>
+          <span class="cc-tag">RPwD 2016</span>
+          <span class="cc-tag">EN 301 549</span>
+        </div>
+        <span class="cc-arrow">Read the statement &rarr;</span>
+      </a>
+
+      <a href="/esg.html" class="cc-card reveal d2" data-hover>
+        <div class="cc-num">09 · Environment &amp; society</div>
+        <h3>People &amp; <em>ESG</em></h3>
+        <p>What we take responsibility for &mdash; publicly. People, privacy, ethics, sustainability, and AI safety, with an annual reporting cadence.</p>
+        <div class="cc-tags">
+          <span class="cc-tag">Annual report</span>
+          <span class="cc-tag">Founder-owned</span>
+        </div>
+        <span class="cc-arrow">Read our responsibilities &rarr;</span>
+      </a>
+
+      <a href="/contact.html" class="cc-card reveal d3" data-hover>
+        <div class="cc-num">10 · Governance contact</div>
+        <h3>Grievance <em>&amp; escalation</em></h3>
+        <p>The Grievance Officer under India&rsquo;s IT Rules 2021, the DPO surface under DPDP, and the general compliance inbox. One human on the other end.</p>
+        <div class="cc-tags">
+          <span class="cc-tag">Grievance Officer</span>
+          <span class="cc-tag">DPO</span>
+        </div>
+        <span class="cc-arrow">Reach a person &rarr;</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter Two</em> · Trust ledger</div>
+    <h2 class="chapter-head reveal d1">
+      What we <span class="italic">will not do</span>.
+    </h2>
+    <div class="grid-3" style="margin-top: 40px;">
+      <div class="card reveal">
+        <div class="card-tag">Data</div>
+        <h4>We will <span class="italic">never</span> sell personal data.</h4>
+        <p>No exceptions, no anonymised loopholes, no bundled &ldquo;partner offers&rdquo;. If a business model would require it, we do not build that business.</p>
+      </div>
+      <div class="card reveal d1">
+        <div class="card-tag">Advertising</div>
+        <h4>No third-party <span class="italic">ad tech</span>.</h4>
+        <p>No advertising cookies, no cross-site tracking pixels, no data brokers. Analytics is first-party and anonymised only.</p>
+      </div>
+      <div class="card reveal d2">
+        <div class="card-tag">Coercion</div>
+        <h4>No <span class="italic">dark patterns</span>.</h4>
+        <p>Consent is never bundled with function. Rejecting non-essential cookies takes the same clicks as accepting them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-block reveal">
+  <h2>See something <span class="italic">off</span>?</h2>
+  <p>If any document here reads incorrectly, or any behaviour on our Website contradicts what we&rsquo;ve committed to, write to us. Every note is read.</p>
+  <a href="mailto:connect@nxtspacelabs.com?subject=Compliance" class="glass-btn" data-hover>
+    <span>Write to compliance</span>
+    <span class="arrow">&rarr;</span>
+  </a>
+</section>
+
+<div id="ns-footer"></div>
+<div id="ns-hidden"></div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js" } }
+</script>
+<script type="module" src="/assets/scene-lite.js"></script>
+<script src="/assets/partials.js"></script>
+<script src="/assets/premium.js"></script>
+
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

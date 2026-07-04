@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<!--
+  NextSpace Labs — Security & Responsible Disclosure · Digital Headquarters
+  © 2026 NextSpace Labs Private Limited · All rights reserved.
+-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#020209" />
+<meta name="description" content="NextSpace Labs Security Overview — infrastructure, encryption, access controls, and our responsible disclosure policy for security researchers." />
+<meta property="og:title" content="Security &amp; Responsible Disclosure · NextSpace Labs" />
+<meta property="og:description" content="High-level security posture and responsible disclosure policy." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nxtspacelabs.com/security.html" />
+<meta property="og:image" content="https://nxtspacelabs.com/logo.svg" />
+<link rel="canonical" href="https://nxtspacelabs.com/security.html" />
+<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+<link rel="apple-touch-icon" href="/logo.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@nxtspacelabs" />
+<meta name="twitter:creator" content="@nxtspacelabs" />
+<meta name="twitter:image" content="https://nxtspacelabs.com/logo.svg" />
+<title>Security &amp; Responsible Disclosure &mdash; NextSpace Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,200..900,0..100&family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/premium.css">
+</head>
+
+<body class="night">
+
+<canvas id="scene"></canvas>
+<div class="cursor-light" id="cursorLight"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div id="ns-nav"></div>
+<div id="ns-menu"></div>
+<div id="ns-sound"></div>
+
+<header class="page-hero" id="main" tabindex="-1">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag reveal"><em>Governance</em> · Security</div>
+    <h1 class="page-title reveal d1">
+      Security is<br>
+      <span class="italic">an engineering discipline</span>.
+    </h1>
+    <p class="page-lede reveal d2">
+      A short, honest description of how we protect the systems that hold your data &mdash; and a clear invitation for researchers to help us make them better.
+    </p>
+    <div class="doc-actions reveal d3">
+      <a href="/legal/nxtspacelabs-security.pdf" class="doc-download" download>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 2v9m0 0l-3-3m3 3l3-3M3 14h10" stroke-linecap="round"/></svg>
+        <span>Download PDF</span>
+      </a>
+      <button class="doc-print" onclick="window.print()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 6V2h8v4M4 12H2V6h12v6h-2m-8 0v3h8v-3m-8 0h8"/></svg>
+        <span>Print</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="chapter">
+  <div class="wrap">
+    <div class="longform reveal">
+
+      <div class="legal-header">
+        <div class="legal-meta">
+          <div><span class="label">Effective</span> 4 July 2026</div>
+          <div><span class="label">Version</span> 1.0</div>
+          <div><span class="label">Last updated</span> 4 July 2026</div>
+          <div><span class="label">Contact</span> security@nxtspacelabs.com</div>
+        </div>
+        <div class="legal-note">
+          <strong>Scope.</strong> This page covers the <em>nxtspacelabs.com</em> Website, the <em>admin.nxtspacelabs.com</em> operations console, and the <em>PairNow</em> product (Android app and back-end). Product-specific security notes may be published inside each product.
+        </div>
+      </div>
+
+      <h2>1. Our security posture, briefly</h2>
+      <p>We are a small, focused engineering team. Security here is a discipline shaped by three convictions:</p>
+      <ul>
+        <li><strong>Least data.</strong> We collect only what a feature needs, and we design so that data no longer needed can be forgotten.</li>
+        <li><strong>Least privilege.</strong> No engineer has standing access to production data. Access is granted for a specific task, is logged, and expires.</li>
+        <li><strong>Trust boundaries in code.</strong> Where we can express a security rule as code &mdash; row-level security, signed URLs, hashed tokens &mdash; we do, so the guarantee does not depend on humans remembering to enforce it.</li>
+      </ul>
+
+      <h2>2. Encryption</h2>
+      <ul>
+        <li><strong>In transit.</strong> All traffic to our public surfaces uses TLS 1.2 or higher. HSTS is enforced with <code>max-age=63072000; includeSubDomains; preload</code>. Certificates auto-renew.</li>
+        <li><strong>At rest.</strong> Database volumes and object storage are encrypted at rest by the underlying cloud provider using AES-256 or provider-managed equivalents.</li>
+        <li><strong>Application-layer.</strong> Where sensitive fields warrant it (KYC documents, identity verification artefacts), we apply application-layer encryption or reference tokens on top of the storage-level encryption.</li>
+        <li><strong>Passwords &amp; secrets.</strong> User authentication tokens are hashed using well-known constructions. Static secrets live in a managed secret store, not in source code.</li>
+      </ul>
+
+      <h2>3. Infrastructure</h2>
+      <p>At a high level, without exposing specifics that would benefit an attacker:</p>
+      <ul>
+        <li>Website and admin surfaces are hosted on a modern edge platform with automatic DDoS mitigation, WAF, and audited access.</li>
+        <li>Application data is stored in a managed Postgres offering with point-in-time recovery, encrypted backups, and geographic replication where the product design calls for it.</li>
+        <li>Real-time audio and video sessions are relayed via a licensed telecommunications platform under a written agreement; media is not persisted beyond what the product feature requires.</li>
+        <li>Payments are processed by regulated payment partners (e.g. Cashfree) under written data-processing terms. We do not store card numbers.</li>
+        <li>All production surfaces sit behind role-based access with mandatory multi-factor authentication.</li>
+      </ul>
+
+      <h2>4. Application security</h2>
+      <ul>
+        <li><strong>Row-level security</strong> on every database table that carries personal data &mdash; the user identity is enforced by the database, not by the application layer.</li>
+        <li><strong>Strong transport headers</strong>: <em>Strict-Transport-Security</em>, <em>Content-Security-Policy</em>, <em>X-Content-Type-Options</em>, <em>Referrer-Policy</em>, <em>Permissions-Policy</em>, and <em>Cross-Origin-Opener-Policy</em> on every response.</li>
+        <li><strong>Dependency hygiene</strong>: automated dependency updates with security patch alerts and manual review for any upgrade that touches the trust boundary.</li>
+        <li><strong>Secrets scanning</strong> on every push to the code repository, with pre-commit hooks configured to reject leaked credentials.</li>
+        <li><strong>Environment isolation</strong>: development, staging, and production run in separate accounts with separate credentials and separate data.</li>
+      </ul>
+
+      <h2>5. Operational security</h2>
+      <ul>
+        <li>Audit logs are retained for a reasonable period appropriate to the surface.</li>
+        <li>Incident response is owned personally by the founder, with a documented playbook for containment, communication, and post-mortem.</li>
+        <li>We aim to notify affected users of a personal-data breach without undue delay, and in line with the notification obligations of the DPDP Act 2023, EU/UK GDPR, and other applicable laws.</li>
+        <li>We do not use production data in development or testing.</li>
+        <li>Backups are encrypted, versioned, and restore-tested on a periodic basis.</li>
+      </ul>
+
+      <h2>6. Frameworks we align to</h2>
+      <p>NextSpace Labs is a young company; we do not yet hold any specific formal security certification. Our engineering practices are shaped by, and aim to align with, the following frameworks:</p>
+      <ul>
+        <li>OWASP Top 10 and OWASP ASVS as a baseline for application security controls.</li>
+        <li>NIST SP 800-53 selected controls appropriate to our scale.</li>
+        <li>The CIS Benchmarks for the platforms we deploy on.</li>
+        <li>The security expectations of India&rsquo;s DPDP Act 2023, the IT Act 2000, and the IT Rules 2021.</li>
+      </ul>
+      <p>As we mature we intend to seek formal attestation for the surfaces where it will provide meaningful assurance to users and partners. When we do, we will publish the scope and the report&rsquo;s status here.</p>
+
+      <h2 id="disclosure">7. Responsible disclosure &mdash; how to report a security issue</h2>
+      <p>We welcome and appreciate reports from independent security researchers. If you believe you have found a security vulnerability affecting any NextSpace Labs surface, please tell us before you tell anyone else.</p>
+
+      <h3>7.1 How to reach us</h3>
+      <ul>
+        <li><strong>Preferred contact:</strong> <a href="mailto:security@nxtspacelabs.com?subject=Security%20Report">security@nxtspacelabs.com</a></li>
+        <li><strong>Backup contact:</strong> <a href="mailto:connect@nxtspacelabs.com?subject=Security%20Report">connect@nxtspacelabs.com</a> with the subject line &ldquo;Security Report&rdquo;.</li>
+        <li>If you prefer to encrypt your report, request our current PGP key at the address above and we will send it in reply.</li>
+      </ul>
+
+      <h3>7.2 What to include</h3>
+      <ul>
+        <li>The surface affected (URL, host, mobile app version).</li>
+        <li>A clear description of the vulnerability and its impact.</li>
+        <li>Steps that reliably reproduce the issue, and any proof-of-concept code or screenshots.</li>
+        <li>Whether the issue has been disclosed to anyone else, and any timeline you have committed to.</li>
+        <li>Whether you would like public credit if we publish an advisory.</li>
+      </ul>
+
+      <h3>7.3 What we commit to</h3>
+      <ul>
+        <li><strong>Acknowledge</strong> receipt of your report within a reasonable timeframe, typically three business days.</li>
+        <li><strong>Investigate</strong> the report in good faith, keep you informed on progress at reasonable intervals, and share a triage outcome.</li>
+        <li><strong>Fix</strong> confirmed issues on a timeline commensurate with severity, and coordinate the fix window with you where possible.</li>
+        <li><strong>Credit</strong> researchers publicly, with permission, once a fix is in place &mdash; on a dedicated researcher acknowledgements page as reports accumulate.</li>
+        <li>NextSpace Labs does not currently operate a paid bug bounty. We will send a written acknowledgement and, at our discretion, a token of thanks for high-impact reports. This is a stated intention and not a legal obligation.</li>
+      </ul>
+
+      <h3>7.4 Safe harbour</h3>
+      <p>NextSpace Labs will not initiate legal action against researchers who, acting in good faith:</p>
+      <ul>
+        <li>Report a vulnerability to us privately, using a contact method above;</li>
+        <li>Give us a reasonable period to investigate and remediate before any public disclosure;</li>
+        <li>Access only data that is strictly necessary to demonstrate the issue, and never store, alter, delete, or transfer such data;</li>
+        <li>Do not degrade the availability of the Services for other users (no denial-of-service, no brute-force at scale, no bulk data exfiltration);</li>
+        <li>Do not use the vulnerability to enrich themselves or a third party;</li>
+        <li>Comply with all applicable laws.</li>
+      </ul>
+      <p>To the extent your research is consistent with this policy, we will consider it authorised access under India&rsquo;s Information Technology Act, 2000, the U.S. Computer Fraud and Abuse Act, and equivalent laws in other jurisdictions. This safe harbour is a commitment by NextSpace Labs; it does not bind third parties, and it does not authorise research against systems we do not operate.</p>
+
+      <h3>7.5 Out of scope</h3>
+      <p>The following report categories are typically closed as informational unless you can demonstrate a real, exploitable impact:</p>
+      <ul>
+        <li>Missing security headers on non-authenticated endpoints without a concrete attack vector.</li>
+        <li>Missing SPF, DKIM, DMARC, or CAA records without demonstrated abuse.</li>
+        <li>Reports produced by unauthenticated automated scanners with no manual verification.</li>
+        <li>Denial-of-service, resource-exhaustion, or rate-limit findings.</li>
+        <li>Version-disclosure or fingerprinting reports.</li>
+        <li>Social engineering of NextSpace Labs staff, users, or partners.</li>
+        <li>Physical attacks against our offices or infrastructure.</li>
+        <li>Reports against third-party services we do not operate.</li>
+      </ul>
+
+      <h2>8. Data-breach notification</h2>
+      <p>If a confirmed personal-data breach occurs and creates a risk to the rights and freedoms of affected users, we will notify:</p>
+      <ul>
+        <li>The Data Protection Board of India, in the manner and within the timelines set by the DPDP Act 2023 and rules made under it;</li>
+        <li>The applicable supervisory authority under GDPR (typically within 72 hours of becoming aware);</li>
+        <li>Affected individuals directly, in clear language, with practical guidance on any steps they can take;</li>
+        <li>Any regulator or payment scheme where a notification obligation applies.</li>
+      </ul>
+
+      <h2>9. Contact</h2>
+      <p>All matters covered on this page:</p>
+      <ul>
+        <li><strong>Security reports:</strong> <a href="mailto:security@nxtspacelabs.com">security@nxtspacelabs.com</a></li>
+        <li><strong>General compliance:</strong> <a href="mailto:connect@nxtspacelabs.com?subject=Compliance">connect@nxtspacelabs.com</a></li>
+        <li><strong>Postal:</strong> NextSpace Labs Private Limited, Door No 1-60/8/A &amp; B, 3<sup>rd</sup> Floor, KNR Square, Opp. The Platina, Gachibowli, Kondapur, Hyderabad &mdash; 500 032, Telangana, India</li>
+      </ul>
+
+      <div class="legal-version-history">
+        <h4>Version history</h4>
+        <ul>
+          <li><strong>Version 1.0</strong> &mdash; effective 4 July 2026 &mdash; first publication.</li>
+        </ul>
+      </div>
+
+      <div class="legal-signoff">
+        <em>Security is not a policy we filed once. It is a habit we practise every week. If you spot a gap, tell us &mdash; you will make the product safer for a lot of people.</em>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div id="ns-footer"></div>
+<div id="ns-hidden"></div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js" } }
+</script>
+<script type="module" src="/assets/scene-lite.js"></script>
+<script src="/assets/partials.js"></script>
+<script src="/assets/premium.js"></script>
+
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

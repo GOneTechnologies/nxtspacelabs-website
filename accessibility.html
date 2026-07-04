@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<!--
+  NextSpace Labs — Accessibility Statement · Digital Headquarters
+  © 2026 NextSpace Labs Private Limited · All rights reserved.
+-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#020209" />
+<meta name="description" content="NextSpace Labs Accessibility Statement — our commitment to WCAG 2.2 AA, what we already meet, what we are still working on, and how to reach us." />
+<meta property="og:title" content="Accessibility Statement · NextSpace Labs" />
+<meta property="og:description" content="Our commitment to WCAG 2.2 AA and inclusive design." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nxtspacelabs.com/accessibility.html" />
+<meta property="og:image" content="https://nxtspacelabs.com/logo.svg" />
+<link rel="canonical" href="https://nxtspacelabs.com/accessibility.html" />
+<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+<link rel="apple-touch-icon" href="/logo.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@nxtspacelabs" />
+<meta name="twitter:creator" content="@nxtspacelabs" />
+<meta name="twitter:image" content="https://nxtspacelabs.com/logo.svg" />
+<title>Accessibility Statement &mdash; NextSpace Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,200..900,0..100&family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/premium.css">
+</head>
+
+<body class="night">
+
+<canvas id="scene"></canvas>
+<div class="cursor-light" id="cursorLight"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div id="ns-nav"></div>
+<div id="ns-menu"></div>
+<div id="ns-sound"></div>
+
+<header class="page-hero" id="main" tabindex="-1">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag reveal"><em>Governance</em> · Accessibility</div>
+    <h1 class="page-title reveal d1">
+      A website<br>
+      <span class="italic">for everyone</span>.
+    </h1>
+    <p class="page-lede reveal d2">
+      Our commitment to making <em>nxtspacelabs.com</em> and the products we build usable by as many people as possible &mdash; regardless of vision, hearing, motor ability, cognitive style, or the device in their hand.
+    </p>
+    <div class="doc-actions reveal d3">
+      <a href="/legal/nxtspacelabs-accessibility.pdf" class="doc-download" download>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 2v9m0 0l-3-3m3 3l3-3M3 14h10" stroke-linecap="round"/></svg>
+        <span>Download PDF</span>
+      </a>
+      <button class="doc-print" onclick="window.print()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 6V2h8v4M4 12H2V6h12v6h-2m-8 0v3h8v-3m-8 0h8"/></svg>
+        <span>Print</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="chapter">
+  <div class="wrap">
+    <div class="longform reveal">
+
+      <div class="legal-header">
+        <div class="legal-meta">
+          <div><span class="label">Effective</span> 4 July 2026</div>
+          <div><span class="label">Version</span> 1.0</div>
+          <div><span class="label">Target</span> WCAG 2.2 Level AA</div>
+          <div><span class="label">Contact</span> accessibility@nxtspacelabs.com</div>
+        </div>
+        <div class="legal-note">
+          <strong>Living document.</strong> This statement is honest about what we already meet, and honest about what we are still working on. It is updated as our compliance changes, not left frozen after publication.
+        </div>
+      </div>
+
+      <h2>1. Our commitment</h2>
+      <p>NextSpace Labs is committed to designing, building, and maintaining digital products that are perceivable, operable, understandable, and robust for all users, including those who use assistive technologies. Accessibility is not a checkbox at the end of a project &mdash; it is a design constraint we accept from the first sketch.</p>
+      <p>We aim to meet the <strong>Web Content Accessibility Guidelines (WCAG) 2.2 at Level AA</strong>. We also design with the expectations of the <em>Rights of Persons with Disabilities Act, 2016 (India)</em>, the <em>European Accessibility Act</em>, <em>EN 301 549</em>, the <em>UK Equality Act 2010</em>, and the <em>US Americans with Disabilities Act</em> in mind.</p>
+
+      <h2>2. What we already do</h2>
+      <ul>
+        <li><strong>Semantic structure.</strong> Every page uses semantic HTML with a clear document outline, landmarks, and heading hierarchy so screen readers can move through the content naturally.</li>
+        <li><strong>Keyboard navigation.</strong> All interactive controls are reachable and operable using a keyboard alone, with visible focus indication and a &ldquo;Skip to content&rdquo; link as the first focusable element.</li>
+        <li><strong>Text contrast.</strong> Body copy is designed against a dark theme with contrast checked against WCAG AA thresholds. Long-form prose uses a legible serif at comfortable sizes.</li>
+        <li><strong>Motion respect.</strong> Decorative animation is subtle by default, and we honour the operating-system <em>prefers-reduced-motion</em> setting &mdash; if you have it enabled, we do not animate.</li>
+        <li><strong>Data respect.</strong> We honour <em>save-data</em>, load fonts asynchronously, and design pages to remain usable even if a network is slow or scripts fail to run.</li>
+        <li><strong>Descriptive links.</strong> Link text describes the destination rather than relying on &ldquo;click here&rdquo; or &ldquo;read more&rdquo; alone.</li>
+        <li><strong>Descriptive alternatives.</strong> Images, icons, and SVG glyphs carry <em>alt</em> or <em>aria-label</em> attributes when they convey information, and are marked decorative when they do not.</li>
+        <li><strong>Forms.</strong> Form controls have programmatic labels; error messages are text, not colour alone; required fields are marked in both text and code.</li>
+        <li><strong>Screen orientation.</strong> Layouts adapt to portrait and landscape and do not require a specific orientation to be usable.</li>
+        <li><strong>Print &amp; save.</strong> Long documents (Privacy, Terms, Cookies, Security, this statement, Responsible AI, IP) offer both an in-page print stylesheet and a downloadable PDF for offline reading.</li>
+      </ul>
+
+      <h2>3. What we are still working on</h2>
+      <p>We publish this list because pretending we have no gaps would be more insulting than admitting to them.</p>
+      <ul>
+        <li>Video content on the home page currently has no captions; we plan to add them where narration is present.</li>
+        <li>A high-contrast &ldquo;reading mode&rdquo; is under design, for people who find the ambient dark background too soft.</li>
+        <li>A larger text-size preference toggle is planned; browser text-zoom is fully honoured today.</li>
+        <li>The custom cursor effect is decorative only; a system-cursor fallback remains available for users who prefer it. We are evaluating whether to disable the effect entirely for users on touch devices.</li>
+        <li>Our accessibility conformance audit is currently self-assessed; an independent audit is on the roadmap for 2026.</li>
+      </ul>
+
+      <h2>4. Testing methodology</h2>
+      <p>We combine automated and manual testing:</p>
+      <ul>
+        <li>Automated scans using widely-used accessibility linters as part of our build process.</li>
+        <li>Manual keyboard walk-throughs of each page.</li>
+        <li>Screen-reader smoke tests on VoiceOver (macOS/iOS) and TalkBack (Android). Windows NVDA testing is planned.</li>
+        <li>Colour-contrast verification against WCAG AA thresholds.</li>
+        <li>Live-user testing during studio sessions where accessibility questions come up.</li>
+      </ul>
+
+      <h2>5. If something on our site is inaccessible to you</h2>
+      <p>The most important line on this page is the one that gives you a way out. If any part of <em>nxtspacelabs.com</em> is difficult or impossible for you to use, please write to us. Include:</p>
+      <ul>
+        <li>The page URL and, if you can, the specific element or interaction.</li>
+        <li>The assistive technology you are using (if any) and its version.</li>
+        <li>Your browser and operating system.</li>
+        <li>A short description of what went wrong.</li>
+      </ul>
+      <p>We aim to acknowledge accessibility reports within three business days and to fix material issues promptly. Where a fix will take longer, we will provide an alternative way to reach the same content.</p>
+
+      <h2>6. Third-party content</h2>
+      <p>Our Website may embed content or interactive elements provided by third parties (for example, a payment provider&rsquo;s checkout widget or a bot-prevention challenge). We choose partners with a demonstrated accessibility commitment, but the accessibility of those specific components is ultimately owned by the third party. If a third-party embed is blocking you, please write to us so we can help &mdash; and press the partner on your behalf.</p>
+
+      <h2>7. Standards we align to</h2>
+      <ul>
+        <li>WCAG 2.2 Level AA (target).</li>
+        <li>WAI-ARIA 1.2 for enhanced semantics where native HTML does not suffice.</li>
+        <li>EN 301 549 for European public-sector alignment.</li>
+        <li>Rights of Persons with Disabilities Act, 2016 (India), and the rules made under it.</li>
+      </ul>
+
+      <h2>8. Contact</h2>
+      <ul>
+        <li><strong>Accessibility reports:</strong> <a href="mailto:accessibility@nxtspacelabs.com?subject=Accessibility%20Issue">accessibility@nxtspacelabs.com</a></li>
+        <li><strong>Backup:</strong> <a href="mailto:connect@nxtspacelabs.com?subject=Accessibility%20Issue">connect@nxtspacelabs.com</a> with the subject line &ldquo;Accessibility Issue&rdquo;.</li>
+        <li><strong>Postal:</strong> NextSpace Labs Private Limited, Door No 1-60/8/A &amp; B, 3<sup>rd</sup> Floor, KNR Square, Opp. The Platina, Gachibowli, Kondapur, Hyderabad &mdash; 500 032, Telangana, India</li>
+      </ul>
+
+      <div class="legal-version-history">
+        <h4>Version history</h4>
+        <ul>
+          <li><strong>Version 1.0</strong> &mdash; effective 4 July 2026 &mdash; first publication.</li>
+        </ul>
+      </div>
+
+      <div class="legal-signoff">
+        <em>The web works for everyone when it is built by people who assume everyone will use it. That is the assumption we start every design from.</em>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div id="ns-footer"></div>
+<div id="ns-hidden"></div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js" } }
+</script>
+<script type="module" src="/assets/scene-lite.js"></script>
+<script src="/assets/partials.js"></script>
+<script src="/assets/premium.js"></script>
+
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

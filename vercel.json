@@ -1,4 +1,5 @@
 {
+  "cleanUrls": true,
   "rewrites": [
     { "source": "/tradepilot",          "destination": "https://trade-pilot-beige.vercel.app/trade" },
     { "source": "/tradepilot/:path*",   "destination": "https://trade-pilot-beige.vercel.app/:path*" },
