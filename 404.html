@@ -12,7 +12,9 @@
 <meta name="robots" content="noindex" />
 <meta property="og:image" content="https://nxtspacelabs.com/logo.svg" />
 <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-<link rel="apple-touch-icon" href="/logo.svg" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
 <link rel="manifest" href="/site.webmanifest" />
 <title>Not found — NextSpace Labs</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,6 +57,25 @@
   }
   .err-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
   .err-actions a { color: var(--mist); }
+  .err-quicklinks {
+    margin-top: 60px; padding-top: 32px;
+    border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; gap: 8px 22px;
+    justify-content: center; align-items: baseline;
+  }
+  .err-quicklinks-label {
+    width: 100%; text-align: center;
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--dim-2); margin-bottom: 6px;
+  }
+  .err-quicklinks a {
+    color: var(--dim); font-family: "Inter"; font-size: 14px;
+    text-decoration: none; padding: 4px 2px;
+    border-bottom: 1px solid transparent;
+    transition: color .2s ease, border-color .2s ease;
+  }
+  .err-quicklinks a:hover { color: var(--nebula); border-bottom-color: var(--nebula); }
 </style>
 </head>
 
@@ -88,6 +109,14 @@
         <span>Tell us what you were looking for</span>
         <span class="arrow">→</span>
       </a>
+    </div>
+    <div class="err-quicklinks">
+      <span class="err-quicklinks-label">Popular destinations</span>
+      <a href="/services.html" data-hover>Services</a>
+      <a href="/company.html" data-hover>Company</a>
+      <a href="/insights.html" data-hover>Insights</a>
+      <a href="/compliance.html" data-hover>Compliance</a>
+      <a href="/careers.html" data-hover>Careers</a>
     </div>
   </div>
 </main>
