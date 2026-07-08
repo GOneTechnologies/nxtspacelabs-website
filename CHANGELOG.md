@@ -6,6 +6,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ---
 
+## [1.0.4] — 2026-07-08 — Homepage: stop rewriting the URL hash while scrolling
+
+Founder wants the homepage to behave like an established company site (Apple, Microsoft, Stripe) — the address bar should stay `nxtspacelabs.com` during normal browsing rather than churning through `#hero`, `#labs`, `#careers`, … as sections scroll past.
+
+### Changed
+- **`index.html` chapter rail** — removed the single `history.replaceState(..., '#' + id)` call inside the scroll `IntersectionObserver`. The observer still runs and still highlights the active chapter dot in the side rail; it just no longer mutates the URL. Scrolling now leaves the address bar untouched.
+
+### Unchanged (verified still works)
+- **Direct hash visits** — loading `/#contact` (or any section id) still scrolls to that section on load, via the browser's native anchor behavior.
+- **Clicking a rail / nav link** — still smooth-scrolls to the target section and sets the hash, because those are ordinary `<a href="#id">` anchors the browser handles natively (nothing in the removed line was involved).
+
+---
+
 ## [1.0.3] — 2026-07-08 — Homepage: fix Hyderabad time label, remove ambient sound
 
 Two founder-requested fixes after a review of the live homepage.

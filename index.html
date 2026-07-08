@@ -1986,7 +1986,8 @@ window.addEventListener('load', () => { setTimeout(() => document.getElementById
   document.querySelectorAll('.tl-step').forEach(el => io.observe(el));
 })();
 
-/* Chapter rail + URL sync */
+/* Chapter rail highlight — tracks scroll position, does not touch the URL.
+   Direct hash visits and clicking a rail/nav link still work natively. */
 (function chapters() {
   const ids = ['hero','manifesto','philosophy','triptych','horizon','ideas','global','labs','timeline','principles','headquarters','careers','invitation'];
   const items = document.querySelectorAll('.rail-item');
@@ -1995,7 +1996,6 @@ window.addEventListener('load', () => { setTimeout(() => document.getElementById
       if (e.isIntersecting && e.intersectionRatio > 0.35) {
         const id = e.target.id;
         items.forEach(it => it.classList.toggle('active', it.dataset.chapter === id));
-        if (location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
       }
     });
   }, { threshold: [0.35, 0.6] });
