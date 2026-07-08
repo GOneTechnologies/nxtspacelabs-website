@@ -96,13 +96,39 @@
   }
   #scene { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
 
-  /* ═══ Cursor ═══ */
-  /* Native OS cursor site-wide; the old custom dot/ring (invisible over the
-     ambient scene via mix-blend-mode: difference) is retired. The soft
-     ambient light stays as a subtle desktop-only touch. */
-  .cursor-dot, .cursor-ring { display: none; }
+  /* ═══ Cursor — custom, always visible (innovative + user-friendly) ═══ */
+  /* Glowing white dot + trailing ring, readable on any background (glow +
+     shadow, no blend tricks). Interactive elements expand + fill the ring.
+     Native cursor on touch and reduced-motion. */
+  .cursor-dot, .cursor-ring {
+    position: fixed; top: 0; left: 0; z-index: 300;
+    pointer-events: none; transform: translate(-50%, -50%);
+    opacity: 0; will-change: transform;
+  }
+  .cursor-dot {
+    width: 9px; height: 9px; border-radius: 50%; background: #FFFFFF;
+    box-shadow: 0 0 10px 1px rgba(167,139,250,0.9), 0 0 3px rgba(0,0,0,0.55);
+    transition: opacity 0.3s, width 0.2s, height 0.2s, background 0.2s;
+  }
+  .cursor-ring {
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1.5px solid rgba(247,245,240,0.55);
+    box-shadow: 0 0 14px rgba(167,139,250,0.4);
+    transition: opacity 0.3s, width 0.3s cubic-bezier(0.16,1,0.3,1),
+                height 0.3s cubic-bezier(0.16,1,0.3,1), border-color 0.3s, background 0.3s;
+  }
+  .cursor-dot.on, .cursor-ring.on { opacity: 1; }
+  .cursor-ring.hover { width: 60px; height: 60px; border-color: var(--nebula); background: rgba(167,139,250,0.14); }
+  .cursor-dot.hover { width: 7px; height: 7px; background: var(--nebula); }
+  @media (hover: hover) and (pointer: fine) {
+    body, a, button, input, textarea, select, label, summary, [data-hover], .glass-btn { cursor: none; }
+  }
   @media (hover: none), (pointer: coarse) {
-    .cursor-light { display: none; }
+    .cursor-dot, .cursor-ring, .cursor-light { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cursor-dot, .cursor-ring { display: none; }
+    body { cursor: auto; } a, button, [data-hover] { cursor: pointer; }
   }
 
   /* ═══ Loader ═══ */
@@ -1954,17 +1980,31 @@ import * as THREE from 'three';
 /* Loader */
 window.addEventListener('load', () => { setTimeout(() => document.getElementById('loader').classList.add('done'), 3400); });
 
-/* Ambient light follows the pointer — desktop only; native OS cursor is used. */
-(function cursorLight() {
-  const light=document.getElementById('cursorLight');
-  if (!light || window.matchMedia('(hover: none)').matches) return;
-  let mx=-400,my=-400,lx=-400,ly=-400;
-  window.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; }, { passive:true });
+/* Custom cursor — glowing dot + trailing ring + ambient light. Desktop
+   (fine pointer, motion-ok) only; native cursor is used otherwise. */
+(function cursor() {
+  const dot=document.getElementById('cursorDot'), ring=document.getElementById('cursorRing'), light=document.getElementById('cursorLight');
+  const fine=window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!dot || !ring || !fine || reduce) return;
+  let mx=-400,my=-400,rx=-400,ry=-400,lx=-400,ly=-400,seen=false;
+  window.addEventListener('mousemove', e => {
+    mx=e.clientX; my=e.clientY;
+    dot.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;
+    if(!seen){ seen=true; dot.classList.add('on'); ring.classList.add('on'); }
+  }, { passive:true });
   (function tick() {
+    rx += (mx-rx)*0.2; ry += (my-ry)*0.2;
     lx += (mx-lx)*0.08; ly += (my-ly)*0.08;
-    light.style.transform=`translate(${lx}px,${ly}px) translate(-50%,-50%)`;
+    ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+    if(light) light.style.transform=`translate(${lx}px,${ly}px) translate(-50%,-50%)`;
     requestAnimationFrame(tick);
   })();
+  const enter=()=>{ ring.classList.add('hover'); dot.classList.add('hover'); };
+  const leave=()=>{ ring.classList.remove('hover'); dot.classList.remove('hover'); };
+  document.querySelectorAll('a, button, [data-hover], .glass-btn, input, textarea, select').forEach(el => {
+    el.addEventListener('mouseenter', enter); el.addEventListener('mouseleave', leave);
+  });
 })();
 
 /* Reveal */

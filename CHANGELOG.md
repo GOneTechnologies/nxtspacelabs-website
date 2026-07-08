@@ -6,6 +6,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ---
 
+## [1.0.9] — 2026-07-09 — Cursor: an innovative custom cursor that's actually visible
+
+Founder wanted the distinctive custom cursor back — but *user-friendly*, not the old one that vanished. Rebuilt it correctly.
+
+### Added
+- **Custom cursor, always visible.** A glowing white dot + a ring that trails behind it with easing. Both read on *any* background via a purple glow + soft shadow — the root cause of the original "can't find the pointer" bug was `mix-blend-mode: difference` (which inverted the cursor to invisible over the ambient scene); the new cursor uses normal blending, so it's never lost.
+- **Clear interactive feedback.** Hovering any link/button/field expands the ring (34px → 60px) and fills it faintly purple, and the dot turns nebula-purple — an unmistakable "this is clickable" cue.
+- **Safe fallbacks.** The custom cursor runs only on true desktop pointers (`hover: hover` + `pointer: fine`); touch devices and anyone with `prefers-reduced-motion` get the native cursor with normal pointer affordances. No permanent animation loop on those devices.
+
+Applied in `assets/premium.css` + `assets/premium.js` (all content pages) and `index.html` (homepage). Verified live: dot visible at opacity 1 with glow, ring expands to 60px on hover, native cursor hidden on desktop, zero console errors.
+
+---
+
 ## [1.0.8] — 2026-07-08 — Production QA: real social image, dead-code cleanup
 
 Final pre-launch end-to-end review (assets, SEO, dead code, console, a11y, consistency). The site passed on nearly every axis; two real fixes shipped.

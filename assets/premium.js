@@ -49,19 +49,36 @@
   });
 })();
 
-/* Soft ambient light follows the pointer — desktop only; the site uses the
-   native OS cursor. (The old custom dot/ring was retired; this drives just
-   the glow.) */
-(function cursorLight() {
+/* Custom cursor — glowing dot + trailing ring + ambient light. Runs only on
+   true desktop pointers with motion allowed; native cursor is used otherwise. */
+(function cursor() {
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
   const light = document.getElementById('cursorLight');
-  if (!light || window.matchMedia('(hover: none)').matches) return;
-  let mx = -400, my = -400, lx = -400, ly = -400;
-  window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!dot || !ring || !fine || reduce) return;
+  let mx = -400, my = -400, rx = -400, ry = -400, lx = -400, ly = -400, seen = false;
+  window.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
+    if (!seen) { seen = true; dot.classList.add('on'); ring.classList.add('on'); }
+  }, { passive: true });
   (function loop() {
+    rx += (mx - rx) * 0.2; ry += (my - ry) * 0.2;
     lx += (mx - lx) * 0.08; ly += (my - ly) * 0.08;
-    light.style.transform = `translate(${lx}px, ${ly}px) translate(-50%, -50%)`;
+    ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+    if (light) light.style.transform = `translate(${lx}px, ${ly}px) translate(-50%, -50%)`;
     requestAnimationFrame(loop);
   })();
+  const enter = () => { ring.classList.add('hover'); dot.classList.add('hover'); };
+  const leave = () => { ring.classList.remove('hover'); dot.classList.remove('hover'); };
+  const rebind = () => document.querySelectorAll('a, button, [data-hover], .glass-btn, input, textarea, select, label, summary').forEach(el => {
+    if (el._nsCur) return; el._nsCur = true;
+    el.addEventListener('mouseenter', enter); el.addEventListener('mouseleave', leave);
+  });
+  rebind();
+  window.addEventListener('ns:partials-mounted', rebind);
 })();
 
 /* Reveal-on-scroll */

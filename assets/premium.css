@@ -58,14 +58,44 @@ img { max-width: 100%; height: auto; }
 }
 #scene { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
 
-/* ═══ Cursor ═══ */
-/* The site uses the native OS cursor everywhere (clear pointer on hover for
-   interactive elements). The old custom dot/ring is retired — it used
-   mix-blend-mode: difference and became invisible over the ambient scene.
-   The soft ambient light is kept as a subtle desktop-only touch. */
-.cursor-dot, .cursor-ring { display: none; }
+/* ═══ Cursor — custom, always visible (innovative + user-friendly) ═══ */
+/* A glowing white dot + a trailing ring that read on ANY background via a
+   glow + soft shadow (NO blend tricks — the old difference-blend cursor was
+   the "can't find it" bug). Interactive elements make the ring expand + fill.
+   The native cursor is used on touch and when reduced-motion is requested. */
+.cursor-dot, .cursor-ring {
+  position: fixed; top: 0; left: 0; z-index: 300;
+  pointer-events: none; transform: translate(-50%, -50%);
+  opacity: 0; will-change: transform;
+}
+.cursor-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 0 10px 1px rgba(167,139,250,0.9), 0 0 3px rgba(0,0,0,0.55);
+  transition: opacity 0.3s, width 0.2s, height 0.2s, background 0.2s;
+}
+.cursor-ring {
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 1.5px solid rgba(247,245,240,0.55);
+  box-shadow: 0 0 14px rgba(167,139,250,0.4);
+  transition: opacity 0.3s, width 0.3s cubic-bezier(0.16,1,0.3,1),
+              height 0.3s cubic-bezier(0.16,1,0.3,1), border-color 0.3s, background 0.3s;
+}
+.cursor-dot.on, .cursor-ring.on { opacity: 1; }
+.cursor-ring.hover { width: 60px; height: 60px; border-color: var(--nebula); background: rgba(167,139,250,0.14); }
+.cursor-dot.hover { width: 7px; height: 7px; background: var(--nebula); }
+/* Hide the native cursor only where the custom one runs (true desktop pointer) */
+@media (hover: hover) and (pointer: fine) {
+  body, a, button, input, textarea, select, label, summary,
+  [data-hover], .glass-btn, .menu-btn, .search-pill, .menu-close { cursor: none; }
+}
 @media (hover: none), (pointer: coarse) {
-  .cursor-light { display: none; }
+  .cursor-dot, .cursor-ring, .cursor-light { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cursor-dot, .cursor-ring { display: none; }
+  body { cursor: auto; }
+  a, button, [data-hover], .glass-btn { cursor: pointer; }
 }
 
 /* ═══ Nav ═══ */
