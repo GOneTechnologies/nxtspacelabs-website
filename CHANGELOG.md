@@ -6,6 +6,24 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ---
 
+## [1.0.6] — 2026-07-08 — UX: retire the custom cursor, restore native pointer + touch-friendly targets
+
+Addresses two review items: (1) the mouse pointer was hard to locate, and (2) mobile polish.
+
+### Changed — cursor & hover (site-wide)
+- **Restored the native OS cursor everywhere.** The site previously set `cursor: none` on the body and every interactive element (desktop only) and drew a custom 6px dot + ring in its place. That custom cursor used `mix-blend-mode: difference`, so it inverted against the background and became nearly invisible over the ambient WebGL scene and imagery — the "can't find the pointer" problem. Removed all `cursor: none` (≈20 occurrences across `assets/premium.css`, `index.html`, `insights.html`) and retired the dot/ring.
+- **Every interactive element now shows a clear `cursor: pointer` on hover** — the native affordance established sites (Apple, Stripe) rely on. Non-link hover-cards (e.g. the homepage "Living Ideas" tiles) correctly keep `cursor: default`. Existing CSS `:hover` states (nav underline, button borders, menu item colour/arrow) are unchanged, so interactivity is reinforced, not lost.
+- **Kept** the soft ambient light that follows the mouse as a subtle desktop-only touch (it never hid the pointer); it's disabled on touch/coarse-pointer devices.
+
+### Changed — responsive polish
+- **Touch targets** on phones (`≤600px`): nav Menu/Search pills, menu-close, and document Download/Print buttons now have a 44px minimum height (finger-friendly), verified at 390px.
+- **Homepage mobile spacing**: tightened per-section padding (`120px` → `96px`) so sections feel intentionally composed on a phone rather than sparse.
+
+### Notes
+- The site already carried a comprehensive set of breakpoints (900 / 700 / 600 / 500px) across nav, menu, hero, grids, cards, and footer; the homepage and content pages verify as clean, intentional layouts at 390px. Deeper per-page mobile art-direction can be iterated against real-device testing.
+
+---
+
 ## [1.0.5] — 2026-07-08 — Homepage: fix broken skip-link, remove decorative time label
 
 Two homepage items spotted in review.
