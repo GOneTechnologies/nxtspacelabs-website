@@ -6,6 +6,73 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ---
 
+## [1.0.1] — 2026-07-08 — Final verification & hardening
+
+A live-production verification pass against `v1.0.0` — every claim below was checked against the actual deployed site (`curl`, live Lighthouse run, `npm audit`), not assumed from source alone.
+
+### Security
+- Fixed a **high-severity** dependency vulnerability: `nodemailer` was pinned at `^6.9.14`, affected by 8 published advisories (SMTP/CRLF command injection, SSRF via `jsonTransport`, TLS certificate validation bypass on OAuth2 token fetch, ReDoS in address parsing). Upgraded to `^9.0.3`. Verified the only breaking change between major versions (stricter default TLS validation on remote-content fetches) does not affect this codebase — `api/contact.js` uses plain SMTP auth with no attachments and no OAuth2. `npm audit`: 8 vulnerabilities → 0.
+- Added `package-lock.json` (previously absent, so `npm audit` could not run at all).
+
+### Accessibility
+- **Added a `<main>` landmark to all 24 pages.** Previously, `id="main"` (the skip-link target) lived on a `<header>` or, on the homepage, a bare `<a>` — meaning no page had an actual `<main>` landmark for screen-reader users to jump to. Verified via a live Lighthouse accessibility audit against production, which flagged `landmark-one-main` as failing before this fix.
+- **Fixed heading-order violation**: the hamburger-menu overlay used `<h5>Company</h5>`, `<h5>Team access</h5>`, `<h5>Reach</h5>` as purely stylistic labels — appearing before the page's `<h1>` in DOM order on every page. Converted to `<div class="menu-label">`, preserving identical visual styling (verified via screenshot, unchanged) while removing the false heading semantics. Footer column headings (also `<h5>`) were deliberately left as-is — they sit after all page headings and are a much more common, lower-severity pattern.
+- Paired all 10 `backdrop-filter` declarations in `assets/premium.css` with the `-webkit-backdrop-filter` prefix Safari requires; 6 of 10 were previously missing it, meaning glass-blur effects (nav, menu overlay, cookie banner, cards) silently lost their blur on Safari, with graceful degradation to a plain translucent background.
+
+### SEO
+- **`sitemap.xml` was stale** — missing all 8 legal/governance pages added since the last update (`compliance`, `security`, `accessibility`, `responsible-ai`, `ip`, `acceptable-use`, `refunds`, `open-source`), and used `.html`-suffixed URLs inconsistent with the site's extensionless canonical convention. Rebuilt with all 22 public pages, extensionless URLs, and current `lastmod` dates.
+- **Found, not yet fixed** (requires a Vercel dashboard change, not a code change): the live site redirects `nxtspacelabs.com` → `www.nxtspacelabs.com`, but every canonical URL, Open Graph tag, and sitemap entry in the codebase declares the bare apex domain as canonical — the opposite of where the redirect sends traffic. See `docs/DEVELOPER_GUIDE.md` §8 for the two ways to resolve this.
+
+### Performance
+- Ran a live Lighthouse audit against production twice (with and without software WebGL rendering) to separate genuine findings from headless-Chrome-without-a-real-GPU artifacts, which are well-documented to produce unrepresentative Total Blocking Time / Speed Index numbers for WebGL-heavy pages. **Performance score is not reported here** as a single authoritative number for that reason. What's environment-independent and verified: Accessibility 96/100, Best Practices 96/100 (see below), SEO 100/100.
+- Verified real byte weights directly (not Lighthouse-derived): homepage first-party payload is 42KB gzipped (HTML+CSS+JS combined); the one heavy dependency is the `three.js` CDN import (~150KB gzipped, not cacheable across sites in modern browsers due to cache partitioning). Documented as the performance budget baseline in `docs/DEVELOPER_GUIDE.md` §14.
+
+### Monitoring — found via live testing, not previously known
+- **`/_vercel/insights/script.js` (Vercel Web Analytics) returns 404 in production.** The script tag is correctly present in every page's HTML, but Vercel only serves that endpoint once Web Analytics is toggled on for the project in the Vercel dashboard (Project → Analytics). No page-view data is currently being collected. `/_vercel/speed-insights/script.js` (Speed Insights) is confirmed working (200, actively collecting).
+- SSL certificate confirmed valid and auto-renewing (Let's Encrypt via R12, issued 27 May 2026, expires 25 Aug 2026 — comfortably inside Vercel's ~30-day-before-expiry auto-renewal window).
+- All security headers (CSP, HSTS w/ `includeSubDomains; preload`, Permissions-Policy, X-Frame-Options, COOP, X-Content-Type-Options) confirmed present on live production responses, matching `vercel.json` exactly.
+
+### Known issues carried forward from v1.0.0 (still open)
+- `contact.html` hCaptcha sitekey is still the public test key. Founder is obtaining a real sitekey/secret pair.
+- CSP retains `'unsafe-inline'` for `script-src`/`style-src` (documented trade-off, `docs/DEVELOPER_GUIDE.md` §6).
+- Domain-registrar auto-renew and third-party uptime/error-alerting tooling still require founder account setup (`docs/DEVELOPER_GUIDE.md` §15).
+- Apex/www canonical mismatch (above) — Vercel dashboard fix pending.
+
+---
+
+## Release verification checklist — v1.0.1
+
+Every line below was checked against the live production deployment on 2026-07-08, not assumed from source:
+
+- [x] **Deployment successful** — `curl -sL https://nxtspacelabs.com/` → follows to `www.nxtspacelabs.com`, HTTP 200.
+- [x] **SSL certificate active** — valid Let's Encrypt cert, issued 27 May 2026, expires 25 Aug 2026, auto-renewal confirmed within Vercel's standard window.
+- [x] **All routes verified** — 20 legal/marketing pages, the 3 admin-proxy sample routes (`/login`, `/dashboard`, `/kyc`), and the 404 fallback all return their correct status codes on live production.
+- [x] **`robots.txt`** — live, correctly disallows every admin-proxied path, points to `sitemap.xml`.
+- [x] **`sitemap.xml`** — rebuilt to include all 22 public pages (was missing 8); confirmed live and parseable.
+- [x] **No broken internal links** — spot-checked via Lighthouse's link-crawlability audit (pass) plus manual route verification above.
+- [x] **Secret scan passed** — grepped every client-side file for API-key/token patterns; zero matches. `api/contact.js` (the one server-side file with credentials) reads all secrets from `process.env`, never hardcoded.
+- [x] **Dependency/security audit** — `npm audit`: 1 high-severity finding (nodemailer), fixed, now 0 vulnerabilities.
+- [x] **Repository clean** — `git status --porcelain` empty after this round's commit; nothing uncommitted.
+- [x] **Tag pushed** — `v1.0.1` created and pushed, following `v1.0.0`.
+
+### Rollback readiness
+Two independent rollback paths, both already documented in `docs/DEVELOPER_GUIDE.md` §12:
+1. **Vercel Dashboard → Deployments → Promote to Production** on any prior deployment — instant, no git operations needed.
+2. **Git tag checkout** — `git checkout v1.0.0 -- .` restores the exact pre-this-round state; every tag is a permanent, pushed recovery point.
+
+### Browser compatibility — honest scope
+Verified in this pass: **Chromium only** (headless Chrome, both via Lighthouse and the local preview browser). This environment has no access to real Safari, Firefox, or physical mobile devices, so those are **not tested** here — that claim is not made. What was checked and fixed proactively for Safari specifically: the `backdrop-filter` prefix gap above (a real, verifiable Safari-only rendering difference, confirmed by reading the CSS rather than by running Safari). Recommend a manual pass in BrowserStack or real devices before or shortly after this promotion, particularly for the custom-cursor and WebGL starfield, which are the two most platform-sensitive pieces of the page.
+
+### Lighthouse scores (live production, 2026-07-08)
+| Category | Score | Note |
+|---|---|---|
+| Accessibility | 96/100 | Up from a lower baseline after the `<main>` landmark + heading-order fixes above; remaining 4 points not itemized in this pass |
+| Best Practices | 96/100 | The one deduction is the Web Analytics 404 (above) — a dashboard toggle, not a code defect |
+| SEO | 100/100 | |
+| Performance | *not reported* | Headless Chrome without real GPU acceleration produces unrepresentative WebGL/animation timings for this page — see Performance section above for the real, environment-independent measurements used instead |
+
+---
+
 ## [1.0.0] — 2026-07-04 — Production baseline
 
 The site is promoted to serve as NextSpace Labs' official digital headquarters. This tag is the recovery point referenced in `docs/DEVELOPER_GUIDE.md` §13 (Backup procedure) — see that document for how to roll back to it.

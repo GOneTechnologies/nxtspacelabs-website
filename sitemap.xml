@@ -2,86 +2,134 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nxtspacelabs.com/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://nxtspacelabs.com/company.html</loc>
+    <loc>https://nxtspacelabs.com/company</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://nxtspacelabs.com/services.html</loc>
+    <loc>https://nxtspacelabs.com/services</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://nxtspacelabs.com/industries.html</loc>
+    <loc>https://nxtspacelabs.com/industries</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nxtspacelabs.com/innovation.html</loc>
+    <loc>https://nxtspacelabs.com/innovation</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nxtspacelabs.com/insights.html</loc>
+    <loc>https://nxtspacelabs.com/insights</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nxtspacelabs.com/newsroom.html</loc>
+    <loc>https://nxtspacelabs.com/newsroom</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nxtspacelabs.com/careers.html</loc>
+    <loc>https://nxtspacelabs.com/careers</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://nxtspacelabs.com/contact.html</loc>
+    <loc>https://nxtspacelabs.com/contact</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://nxtspacelabs.com/esg.html</loc>
-    <lastmod>2026-07-03</lastmod>
+    <loc>https://nxtspacelabs.com/esg</loc>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nxtspacelabs.com/status.html</loc>
+    <loc>https://nxtspacelabs.com/status</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nxtspacelabs.com/privacy.html</loc>
-    <lastmod>2026-07-03</lastmod>
+    <loc>https://nxtspacelabs.com/compliance</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nxtspacelabs.com/privacy</loc>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://nxtspacelabs.com/terms.html</loc>
-    <lastmod>2026-07-03</lastmod>
+    <loc>https://nxtspacelabs.com/terms</loc>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://nxtspacelabs.com/cookies.html</loc>
-    <lastmod>2026-07-03</lastmod>
+    <loc>https://nxtspacelabs.com/cookies</loc>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://nxtspacelabs.com/acceptable-use</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://nxtspacelabs.com/refunds</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://nxtspacelabs.com/ip</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://nxtspacelabs.com/security</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://nxtspacelabs.com/accessibility</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://nxtspacelabs.com/responsible-ai</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://nxtspacelabs.com/open-source</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>

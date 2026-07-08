@@ -368,7 +368,7 @@
   .menu-primary a:hover .arr { opacity: 1; transform: translateX(0); }
 
   .menu-side { display: flex; flex-direction: column; gap: 32px; padding-top: 8px; }
-  .menu-group h5 {
+  .menu-group .menu-label {
     font-family: "Inter", sans-serif;
     font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
     color: var(--nebula); margin-bottom: 14px; font-weight: 500;
@@ -1084,7 +1084,7 @@
     </div>
     <div class="menu-side">
       <div class="menu-group">
-        <h5>Company</h5>
+        <div class="menu-label">Company</div>
         <ul>
           <li><a href="/company.html#about" data-hover>About us</a></li>
           <li><a href="/company.html#vision" data-hover>Vision &amp; Mission</a></li>
@@ -1093,14 +1093,14 @@
         </ul>
       </div>
       <div class="menu-group">
-        <h5>Team access</h5>
+        <div class="menu-label">Team access</div>
         <ul>
           <li><a href="/login" data-hover>Admin login →</a></li>
           <li><a href="/dashboard" data-hover>Dashboard →</a></li>
         </ul>
       </div>
       <div class="menu-group">
-        <h5>Reach</h5>
+        <div class="menu-label">Reach</div>
         <ul>
           <li><a href="mailto:connect@nxtspacelabs.com" data-hover>connect@nxtspacelabs.com</a></li>
           <li class="plain">Hyderabad · India</li>
@@ -1133,7 +1133,8 @@
 </button>
 
 <!-- ═══ 0 · HERO ═══ -->
-<section class="chapter hero" id="hero"><a id="main" tabindex="-1"></a>
+<main id="main" tabindex="-1">
+<section class="chapter hero" id="hero">
   <div class="hero-inner">
     <div class="hero-eyebrow">an innovation lab for the new era</div>
     <h1 class="headline">
@@ -1529,6 +1530,7 @@
     </div>
   </div></div>
 </section>
+</main>
 
 <!-- ═══ FOOTER — treated as the closing chapter, not a link tray ═══ -->
 <footer>

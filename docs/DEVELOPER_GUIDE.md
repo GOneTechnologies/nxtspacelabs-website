@@ -180,8 +180,8 @@ Two first-party, privacy-respecting scripts are wired into every page, right bef
 <script defer src="/_vercel/speed-insights/script.js"></script>
 ```
 
-- **Vercel Web Analytics** — anonymous page-view counts, referrers, and countries. No cookies, no cross-site tracking, no individual profiling.
-- **Vercel Speed Insights** — real-user Core Web Vitals (LCP, CLS, INP) sampled from actual visitor sessions.
+- **Vercel Web Analytics** — anonymous page-view counts, referrers, and countries. No cookies, no cross-site tracking, no individual profiling. **Verified 2026-07-08: `/_vercel/insights/script.js` currently returns 404 on production** (`curl -I https://www.nxtspacelabs.com/_vercel/insights/script.js`). The script tag is correctly wired here in the HTML, but Vercel only serves that endpoint once **Web Analytics is enabled for this project** in the Vercel dashboard (Project → Analytics tab). This is a dashboard toggle, not a code change — until it's flipped on, this script 404s harmlessly (visible as a console error, no functional impact on the page) and no page-view data is collected.
+- **Vercel Speed Insights** — real-user Core Web Vitals (LCP, CLS, INP) sampled from actual visitor sessions. **Verified 2026-07-08: `/_vercel/speed-insights/script.js` returns 200 and is actively collecting.**
 
 Both respect the site's own cookie-consent gate (see `partials.js` §4) — the `analytics` checkbox in the cookie banner controls whether these are allowed to report. There is no Google Analytics, no Meta Pixel, no third-party ad-tech tracker anywhere on the site — this is a standing commitment stated on `/compliance` and `/esg`. Do not add one without a full policy review; adding an ad-tech tracker would directly contradict a public commitment made in the Cookie Policy and the "What we will not do" section of the Compliance Center.
 
@@ -194,6 +194,7 @@ Both respect the site's own cookie-consent gate (see `partials.js` §4) — the 
 - **Per-page metadata** — every page defines its own `<title>`, `<meta name="description">`, canonical URL, Open Graph tags, and Twitter card tags directly in its `<head>`. There's no shared template for these — copy the pattern from an existing page (e.g. `security.html`) when creating a new one, and write real, distinct copy for the description (don't leave a copy-pasted description from another page).
 - **JSON-LD** — the site-wide `Organization` + `WebSite` schema is injected once per page by `partials.js` (§4). Don't duplicate it manually in a new page's `<head>`.
 - **`cleanUrls: true`** — canonical URLs across the site use the extensionless form; make sure any new page's `<link rel="canonical">` also omits `.html`.
+- **Apex vs. www — known mismatch, verified 2026-07-08.** The live domain redirects `nxtspacelabs.com` → `www.nxtspacelabs.com` (a 307, configured at the Vercel dashboard Domains level — not in this repo's `vercel.json`, which has no redirect rules). But every `<link rel="canonical">`, Open Graph URL, JSON-LD `url`, and `sitemap.xml` entry in this codebase declares the bare apex (`https://nxtspacelabs.com/...`) as canonical — the opposite of where the redirect actually sends visitors. This is a contradictory signal to search engines (the page tells crawlers "the real URL is the one that just redirected you away") and should be resolved one of two ways: (a) change the Vercel dashboard redirect to send `www` → apex instead, matching what the code already assumes, or (b) if `www` is meant to be primary, do a project-wide find-and-replace of the canonical/OG/JSON-LD/sitemap URLs from apex to `www`. Pick (a) unless there's a specific reason `www` must be primary — it requires zero code changes, just a Vercel dashboard setting.
 
 ---
 

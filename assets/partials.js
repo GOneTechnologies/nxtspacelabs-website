@@ -109,7 +109,7 @@
     </div>
     <div class="menu-side">
       <div class="menu-group">
-        <h5>Company</h5>
+        <div class="menu-label">Company</div>
         <ul>
           <li><a href="/company.html#about" data-hover>About us</a></li>
           <li><a href="/company.html#vision" data-hover>Vision &amp; Mission</a></li>
@@ -118,14 +118,14 @@
         </ul>
       </div>
       <div class="menu-group">
-        <h5>Team access</h5>
+        <div class="menu-label">Team access</div>
         <ul>
           <li><a href="/login" data-hover>Admin login →</a></li>
           <li><a href="/dashboard" data-hover>Dashboard →</a></li>
         </ul>
       </div>
       <div class="menu-group">
-        <h5>Reach</h5>
+        <div class="menu-label">Reach</div>
         <ul>
           <li><a href="mailto:connect@nxtspacelabs.com" data-hover>connect@nxtspacelabs.com</a></li>
           <li class="plain">Hyderabad · India</li>

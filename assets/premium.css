@@ -210,7 +210,7 @@ nav.top {
 .menu-primary a .arr { margin-left: auto; opacity: 0; font-size: 22px; transform: translateX(-12px); transition: opacity 0.4s, transform 0.4s; color: var(--nebula); }
 .menu-primary a:hover .arr { opacity: 1; transform: translateX(0); }
 .menu-side { display: flex; flex-direction: column; gap: 32px; padding-top: 8px; }
-.menu-group h5 { font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--nebula); margin-bottom: 14px; font-weight: 500; }
+.menu-group .menu-label { font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--nebula); margin-bottom: 14px; font-weight: 500; }
 .menu-group ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .menu-group a { font-family: "Instrument Serif", serif; font-style: italic; font-size: 16px; color: var(--mist-2); transition: color 0.3s; }
 .menu-group a:hover { color: var(--nebula); }
@@ -247,7 +247,7 @@ nav.top {
   width: 44px; height: 44px;
   border: 1px solid var(--line-2); border-radius: 50%;
   display: grid; place-items: center;
-  backdrop-filter: blur(20px); background: rgba(247, 245, 240, 0.02);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(247, 245, 240, 0.02);
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .sound-toggle:hover { border-color: var(--nebula); background: rgba(167, 139, 250, 0.08); }
@@ -346,7 +346,7 @@ h3.section-head .italic {
   padding: 32px 28px;
   background: rgba(247, 245, 240, 0.02);
   border: 1px solid var(--line-2); border-radius: 18px;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s, background 0.5s;
 }
 .card:hover { border-color: var(--nebula); transform: translateY(-4px); background: rgba(167, 139, 250, 0.04); }
@@ -366,7 +366,7 @@ h3.section-head .italic {
   aspect-ratio: 1;
   border-radius: 20px; overflow: hidden;
   background: linear-gradient(135deg, rgba(167, 139, 250, 0.08), rgba(96, 165, 250, 0.03));
-  border: 1px solid var(--line-2); backdrop-filter: blur(30px);
+  border: 1px solid var(--line-2); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
   position: relative;
   display: grid; place-items: center;
 }
@@ -404,7 +404,7 @@ h3.section-head .italic {
   display: inline-flex; align-items: center; gap: 16px;
   padding: 22px 40px;
   background: rgba(247, 245, 240, 0.03);
-  backdrop-filter: blur(30px); border: 1px solid var(--line-2);
+  backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid var(--line-2);
   border-radius: 999px;
   font-family: "Instrument Serif", serif; font-style: italic;
   font-size: 18px; color: var(--mist);
@@ -524,7 +524,7 @@ footer {
 /* ═══ Hidden mode overlay (type "future") ═══ */
 .hidden-mode {
   position: fixed; inset: 0; z-index: 400;
-  background: rgba(2, 2, 9, 0.94); backdrop-filter: blur(20px);
+  background: rgba(2, 2, 9, 0.94); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   display: none; place-items: center;
   opacity: 0; transition: opacity 0.6s;
 }
@@ -595,7 +595,7 @@ footer {
   padding: 12px 22px; border-radius: 999px;
   border: 1px solid var(--line-2);
   background: rgba(247, 245, 240, 0.02);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   color: var(--mist-2); font-family: "Inter"; font-size: 11.5px;
   letter-spacing: 2px; text-transform: uppercase; cursor: none;
   transition: border-color 0.4s, background 0.4s, color 0.4s, transform 0.4s;
