@@ -6,6 +6,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ---
 
+## [1.0.7] — 2026-07-08 — Responsive QA sweep across all pages + touch-target fixes
+
+Full end-to-end responsive pass. Every page was audited at mobile (390px) and tablet (768px) with a live script that flags horizontal overflow, off-screen/clipped elements, and undersized tap targets, covering every layout archetype: the homepage, marketing pages with card grids (services, company, industries), legal longform pages with tables (privacy, cookies, open-source), the contact form, and the filter/article page (insights).
+
+### Result
+- **Zero horizontal overflow / no clipped content** on every page and archetype tested, at both 390px and 768px. Heroes, card grids, data tables, forms, and filter chips all reflow correctly — the existing breakpoint system (900 / 700 / 600 / 500px) is sound. Body copy holds a readable ~15.5px floor on mobile.
+
+### Fixed (the two real issues the audit surfaced)
+- **Menu secondary links** (`.menu-group a` — "About us", "Leadership", "Admin login", etc.) were only ~21px tall. Enlarged to a ~40px tap target on touch (`≤900px`), verified on both the homepage and content pages. Primary menu links were already 90px.
+- **Cookie-banner policy links** ("Read the Cookie Policy" / "Read the Privacy Policy") were a cramped ~14px; given a larger tap area on phones (`≤600px`).
+
+Both fixes applied in `assets/premium.css` (all content pages) and `index.html` (homepage's inline menu). No layout changes — padding-only, so nothing shifts.
+
+---
+
 ## [1.0.6] — 2026-07-08 — UX: retire the custom cursor, restore native pointer + touch-friendly targets
 
 Addresses two review items: (1) the mouse pointer was hard to locate, and (2) mobile polish.

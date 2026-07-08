@@ -648,13 +648,19 @@ footer {
 .form-submit:hover { background: var(--nebula-2); color: var(--mist); transform: translateY(-2px); }
 .honeypot { position: absolute; left: -9999px; }
 
-/* ═══ Touch-target comfort on phones ═══ */
+/* ═══ Touch-target comfort on phones/tablets ═══ */
 /* Interactive pills are inline-flex + centered, so a min-height only grows the
    tap area without shifting content — finger-friendly on small screens. */
+@media (max-width: 900px) {
+  /* Secondary menu links sit in a single column on touch — give them room. */
+  .menu-group ul { gap: 2px; }
+  .menu-group a { display: inline-block; padding: 7px 0; }
+}
 @media (max-width: 600px) {
   .menu-btn, .search-pill, .menu-close,
   .doc-download, .doc-print { min-height: 44px; }
   .nav-right { gap: 14px; }
+  .cookie-links a { display: inline-block; padding: 4px 0; }
 }
 
 /* ═══ Accessibility ═══ */
