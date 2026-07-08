@@ -28,9 +28,11 @@ The site is promoted to serve as NextSpace Labs' official digital headquarters. 
 ### Fixed
 - `terms.html` §2 (Eligibility) expanded to include an export-control and sanctions warranty (comprehensively-sanctioned jurisdictions, UN/EU/UK/US/India restricted-party lists) — was previously silent on this.
 
+### Removed
+- `index-legacy-v2.html` — a tracked, publicly-reachable orphaned page (an earlier homepage draft), not linked from any current navigation and not in `sitemap.xml`. Founder-confirmed deletion; fully recoverable from git history (`git show <pre-removal-commit>:index-legacy-v2.html`) if ever needed.
+
 ### Known issues (tracked, not yet resolved)
-- **`contact.html` uses hCaptcha's public test sitekey** (`10000000-ffff-ffff-ffff-000000000001`), which always passes verification. The contact form currently has no real bot protection until this is swapped for a production sitekey from an hCaptcha account the founder controls, with the matching `HCAPTCHA_SECRET` set in Vercel's environment variables.
-- **`index-legacy-v2.html`** is a tracked, publicly-reachable, orphaned page (an earlier homepage draft) not linked from any current navigation, not in `sitemap.xml`, and not disallowed in `robots.txt`. Pending a founder decision on whether to delete it (fully recoverable from git history regardless) or keep it intentionally reachable.
+- **`contact.html` uses hCaptcha's public test sitekey** (`10000000-ffff-ffff-ffff-000000000001`), which always passes verification. The contact form currently has no real bot protection. Founder-owned follow-up: create an hCaptcha account, generate a production sitekey + secret, and provide both — the sitekey goes in `contact.html`, the secret goes in Vercel's `HCAPTCHA_SECRET` environment variable. No code change needed beyond swapping these two values once issued.
 - CSP retains `'unsafe-inline'` for `script-src`/`style-src` — documented, deliberate trade-off; see `docs/DEVELOPER_GUIDE.md` §6 for what a nonce-based CSP migration would require.
 - No third-party uptime/error-alerting/domain-expiry monitoring is wired up yet — this requires account creation the founder needs to do directly; recommendations and exact setup steps are in `docs/DEVELOPER_GUIDE.md` §15.
 
