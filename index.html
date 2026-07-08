@@ -25,7 +25,7 @@
 <meta property="og:description" content="A digital headquarters for products, research, and futures." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://nxtspacelabs.com" />
-<meta property="og:image" content="https://nxtspacelabs.com/logo.svg" />
+<meta property="og:image" content="https://nxtspacelabs.com/og-image.png" />
 <link rel="canonical" href="https://nxtspacelabs.com/" />
 <link rel="icon" type="image/svg+xml" href="/logo.svg" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -36,7 +36,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@nxtspacelabs" />
 <meta name="twitter:creator" content="@nxtspacelabs" />
-<meta name="twitter:image" content="https://nxtspacelabs.com/logo.svg" />
+<meta name="twitter:image" content="https://nxtspacelabs.com/og-image.png" />
 <title>NextSpace Labs — We shape what comes next.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1954,23 +1954,17 @@ import * as THREE from 'three';
 /* Loader */
 window.addEventListener('load', () => { setTimeout(() => document.getElementById('loader').classList.add('done'), 3400); });
 
-/* Cursor */
-(function cursor() {
-  const dot=document.getElementById('cursorDot'), ring=document.getElementById('cursorRing'), light=document.getElementById('cursorLight');
-  if (!dot||!ring) return;
-  let mx=-400,my=-400,rx=-400,ry=-400,lx=-400,ly=-400;
-  window.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.transform=`translate(${mx}px, ${my}px) translate(-50%,-50%)`; });
+/* Ambient light follows the pointer — desktop only; native OS cursor is used. */
+(function cursorLight() {
+  const light=document.getElementById('cursorLight');
+  if (!light || window.matchMedia('(hover: none)').matches) return;
+  let mx=-400,my=-400,lx=-400,ly=-400;
+  window.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; }, { passive:true });
   (function tick() {
-    rx += (mx-rx)*0.15; ry += (my-ry)*0.15;
     lx += (mx-lx)*0.08; ly += (my-ly)*0.08;
-    ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;
-    if (light) light.style.transform=`translate(${lx}px,${ly}px) translate(-50%,-50%)`;
+    light.style.transform=`translate(${lx}px,${ly}px) translate(-50%,-50%)`;
     requestAnimationFrame(tick);
   })();
-  document.querySelectorAll('[data-hover], a, button').forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('hover'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
-  });
 })();
 
 /* Reveal */

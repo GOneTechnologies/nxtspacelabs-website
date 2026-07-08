@@ -49,35 +49,19 @@
   });
 })();
 
-/* Custom cursor + soft light follower */
-(function cursor() {
-  const dot = document.getElementById('cursorDot');
-  const ring = document.getElementById('cursorRing');
+/* Soft ambient light follows the pointer — desktop only; the site uses the
+   native OS cursor. (The old custom dot/ring was retired; this drives just
+   the glow.) */
+(function cursorLight() {
   const light = document.getElementById('cursorLight');
-  if (!dot || !ring) return;
-  let mx = -400, my = -400, rx = -400, ry = -400, lx = -400, ly = -400;
-  window.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
-  });
+  if (!light || window.matchMedia('(hover: none)').matches) return;
+  let mx = -400, my = -400, lx = -400, ly = -400;
+  window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
   (function loop() {
-    rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15;
     lx += (mx - lx) * 0.08; ly += (my - ly) * 0.08;
-    ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
-    if (light) light.style.transform = `translate(${lx}px, ${ly}px) translate(-50%, -50%)`;
+    light.style.transform = `translate(${lx}px, ${ly}px) translate(-50%, -50%)`;
     requestAnimationFrame(loop);
   })();
-  const rebind = () => {
-    document.querySelectorAll('[data-hover], a, button, input, textarea, select').forEach(el => {
-      if (el._nsBound) return;
-      el._nsBound = true;
-      el.addEventListener('mouseenter', () => ring.classList.add('hover'));
-      el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
-    });
-  };
-  rebind();
-  // Rebind after partials inject
-  window.addEventListener('ns:partials-mounted', rebind);
 })();
 
 /* Reveal-on-scroll */

@@ -6,6 +6,22 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ---
 
+## [1.0.8] — 2026-07-08 — Production QA: real social image, dead-code cleanup
+
+Final pre-launch end-to-end review (assets, SEO, dead code, console, a11y, consistency). The site passed on nearly every axis; two real fixes shipped.
+
+### Fixed
+- **Social share image was an SVG** — `og:image` and `twitter:image` pointed to `logo.svg` on all 24 pages. Most platforms (Facebook, LinkedIn, X, WhatsApp, iMessage, Slack) don't render SVG, so shared links showed a blank preview. Created a proper branded **1200×630 `og-image.png`** (dark brand backdrop, gradient logo mark, "NextSpace Labs — We shape what comes next.") and repointed `og:image` + `twitter:image` across every page. Favicons and the JSON-LD `logo` (which may be SVG) are unchanged.
+- **Dead cursor code** — after retiring the custom dot/ring (v1.0.6), `premium.js` and `index.html` still ran a permanent `requestAnimationFrame` loop updating the now-hidden dot/ring and bound `mouseenter`/`mouseleave` listeners to *every* link/button/input to toggle a hidden element's class. Reduced to a single function that only drives the ambient light, guarded to `hover:hover` devices (no loop at all on touch). Removes wasted per-frame work and dozens of event listeners.
+
+### Verified clean (no change needed)
+- All favicon / manifest / icon assets exist and resolve. `sitemap.xml` lists all 22 public URLs (404/500 correctly excluded); `robots.txt` allows crawl, disallows admin surfaces + `/api/`, and references the sitemap. No `console.log`/TODO/debug artifacts in shipped code (the one `console.error` is legitimate server-side SMTP logging). Per-page `<title>`, description, canonical, and OG/Twitter tags all present. Native cursor + ambient light confirmed working; zero console errors.
+
+### Note for the founder (dashboard, not code)
+- The Vercel Web Analytics / Speed Insights scripts (`/_vercel/insights/*`) 404 on a local static server by design. Confirm **Web Analytics + Speed Insights are enabled in the Vercel project dashboard** so they don't 404 for real visitors in production.
+
+---
+
 ## [1.0.7] — 2026-07-08 — Responsive QA sweep across all pages + touch-target fixes
 
 Full end-to-end responsive pass. Every page was audited at mobile (390px) and tablet (768px) with a live script that flags horizontal overflow, off-screen/clipped elements, and undersized tap targets, covering every layout archetype: the homepage, marketing pages with card grids (services, company, industries), legal longform pages with tables (privacy, cookies, open-source), the contact form, and the filter/article page (insights).
