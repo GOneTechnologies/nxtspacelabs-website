@@ -128,39 +128,6 @@
   window.addEventListener('ns:partials-mounted', bind);
 })();
 
-/* Sound — atmosphere via WebAudio (no bundled audio files) */
-(function soundToggle() {
-  const bind = () => {
-    const btn = document.getElementById('soundToggle');
-    if (!btn || btn._nsBound) return;
-    btn._nsBound = true;
-    let ctx = null, gain = null, on = false;
-    btn.addEventListener('click', () => {
-      if (!on) {
-        if (!ctx) {
-          ctx = new (window.AudioContext || window.webkitAudioContext)();
-          gain = ctx.createGain(); gain.gain.value = 0; gain.connect(ctx.destination);
-          const o1 = ctx.createOscillator(); o1.type = 'sine'; o1.frequency.value = 110;
-          const o2 = ctx.createOscillator(); o2.type = 'sine'; o2.frequency.value = 165;
-          const g2 = ctx.createGain(); g2.gain.value = 0.5;
-          const lfo = ctx.createOscillator(); lfo.frequency.value = 0.08;
-          const lfoG = ctx.createGain(); lfoG.gain.value = 0.15;
-          lfo.connect(lfoG); lfoG.connect(g2.gain);
-          o1.connect(gain); o2.connect(g2); g2.connect(gain);
-          o1.start(); o2.start(); lfo.start();
-        }
-        gain.gain.linearRampToValueAtTime(0.035, ctx.currentTime + 1.5);
-        btn.classList.add('on'); on = true;
-      } else {
-        gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.8);
-        btn.classList.remove('on'); on = false;
-      }
-    });
-  };
-  bind();
-  window.addEventListener('ns:partials-mounted', bind);
-})();
-
 /* Day/night lighting via body class */
 (function daynight() {
   const h = new Date().getHours();

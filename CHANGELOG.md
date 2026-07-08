@@ -6,6 +6,26 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ---
 
+## [1.0.3] — 2026-07-08 — Homepage: fix Hyderabad time label, remove ambient sound
+
+Two founder-requested fixes after a review of the live homepage.
+
+### Fixed
+- **"— [x] in Hyderabad" time label** (`index.html`) was computing morning/day/evening/night from the *visitor's own device clock*, not Hyderabad's actual time — a visitor outside India would see a time-of-day label that had nothing to do with Hyderabad. Now computed via `Intl.DateTimeFormat` with `timeZone: 'Asia/Kolkata'`, independent of the visitor's local timezone. The page's ambient day/night lighting theme (body class) intentionally still follows the visitor's own local clock — that behavior wasn't reported as wrong and wasn't touched.
+
+### Removed
+- **Ambient sound toggle**, completely: the WebAudio-synthesized ambient drone, the speaker-icon button, and every trace of it across the codebase — founder decision that background audio doesn't fit the brand and the site should stay visual-only. Removed from:
+  - `index.html` — button markup, `.sound-toggle` CSS block, the `soundToggle()` script.
+  - `assets/premium.js` / `assets/partials.js` — the shared `soundToggle()` function and `SOUND_HTML` injection used by every other page.
+  - `assets/premium.css` — the `.sound-toggle` rule block, plus its entries in the print-media hide-list and the `:focus-visible` selector list.
+  - All 23 remaining HTML pages — the empty `<div id="ns-sound"></div>` mount point.
+  - `docs/DEVELOPER_GUIDE.md` — updated the shared-partials section and the new-page checklist to no longer mention `#ns-sound`.
+
+### Unchanged
+- The `#hero`-style URL hash sync (chapter rail + `history.replaceState`) — founder confirmed this deep-linking behavior is intentional and should stay as-is.
+
+---
+
 ## [1.0.2] — 2026-07-08 — Contact form: drop CAPTCHA, harden server-side instead
 
 Founder decision: keep the contact form frictionless for launch rather than add a CAPTCHA challenge. Removed hCaptcha entirely (it was still on the public test sitekey, so it was providing zero real protection anyway) and replaced it with layered server-side defenses appropriate for a low-traffic company contact form.

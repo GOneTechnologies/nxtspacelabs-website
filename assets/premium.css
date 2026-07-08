@@ -241,21 +241,6 @@ nav.top {
   .menu-brand { top: 20px; left: 24px; }
 }
 
-/* ═══ Sound toggle ═══ */
-.sound-toggle {
-  position: fixed; right: 40px; bottom: 40px; z-index: 95;
-  width: 44px; height: 44px;
-  border: 1px solid var(--line-2); border-radius: 50%;
-  display: grid; place-items: center;
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(247, 245, 240, 0.02);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.sound-toggle:hover { border-color: var(--nebula); background: rgba(167, 139, 250, 0.08); }
-.sound-toggle svg { width: 16px; height: 16px; color: var(--dim); transition: color 0.4s; }
-.sound-toggle:hover svg { color: var(--mist); }
-.sound-toggle.on svg { color: var(--nebula); }
-@media (max-width: 700px) { .sound-toggle { right: 20px; bottom: 20px; } }
-
 /* ═══ Page hero + sections ═══ */
 .page-hero {
   position: relative; z-index: 2;
@@ -613,8 +598,8 @@ footer {
     cursor: auto !important;
   }
   #scene, .grain, .vignette, .cursor-dot, .cursor-ring, .cursor-light,
-  nav.top, .menu-overlay, .sound-toggle, .doc-actions, .skip-link,
-  .time-tag, #ns-nav, #ns-menu, #ns-sound, #ns-hidden, footer::before,
+  nav.top, .menu-overlay, .doc-actions, .skip-link,
+  .time-tag, #ns-nav, #ns-menu, #ns-hidden, footer::before,
   .foot-coda, .foot-grid, .foot-bottom, .cookie-banner { display: none !important; }
   .legal-version-history { border-color: #ccc !important; color: #444 !important; }
   .legal-version-history h4 { color: #6B21A8 !important; }
@@ -689,7 +674,7 @@ footer {
   border-radius: 4px;
 }
 a:focus-visible, button:focus-visible, .glass-btn:focus-visible,
-.menu-btn:focus-visible, .menu-close:focus-visible, .sound-toggle:focus-visible,
+.menu-btn:focus-visible, .menu-close:focus-visible,
 .form-submit:focus-visible, .filter-chip:focus-visible {
   outline: 2px solid var(--nebula) !important;
   outline-offset: 4px;

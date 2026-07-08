@@ -247,11 +247,6 @@
   </div>
 </div>`;
 
-  const SOUND_HTML = `
-<button class="sound-toggle" id="soundToggle" data-hover aria-label="Toggle atmosphere">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="16" y1="9" x2="22" y2="15" stroke-linecap="round"/><line x1="22" y1="9" x2="16" y2="15" stroke-linecap="round"/></svg>
-</button>`;
-
   const COOKIE_HTML = `
 <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie preferences" hidden>
   <div class="cookie-inner">
@@ -300,12 +295,10 @@
     const menuSlot = document.getElementById('ns-menu');
     const footerSlot = document.getElementById('ns-footer');
     const hiddenSlot = document.getElementById('ns-hidden');
-    const soundSlot = document.getElementById('ns-sound');
     if (navSlot)     navSlot.outerHTML = NAV_HTML;
     if (menuSlot)    menuSlot.outerHTML = MENU_HTML;
     if (footerSlot)  footerSlot.outerHTML = FOOTER_HTML;
     if (hiddenSlot)  hiddenSlot.outerHTML = HIDDEN_HTML;
-    if (soundSlot)   soundSlot.outerHTML = SOUND_HTML;
 
     // Cookie banner — inject once at end of body, wire behaviour.
     if (!document.getElementById('cookieBanner')) {

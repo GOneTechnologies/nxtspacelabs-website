@@ -84,18 +84,17 @@ The `rewrites` array in `vercel.json` forwards specific paths to `https://nxtspa
 
 There are no React/Vue components here — "shared components" means **injected HTML fragments**, all defined in one file: `assets/partials.js`.
 
-Every page includes these three empty mount points in the same spot:
+Every page includes these two empty mount points in the same spot:
 
 ```html
 <div id="ns-nav"></div>
 <div id="ns-menu"></div>
-<div id="ns-sound"></div>
 ...
 <div id="ns-footer"></div>
 <div id="ns-hidden"></div>
 ```
 
-On page load, `partials.js` replaces each of these with the shared nav bar, full-screen menu overlay, sound toggle, footer, and the hidden "easter egg" mode. It also:
+On page load, `partials.js` replaces each of these with the shared nav bar, full-screen menu overlay, footer, and the hidden "easter egg" mode. It also:
 - Injects the site-wide JSON-LD (`Organization` + `WebSite` schema) once per page.
 - Injects the skip-to-content link for keyboard users.
 - Wires up the mobile-style hamburger menu (open/close/escape/click-outside).
@@ -258,7 +257,7 @@ The print stylesheet (`@media print` block in `assets/premium.css`) controls exa
 
 1. Copy an existing page that's structurally closest to what you're building (a legal-style doc → copy `security.html`; a marketing page → copy `services.html` or `industries.html`).
 2. Update, in the `<head>`: `<title>`, `<meta name="description">`, `og:title`, `og:description`, `og:url`, `<link rel="canonical">`. Do not skip these — a copy-pasted description is worse than none.
-3. Keep the shared partial mount points intact: `#ns-nav`, `#ns-menu`, `#ns-sound`, `#ns-footer`, `#ns-hidden`, and the closing script tags (`scene-lite.js`, `partials.js`, `premium.js`, plus the two Vercel Insights scripts).
+3. Keep the shared partial mount points intact: `#ns-nav`, `#ns-menu`, `#ns-footer`, `#ns-hidden`, and the closing script tags (`scene-lite.js`, `partials.js`, `premium.js`, plus the two Vercel Insights scripts).
 4. Add the page to `sitemap.xml`.
 5. Add a link to the page from wherever it's discoverable — the menu (`assets/partials.js` → `MENU_HTML`), the footer (`assets/partials.js` → `FOOTER_HTML`), or a relevant hub page like `compliance.html`. An orphaned page that's live but not linked from anywhere is a real, verified issue — see the Production Hardening review that flagged `index-legacy-v2.html` for exactly this.
 6. If it's a legal/governance document, follow the full template pattern in §10 above, including the version-history block and PDF generation.
