@@ -6,6 +6,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ---
 
+## [1.0.10] — 2026-07-09 — Content-audit defect sweep: dead links + absolute wording
+
+Pre-content-phase cleanup. A full-site audit turned up exactly two classes of defect; both fixed.
+
+### Fixed
+- **Dead links (5).** Anchors with no `href` — 4 whitepaper/research cards on `insights.html`, the media-kit card on `newsroom.html` — did nothing when clicked. All now resolve to the appropriate `mailto:` (matching the sibling links). Two verbs adjusted for honesty (e.g. "Read the note" → "Ask for the note", since the note isn't published yet).
+- **Absolute-promise wording (2).** `insights.html` newsletter line "Nothing else. Ever." → "Nothing else — no digests, no drip campaigns." `esg.html` commitment "Never sell personal data. Ever." → "Never sell personal data." (drops the redundant absolute; the commitment stays).
+
+### Deliberately left as-is
+- Honest hedges that *should* stay absolute-free the correct way: "we cannot guarantee absolute security" (privacy), "reviewed but not guaranteed" (refunds), and the already-scalable "every enquiry is reviewed personally *during our early growth*" phrasing used on contact/careers/company.
+
+---
+
 ## [1.0.9] — 2026-07-09 — Cursor: an innovative custom cursor that's actually visible
 
 Founder wanted the distinctive custom cursor back — but *user-friendly*, not the old one that vanished. Rebuilt it correctly.
