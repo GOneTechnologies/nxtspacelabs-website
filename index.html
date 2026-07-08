@@ -207,15 +207,6 @@
     .nav-right .hide-sm { display: none; }
   }
 
-  /* ═══ Time-of-day whisper ═══ */
-  .time-tag {
-    position: fixed; top: 32px; right: 48px; z-index: 99;
-    font-family: "Instrument Serif", serif; font-style: italic;
-    font-size: 11px; letter-spacing: 1px; color: var(--dim);
-    display: none;
-  }
-  @media (min-width: 1200px) { .time-tag { display: block; top: 96px; right: 48px; opacity: 0; animation: fade-word 1s ease 3.4s forwards; } }
-
   /* ═══ Chapter rail ═══ */
   .rail {
     position: fixed; left: 40px; top: 50%;
@@ -969,6 +960,17 @@
     font-size: 11px; letter-spacing: 2px; color: var(--dim);
     cursor: none;
   }
+
+  /* ═══ Skip-to-content link — off-screen until keyboard focus ═══ */
+  .skip-link {
+    position: fixed; top: -100px; left: 24px; z-index: 500;
+    padding: 14px 22px; border-radius: 999px;
+    background: var(--nebula); color: var(--void);
+    font-family: "Inter"; font-size: 12px; letter-spacing: 2px;
+    text-transform: uppercase; font-weight: 500;
+    transition: top 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .skip-link:focus, .skip-link:focus-visible { top: 24px; outline: none; }
 </style>
 </head>
 <body class="night">
@@ -1094,7 +1096,6 @@
   </div>
 </div>
 
-<div class="time-tag" id="timeTag">— evening in Hyderabad</div>
 
 <aside class="rail" aria-hidden="true">
   <a class="rail-item" data-chapter="hero" href="#hero"><span class="rail-dot"></span><span class="rail-label">i · Hero</span></a>
@@ -2002,7 +2003,7 @@ window.addEventListener('load', () => { setTimeout(() => document.getElementById
   ids.forEach(id => { const el = document.getElementById(id); if (el) io.observe(el); });
 })();
 
-/* Day/night lighting (visitor's local clock) + live Hyderabad time-of-day label */
+/* Day/night ambient lighting via body class (visitor's local clock) */
 (function daynight() {
   const h = new Date().getHours();
   const body = document.body;
@@ -2011,16 +2012,6 @@ window.addEventListener('load', () => { setTimeout(() => document.getElementById
   else if (h >= 12 && h < 18) body.classList.add('day');
   else if (h >= 18 && h < 22) body.classList.add('evening');
   else body.classList.add('night');
-
-  const tag = document.getElementById('timeTag');
-  if (tag) {
-    const parts = new Intl.DateTimeFormat('en-US', { hour: 'numeric', hourCycle: 'h23', timeZone: 'Asia/Kolkata' }).formatToParts(new Date());
-    const hyd = Number(parts.find(p => p.type === 'hour').value);
-    if (hyd >= 5 && hyd < 12) tag.textContent = '— morning in Hyderabad';
-    else if (hyd >= 12 && hyd < 18) tag.textContent = '— day in Hyderabad';
-    else if (hyd >= 18 && hyd < 22) tag.textContent = '— evening in Hyderabad';
-    else tag.textContent = '— night in Hyderabad';
-  }
 })();
 
 /* Full-screen menu open/close */

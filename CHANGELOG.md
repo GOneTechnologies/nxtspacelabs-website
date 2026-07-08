@@ -6,6 +6,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ---
 
+## [1.0.5] — 2026-07-08 — Homepage: fix broken skip-link, remove decorative time label
+
+Two homepage items spotted in review.
+
+### Fixed
+- **"Skip to content" link was visible on load and unstyled.** Root cause: `index.html` is fully self-contained (all CSS inline) and does **not** load `assets/premium.css`, where the `.skip-link` rule lives — so on the homepage the skip link rendered as plain, always-visible text at the top-left. (Every other page loads `premium.css`, so it was correct there — this was homepage-only.) Copied the `.skip-link` rule into the homepage's inline `<style>`: it's now off-screen (`top: -100px`) until keyboard focus, slides in on Tab (`:focus` → `top: 24px`), and activating it moves focus to `<main id="main" tabindex="-1">` (verified). No visual change for mouse users; correct accessibility behavior restored for keyboard users.
+
+### Removed
+- **"— [time] in Hyderabad" decorative label** — it was a purely aesthetic time-of-day whisper with no functional purpose and nothing planned around it. Removed the markup, its CSS, and the `timeText`-setting branch of the `daynight()` script. The invisible day/night ambient-lighting body class (a separate concern) is untouched — the page still tints subtly by time of day; only the visible text label is gone.
+
+---
+
 ## [1.0.4] — 2026-07-08 — Homepage: stop rewriting the URL hash while scrolling
 
 Founder wants the homepage to behave like an established company site (Apple, Microsoft, Stripe) — the address bar should stay `nxtspacelabs.com` during normal browsing rather than churning through `#hero`, `#labs`, `#careers`, … as sections scroll past.

@@ -599,7 +599,7 @@ footer {
   }
   #scene, .grain, .vignette, .cursor-dot, .cursor-ring, .cursor-light,
   nav.top, .menu-overlay, .doc-actions, .skip-link,
-  .time-tag, #ns-nav, #ns-menu, #ns-hidden, footer::before,
+  #ns-nav, #ns-menu, #ns-hidden, footer::before,
   .foot-coda, .foot-grid, .foot-bottom, .cookie-banner { display: none !important; }
   .legal-version-history { border-color: #ccc !important; color: #444 !important; }
   .legal-version-history h4 { color: #6B21A8 !important; }
