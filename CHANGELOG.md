@@ -6,6 +6,30 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ---
 
+## [1.0.2] — 2026-07-08 — Contact form: drop CAPTCHA, harden server-side instead
+
+Founder decision: keep the contact form frictionless for launch rather than add a CAPTCHA challenge. Removed hCaptcha entirely (it was still on the public test sitekey, so it was providing zero real protection anyway) and replaced it with layered server-side defenses appropriate for a low-traffic company contact form.
+
+### Added
+- **Elapsed-time bot trap** in `api/contact.js` — client records when the form became interactive and sends the elapsed milliseconds as `_t`; server silently drops (200 response, no email sent) anything submitted faster than 1.5 seconds, the minimum plausible time for a human to read the form and type a message.
+- **Second rate-limit window** — was 5 requests/15 minutes per IP; added a 20 requests/24 hours per IP secondary cap to catch slow-drip abuse the short window doesn't see.
+- **Strict `intent` allow-list** — the field now validates against the exact five `<select>` options server-side, rather than accepting arbitrary sanitized free text.
+
+### Removed
+- hCaptcha entirely: the widget and script tag from `contact.html`, the `verifyCaptcha()` function and `HCAPTCHA_SECRET` handling from `api/contact.js`, the hCaptcha CSP allowances (`js.hcaptcha.com`, `*.hcaptcha.com`, `hcaptcha.com`, `newassets.hcaptcha.com`) from `vercel.json` — CSP `frame-src` tightened to `'none'` since nothing on the site needs to embed an iframe anymore.
+- hCaptcha references from the legal/governance surface: removed as a named sub-processor in `privacy.html` §6, removed its cookie-table row from `cookies.html`, removed its vendor-license row from `open-source.html`.
+
+### Unchanged (already present, verified still correct)
+- Honeypot field (`name="website"`, hidden, `aria-hidden`) — was already implemented on both the client and server; no changes needed.
+- Full field sanitization, length caps, and email-format validation — already present; retained as-is.
+
+### Known trade-off, stated plainly
+This is a soft-defense stack, not a hard guarantee — the in-memory rate limiter resets per cold-start instance, and none of these layers stop a determined, patient attacker the way a CAPTCHA challenge would. This is an intentional, informed trade-off in exchange for zero friction on a low-traffic form; if real spam shows up post-launch, the documented next step is re-adding hCaptcha (`docs/DEVELOPER_GUIDE.md` §9), not endlessly tightening these numbers.
+
+Legal PDFs regenerated: `nxtspacelabs-privacy-policy.pdf`, `nxtspacelabs-cookie-policy.pdf`, `nxtspacelabs-open-source.pdf` (content changed; version/effective dates unchanged since this is a factual correction, not a policy change).
+
+---
+
 ## [1.0.1] — 2026-07-08 — Final verification & hardening
 
 A live-production verification pass against `v1.0.0` — every claim below was checked against the actual deployed site (`curl`, live Lighthouse run, `npm audit`), not assumed from source alone.

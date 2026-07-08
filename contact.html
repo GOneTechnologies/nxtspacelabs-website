@@ -200,9 +200,6 @@
               <input type="text" name="website" autocomplete="off" tabindex="-1" />
             </div>
 
-            <!-- hCaptcha widget — invisible on load, activated on submit. Set data-sitekey via HCAPTCHA_SITEKEY at build or leave as 10000000... for local dev. -->
-            <div class="h-captcha" data-sitekey="10000000-ffff-ffff-ffff-000000000001" data-size="invisible" data-callback="onCaptchaOk"></div>
-
             <button type="submit" class="form-submit" id="contactSubmit" data-hover>Send message →</button>
             <div class="status-msg" id="statusMsg" role="status" aria-live="polite"></div>
           </form>
@@ -362,14 +359,17 @@
 <script type="module" src="/assets/scene-lite.js"></script>
 <script src="/assets/partials.js"></script>
 <script src="/assets/premium.js"></script>
-<!-- hCaptcha (invisible; only executes on submit) -->
-<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 <script>
   (function () {
     const form = document.getElementById('contactForm');
     const msg = document.getElementById('statusMsg');
     const submit = document.getElementById('contactSubmit');
     if (!form || !msg || !submit) return;
+
+    // Elapsed-time bot trap — records when the form became interactive; the
+    // server rejects submissions that arrive faster than a human plausibly
+    // could type them. Invisible to real visitors, no UI, no friction.
+    const formRenderedAt = Date.now();
 
     // Prefill intent from ?intent= query param
     const params = new URLSearchParams(window.location.search);
@@ -390,6 +390,7 @@
     async function send() {
       const data = new FormData(form);
       const body = Object.fromEntries(data.entries());
+      body._t = String(Date.now() - formRenderedAt);
       submit.disabled = true;
       const prevLabel = submit.textContent;
       submit.textContent = 'Sending…';
@@ -406,8 +407,6 @@
           if (window.nsTrack) window.nsTrack('form_submitted', { form: 'contact', intent: body.intent });
         } else if (r.status === 429) {
           show('Too many messages from this network. Please try again in a little while.', 'err');
-        } else if (j.error === 'captcha_failed') {
-          show('Human check did not go through. Please try once more.', 'err');
         } else if (j.error === 'email_invalid') {
           show('That email address looks off. Please double-check and try again.', 'err');
         } else if (j.error === 'message_too_short') {
@@ -420,25 +419,19 @@
       } finally {
         submit.disabled = false;
         submit.textContent = prevLabel;
-        if (window.hcaptcha) window.hcaptcha.reset();
       }
     }
 
-    // hCaptcha invisible callback (called after successful challenge)
-    window.onCaptchaOk = function () { send(); };
-
     form.addEventListener('submit', e => {
       e.preventDefault();
-      // Client-side sanity checks (UX only — server re-validates)
+      // Client-side sanity checks (UX only — server re-validates everything)
       const name = form.querySelector('[name=name]').value.trim();
       const email = form.querySelector('[name=email]').value.trim();
       const message = form.querySelector('[name=message]').value.trim();
       if (!name)                      { show('Please add your name.', 'err'); return; }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { show('Please add a valid email address.', 'err'); return; }
       if (message.length < 10)        { show('A sentence or two more helps us reply usefully.', 'err'); return; }
-      // Trigger the invisible captcha; onCaptchaOk() will call send().
-      if (window.hcaptcha) window.hcaptcha.execute();
-      else send();
+      send();
     });
   })();
 </script>

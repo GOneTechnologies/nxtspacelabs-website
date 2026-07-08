@@ -117,7 +117,8 @@ The only code that reads environment variables is `api/contact.js`. There are **
 | `ZOHO_SMTP_HOST` | No (defaults `smtp.zoho.in`) | Override if the mailbox ever migrates off Zoho India. | same |
 | `ZOHO_SMTP_PORT` | No (defaults `465`) | SMTP port. | same |
 | `ZOHO_SMTP_USER` | No (defaults `connect@nxtspacelabs.com`) | Sending mailbox. | same |
-| `HCAPTCHA_SECRET` | Yes for real bot protection | Server-side hCaptcha secret. **If unset, `verifyCaptcha()` returns `true` unconditionally** — a deliberate dev fallback, but it means CAPTCHA verification is silently disabled if this is missing in production. | same |
+
+There is deliberately no CAPTCHA-related variable — see §9 for why, and what env var to add if that changes later.
 
 **Never commit real values for any of these.** There is no `.env` file in this repo (checked — none tracked in git) and there should never be one. Vercel injects these directly into the serverless function's runtime.
 
@@ -141,7 +142,7 @@ Every response gets this header set (see the `headers` block in `vercel.json`):
 | `Referrer-Policy` | `strict-origin-when-cross-origin` | Doesn't leak full URLs (with query strings) to third-party sites on outbound link clicks. |
 | `Permissions-Policy` | camera/mic/geo/USB/bluetooth/sensors all `()` denied | The site uses none of these APIs — deny by default so no injected/compromised third-party script could invoke them. |
 | `Cross-Origin-Opener-Policy` | `same-origin` | Isolates the browsing context from cross-origin popups. |
-| `Content-Security-Policy` | see `vercel.json` | Restricts script/style/font/connect/frame sources to an explicit allowlist (self, Google Fonts, hCaptcha, jsdelivr for three.js, Vercel Insights). `object-src 'none'` and `upgrade-insecure-requests` included. |
+| `Content-Security-Policy` | see `vercel.json` | Restricts script/style/font/connect sources to an explicit allowlist (self, Google Fonts, jsdelivr for three.js, Vercel Insights). `frame-src 'none'` — the site embeds nothing and is not meant to be embedded. `object-src 'none'` and `upgrade-insecure-requests` included. |
 
 **Known trade-off, documented on purpose:** the CSP includes `'unsafe-inline'` for both `script-src` and `style-src`. This is because several pages use inline `onclick` handlers (e.g. the Print button: `onclick="window.print()"`) and inline `<style>`/`<script type="application/ld+json">` blocks. Removing `'unsafe-inline'` in favor of a nonce-based CSP would require:
 1. Moving every inline event handler to `addEventListener` calls in external JS.
@@ -202,12 +203,16 @@ Both respect the site's own cookie-consent gate (see `partials.js` §4) — the 
 
 `contact.html` (client) → `api/contact.js` (server, the only serverless function in the repo).
 
-Flow:
-1. Visitor fills the form. An invisible hCaptcha challenge runs on submit (`data-size="invisible"`).
-2. **Current state: the sitekey in `contact.html` is hCaptcha's public test key (`10000000-ffff-ffff-ffff-000000000001`), which always passes.** This must be swapped for a real sitekey (from an hCaptcha account you control) before this form provides any actual bot protection. See `docs/DEVELOPER_GUIDE.md` §5 for the matching server-side secret (`HCAPTCHA_SECRET`).
-3. `api/contact.js` re-verifies the captcha server-side (never trust client-side verification alone), rate-limits by IP (5 requests / 15 minutes, in-memory — resets on cold start, which is an accepted trade-off for a low-traffic contact form), checks a honeypot field, sanitizes and length-caps every field, and validates the email format.
-4. On success, sends via Zoho SMTP (`nodemailer`) to `connect@nxtspacelabs.com`, with the visitor's message as the reply-to so replying goes straight back to them.
-5. All user-supplied values are HTML-escaped before being interpolated into the email body — this prevents a malicious message from injecting HTML/script into the email client rendering it.
+**Deliberately no CAPTCHA.** An earlier draft wired up hCaptcha; the founder decided (2026-07-08) to keep the form frictionless for launch and rely on server-side layers instead. If spam becomes a real problem post-launch, the next step is re-introducing hCaptcha (or an equivalent) — not tightening the layers below indefinitely.
+
+Anti-abuse layers, all server-side (client-side checks in `contact.html` are UX-only — the server never trusts them):
+
+1. **Honeypot** — a hidden field (`name="website"`, positioned off-screen, `tabindex="-1"`, `aria-hidden="true"` so screen-reader users never encounter it) that a real visitor never fills. If it arrives non-empty, the server returns `200 { ok: true }` (so the bot's script thinks it worked) but silently drops the message — no email is sent, no error is revealed.
+2. **Elapsed-time trap** — the client records `Date.now()` when the form becomes interactive and sends the elapsed milliseconds as `_t` on submit. The server rejects (same silent-drop-with-200 behavior) anything under `MIN_ELAPSED_MS` (1.5s) — no human reads the form and types a name, email, and message that fast; this catches bots that skip the honeypot but still submit instantly.
+3. **Dual-window IP rate limiting** — 5 requests per 15 minutes AND 20 per 24 hours, per IP, in-memory (`HITS` Map in `api/contact.js`). The two windows exist because a lone 15-minute limiter doesn't catch slow-drip abuse spread across a day. **Known limitation:** this state lives in the function instance's memory, so a burst of cold starts (separate instances) each start with an empty counter — a soft limiter appropriate for a low-traffic company contact form, not a hard distributed guarantee. If that ever becomes a real problem, move to a shared store (Vercel KV / Upstash Redis) rather than just lowering the numbers.
+4. **Full server-side validation** — `name` required and length-capped; `email` regex-validated; `message` minimum 10 characters, capped at 4000; `intent` checked against a strict allow-list matching the `<select>` options (`Product or partnership` / `Careers · open application` / `Press enquiry` / `Support` / `Something else`) — anything else silently falls back to `'Something else'` rather than being accepted as free text.
+5. On success, sends via Zoho SMTP (`nodemailer`) to `connect@nxtspacelabs.com`, with the visitor's message as the reply-to so replying goes straight back to them.
+6. All user-supplied values are HTML-escaped before being interpolated into the email body — this prevents a malicious message from injecting HTML/script into the email client rendering it.
 
 **Do not** add additional serverless functions casually — the Vercel Hobby plan caps a project at 12 serverless functions, and this repo currently uses exactly 1. Adding new API routes without checking the count risks a **silent deployment failure** — the build succeeds, but new functions beyond the cap don't deploy. Always run a quick count (`find api -type f | wc -l` equivalent) before adding a new endpoint.
 
