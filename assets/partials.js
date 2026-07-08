@@ -257,7 +257,7 @@
   <div class="cookie-inner">
     <div class="cookie-copy">
       <h4>A short word about <span class="italic">cookies</span>.</h4>
-      <p>We use a small set of first-party cookies to keep the site working and, with your consent, to understand which pages people read. No advertising cookies. No cross-site tracking. Ever.</p>
+      <p>We use a small set of first-party cookies to keep the site working and, with your consent, to understand which pages people read. We do not currently use advertising cookies or cross-site tracking.</p>
       <p class="cookie-links">
         <a href="/cookies.html" data-hover>Read the Cookie Policy</a>
         &middot;
