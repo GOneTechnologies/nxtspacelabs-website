@@ -1,0 +1,6 @@
+# Internal-only files — kept in git for the team, excluded from the deployment
+# so they are never reachable at any public URL. This is deliberate: docs/
+# documents known/tracked issues (see CHANGELOG.md "Known issues") that should
+# not be advertised to anyone who finds the URL.
+docs/
+CHANGELOG.md
