@@ -59,6 +59,7 @@
     </span>
   </a>
   <div class="nav-right">
+    <a href="/products.html" data-hover class="hide-sm">Products</a>
     <a href="/services.html" data-hover class="hide-sm">Services</a>
     <a href="/insights.html" data-hover class="hide-sm">Insights</a>
     <a href="/contact.html" data-hover class="hide-sm">Contact</a>
@@ -98,7 +99,7 @@
     <div class="menu-primary">
       <a href="/" data-hover><span class="num">01</span><span class="body"><span>Home</span><span class="desc">The digital headquarters.</span></span><span class="arr">→</span></a>
       <a href="/company.html" data-hover><span class="num">02</span><span class="body"><span>Company</span><span class="desc">Our philosophy, people, and identity.</span></span><span class="arr">→</span></a>
-      <a href="/#ideas" data-hover><span class="num">03</span><span class="body"><span>Products</span><span class="desc">Living ideas we've shipped into the world.</span></span><span class="arr">→</span></a>
+      <a href="/products.html" data-hover><span class="num">03</span><span class="body"><span>Products</span><span class="desc">Living ideas we've shipped into the world.</span></span><span class="arr">→</span></a>
       <a href="/services.html" data-hover><span class="num">04</span><span class="body"><span>Services</span><span class="desc">Four ways we carry the pen for teams.</span></span><span class="arr">→</span></a>
       <a href="/industries.html" data-hover><span class="num">05</span><span class="body"><span>Industries</span><span class="desc">Where our craft lands hardest.</span></span><span class="arr">→</span></a>
       <a href="/innovation.html" data-hover><span class="num">06</span><span class="body"><span>Innovation</span><span class="desc">How we think, prototype, and research tomorrow.</span></span><span class="arr">→</span></a>
@@ -175,7 +176,7 @@
         <li><a href="/services.html">Services</a></li>
         <li><a href="/industries.html">Industries</a></li>
         <li><a href="/innovation.html">Innovation</a></li>
-        <li><a href="/#ideas">Products</a></li>
+        <li><a href="/products.html">Products</a></li>
       </ul>
     </div>
     <div class="foot-col">

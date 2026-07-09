@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<!--
+  NextSpace Labs — Products · Digital Headquarters
+  © 2026 NextSpace Labs Private Limited · All rights reserved.
+  Originality: all HTML/CSS/JS/copy authored in-house.
+-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#020209" />
+<meta name="description" content="NextSpace Labs — Products. Our first product is a real-time social platform, live and used by tens of thousands of people in India, with more taking shape in the lab." />
+<meta property="og:title" content="Products · NextSpace Labs" />
+<meta property="og:description" content="Fewer things, built to last. One product live in the hands of real people — and more in the lab." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nxtspacelabs.com/products.html" />
+<meta property="og:image" content="https://nxtspacelabs.com/og-image.png" />
+<link rel="canonical" href="https://nxtspacelabs.com/products.html" />
+<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<script type="application/ld+json" id="ns-jsonld-org">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nxtspacelabs.com/#org","name":"NextSpace Labs Private Limited","alternateName":"NextSpace Labs","url":"https://nxtspacelabs.com/","logo":"https://nxtspacelabs.com/logo.svg","email":"connect@nxtspacelabs.com","foundingDate":"2026","founder":{"@type":"Person","name":"Saidulu Shaik","alternateName":"Jeevan","jobTitle":"Founder & CEO"},"address":{"@type":"PostalAddress","addressLocality":"Hyderabad","addressRegion":"Telangana","addressCountry":"IN"},"sameAs":[]},{"@type":"WebSite","@id":"https://nxtspacelabs.com/#site","url":"https://nxtspacelabs.com/","name":"NextSpace Labs","publisher":{"@id":"https://nxtspacelabs.com/#org"},"inLanguage":"en-IN"}]}</script>
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@nxtspacelabs" />
+<meta name="twitter:creator" content="@nxtspacelabs" />
+<meta name="twitter:image" content="https://nxtspacelabs.com/og-image.png" />
+<title>Products — NextSpace Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,200..900,0..100&family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/premium.css">
+<style>
+  /* Page-specific: live-proof strip + case-study steps */
+  .proof-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+    padding: 36px 0; margin-top: 48px;
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  }
+  @media (max-width: 700px) { .proof-strip { grid-template-columns: 1fr; gap: 22px; } }
+  .proof-strip .n {
+    font-family: "Fraunces", serif; font-weight: 300; font-size: 30px; line-height: 1; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #F472B6, #A78BFA, #60A5FA);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .proof-strip .l { font-family: "Inter"; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--dim); margin-top: 10px; }
+
+  .step { display: grid; grid-template-columns: 64px 1fr; gap: 28px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+  @media (max-width: 700px) { .step { grid-template-columns: 1fr; gap: 10px; } }
+  .step .k { font-family: "JetBrains Mono", monospace; color: var(--dim-2); font-size: 12px; letter-spacing: 2px; }
+  .step h4 { font-family: "Fraunces", serif; font-weight: 300; font-size: 22px; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .step h4 em { font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula); }
+  .step p { color: var(--dim); max-width: 640px; line-height: 1.75; }
+</style>
+</head>
+
+<body class="night">
+
+<canvas id="scene"></canvas>
+<div class="cursor-light" id="cursorLight"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div id="ns-nav"></div>
+<div id="ns-menu"></div>
+
+<main id="main" tabindex="-1">
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag reveal"><em>What we&rsquo;ve built</em> · Products</div>
+    <h1 class="page-title reveal d1">
+      Fewer things,<br>
+      <span class="italic">built to last</span>.
+    </h1>
+    <p class="page-lede reveal d2">
+      We would rather ship one product people come to depend on than a dozen they forget. Here is what that discipline has produced so far &mdash; one product live in the hands of real people, and more taking shape in the lab.
+    </p>
+  </div>
+</header>
+
+<!-- ═══ LIVE TODAY ═══ -->
+<section class="chapter" id="live">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter One</em> · Live today</div>
+    <h2 class="chapter-head reveal d1">
+      A real-time <span class="italic">social platform</span>.
+    </h2>
+    <p class="body-copy reveal d2" style="max-width: 680px;">
+      Our first product is a real-time social platform that connects people through live voice and video. Designed and built in-house, it is used by tens of thousands of people across India, and it exists to do one deceptively hard thing well: put two people into a live conversation the moment they want it &mdash; quickly, calmly, and reliably, on the ordinary phone in an ordinary hand.
+    </p>
+    <p class="body-copy reveal" style="max-width: 680px;">
+      A social product is not its screens; it is the half-second when two people are connected and it simply works. Presence, matching, real-time media, payments &mdash; the unglamorous machinery beneath a simple experience &mdash; is ours, end to end.
+    </p>
+    <div class="proof-strip reveal">
+      <div><div class="n">Live</div><div class="l">In India today</div></div>
+      <div><div class="n">Real-time</div><div class="l">Voice &amp; video core</div></div>
+      <div><div class="n">In-house</div><div class="l">Built &amp; run by us</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CASE STUDY ═══ -->
+<section class="chapter" id="case-study">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter Two</em> · Case study</div>
+    <h2 class="chapter-head reveal d1">
+      From <span class="italic">web to native</span>.
+    </h2>
+    <p class="body-copy reveal d2" style="max-width: 680px;">
+      When the platform outgrew the web, we rebuilt it as a first-class native app under a deliberately short deadline &mdash; not a wrapper, but a real one, with the reflexes people expect. The clock was tight on purpose.
+    </p>
+
+    <div style="max-width: 920px; margin-top: 44px;">
+      <div class="step reveal">
+        <div class="k">01</div>
+        <div>
+          <h4>A working product is the best <em>specification</em>.</h4>
+          <p>We did not start from a blank page. We treated the live web app as the spec and translated it, surface by surface &mdash; every screen, every state, every quiet rule the product had already learned in front of real users.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="k">02</div>
+        <div>
+          <h4>The clock is a <em>design tool</em>.</h4>
+          <p>A deadline slightly too short is not cruelty; it is clarity. Every hour had to be spent on something a user would feel &mdash; parity first, polish second; the thing people do every day before the thing they do once.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="k">03</div>
+        <div>
+          <h4>The hard ninety percent is <em>real-time</em>.</h4>
+          <p>Screens translate quickly; presence and live media do not. Voice and video that connect in a second and hold is where native earns its name, and where most of the work went.</p>
+        </div>
+      </div>
+      <div class="step reveal" style="border-bottom: none;">
+        <div class="k">04</div>
+        <div>
+          <h4>The last five percent is the <em>whole thing</em>.</h4>
+          <p>The status bar that sits right, the gesture that behaves, the video that renders on the first frame, the payment that feels instant when the network is not &mdash; that five percent is the difference between an app people tolerate and one they forget is software at all.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="body-copy reveal" style="max-width: 680px; margin-top: 36px;">
+      When it shipped, the app did the same things for the same people &mdash; only faster, calmer, and more at home on the device in their hand. Constraints, handled honestly, are the shortest path to quality &mdash; not the enemy of it.
+    </p>
+  </div>
+</section>
+
+<!-- ═══ IN THE LAB ═══ -->
+<section class="chapter" id="next">
+  <div class="wrap">
+    <div class="chapter-tag reveal"><em>Chapter Three</em> · In the lab</div>
+    <h2 class="chapter-head reveal d1">
+      More, taking shape <span class="italic">quietly</span>.
+    </h2>
+    <p class="body-copy reveal d2" style="max-width: 680px;">
+      More is taking shape in the lab, built the same way &mdash; from first principles, in-house, and shown only when it is ready. We will introduce each new product when it is, and not a day sooner.
+    </p>
+  </div>
+</section>
+
+<section class="cta-block reveal">
+  <h2>Have a product that deserves <span class="italic">this kind of care</span>?</h2>
+  <p>We partner with a select few teams each year. See <a href="/services.html" data-hover style="color:var(--nebula);border-bottom:1px solid var(--nebula);">how we work</a>, then tell us what you are building.</p>
+  <a href="/contact.html" class="glass-btn" data-hover>
+    <span>Start a conversation</span>
+    <span class="arrow">→</span>
+  </a>
+</section>
+
+</main>
+
+<div id="ns-footer"></div>
+<div id="ns-hidden"></div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js" } }
+</script>
+<script type="module" src="/assets/scene-lite.js"></script>
+<script src="/assets/partials.js"></script>
+<script src="/assets/premium.js"></script>
+
+<!-- Vercel Web Analytics + Speed Insights (privacy-first, zero-config on Vercel) -->
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

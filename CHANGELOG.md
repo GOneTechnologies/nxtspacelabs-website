@@ -6,6 +6,24 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ---
 
+## [1.0.17] — 2026-07-10 — Products page + generic product references site-wide
+
+New Products page, and a decision to keep every product reference generic on the public site until products are officially announced (brand separation between the corporate site and the product brand).
+
+### Added
+- **`products.html`** — a real Products page (the biggest gap for a new company: visitors couldn't see what we've built). Positions the live product simply as "a real-time social platform that connects people through live voice and video," used by tens of thousands of people in India, plus a "from web to native" engineering case study and a Services/Contact CTA. Wired into the top nav, the menu (item 03, repointed from the homepage section), the footer, and the sitemap.
+
+### Changed — product references now generic everywhere public
+- Removed the product brand name from every public page: the legal docs (privacy, refunds, security, IP, open-source, acceptable-use, cookies), the status page, and a compliance search keyword. They now read "our products / our app / our real-time social platform / in-app virtual currency" — generic and legally sufficient.
+- Newsroom boilerplate: dropped the category enumeration (no "fintech / media / applied intelligence") and softened the unreleased-product count to "with more in development."
+- Products page: no category hints; no specific day-count in the case study (see notes).
+
+### Notes
+- Internal dev docs (`CHANGELOG.md`, `docs/`) still name the product but are excluded from the deployment via `.vercelignore`, so they are never public.
+- The "ten days" figure was removed from the case study because it couldn't be verified as exact — supply the real timeline and it can be stated precisely.
+
+---
+
 ## [1.0.16] — 2026-07-09 — Insights trimmed to a minimal, honest placeholder
 
 Decided not to lead a brand-new company with thought-leadership essays. For a company with no public track record yet, philosophy essays can undercut credibility rather than build it, and a standing blog is a publishing commitment a small team shouldn't take on at launch. Kept Insights in the nav but stripped it to a single honest line — it returns when there are real launches/case studies behind it.
