@@ -6,6 +6,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ---
 
+## [1.0.12] — 2026-07-09 — Founder biography + legal-name correction (Saidulu Shaik)
+
+The founder supplied his identity and a visionary bio brief. Two things shipped.
+
+### Added
+- **Founder biography on the Company page.** Replaced the cramped leadership card with a proper founder feature — a portrait medallion (photo-ready; monogram until a professional portrait is supplied), name, title, a three-paragraph biography refined from the founder's brief, and a pull-quote of the founding philosophy (*"Build fewer things. Build them exceptionally well. Earn trust through quality and consistency."*). The two open *in residence* seats move to a two-column grid below.
+
+### Changed
+- **Founder name corrected site-wide** — placeholder "S. K. Jeevan" → legal name **Saidulu Shaik**, with **Jeevan** as the commonly used name. Updated the visible Company block, the JSON-LD `founder` on every page (`name` + `alternateName` + `jobTitle` "Founder & CEO"), the shared `partials.js` org schema, and the **grievance-officer legal name** in `terms.html` + `privacy.html`.
+
+### Follow-up needed
+- `legal/nxtspacelabs-terms-of-use.pdf` and `legal/nxtspacelabs-privacy-policy.pdf` still carry the old grievance-officer name and must be regenerated from their source to match the HTML.
+
+---
+
 ## [1.0.11] — 2026-07-09 — Factual-accuracy cleanup: every public claim now true & verifiable
 
 Pre-content-phase truth pass. The founder's rule: every public statement must be accurate and verifiable today, and unhappened milestones wait until they happen. Three facts were confirmed directly with the founder (company incorporated — CIN issued; PairNow live with tens of thousands of users; **two** other products in development — JeldiGo + PayNest, not three), which set the correct wording.

@@ -20,7 +20,7 @@
         "logo": "https://nxtspacelabs.com/logo.svg",
         "email": "connect@nxtspacelabs.com",
         "foundingDate": "2026",
-        "founder": { "@type": "Person", "name": "S. K. Jeevan" },
+        "founder": { "@type": "Person", "name": "Saidulu Shaik", "alternateName": "Jeevan", "jobTitle": "Founder & CEO" },
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Hyderabad",

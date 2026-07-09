@@ -21,7 +21,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
 <link rel="manifest" href="/site.webmanifest" />
-<script type="application/ld+json" id="ns-jsonld-org">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nxtspacelabs.com/#org","name":"NextSpace Labs Private Limited","alternateName":"NextSpace Labs","url":"https://nxtspacelabs.com/","logo":"https://nxtspacelabs.com/logo.svg","email":"connect@nxtspacelabs.com","foundingDate":"2026","founder":{"@type":"Person","name":"S. K. Jeevan"},"address":{"@type":"PostalAddress","addressLocality":"Hyderabad","addressRegion":"Telangana","addressCountry":"IN"},"sameAs":[]},{"@type":"WebSite","@id":"https://nxtspacelabs.com/#site","url":"https://nxtspacelabs.com/","name":"NextSpace Labs","publisher":{"@id":"https://nxtspacelabs.com/#org"},"inLanguage":"en-IN"}]}</script>
+<script type="application/ld+json" id="ns-jsonld-org">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nxtspacelabs.com/#org","name":"NextSpace Labs Private Limited","alternateName":"NextSpace Labs","url":"https://nxtspacelabs.com/","logo":"https://nxtspacelabs.com/logo.svg","email":"connect@nxtspacelabs.com","foundingDate":"2026","founder":{"@type":"Person","name":"Saidulu Shaik","alternateName":"Jeevan","jobTitle":"Founder & CEO"},"address":{"@type":"PostalAddress","addressLocality":"Hyderabad","addressRegion":"Telangana","addressCountry":"IN"},"sameAs":[]},{"@type":"WebSite","@id":"https://nxtspacelabs.com/#site","url":"https://nxtspacelabs.com/","name":"NextSpace Labs","publisher":{"@id":"https://nxtspacelabs.com/#org"},"inLanguage":"en-IN"}]}</script>
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@nxtspacelabs" />
 <meta name="twitter:creator" content="@nxtspacelabs" />
@@ -53,6 +53,17 @@
   .lead-name { font-family: "Fraunces", serif; font-size: 22px; font-weight: 400; margin-bottom: 6px; }
   .lead-role { font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula); font-size: 14px; margin-bottom: 14px; }
   .lead-bio { color: var(--dim); font-size: 14px; line-height: 1.7; }
+
+  /* Founder feature */
+  .founder-feature { display: grid; grid-template-columns: 200px 1fr; gap: 52px; align-items: start; padding: 48px 44px; background: rgba(247,245,240,0.02); border: 1px solid var(--line-2); border-radius: 24px; backdrop-filter: blur(20px); margin-bottom: 56px; }
+  @media (max-width: 760px) { .founder-feature { grid-template-columns: 1fr; gap: 30px; padding: 36px 26px; } }
+  .founder-portrait { width: 180px; height: 180px; border-radius: 50%; background: linear-gradient(135deg, rgba(167,139,250,0.22), rgba(236,72,153,0.12)); border: 1px solid var(--nebula); display: grid; place-items: center; font-family: "Fraunces", serif; font-weight: 300; font-size: 76px; color: var(--mist); box-shadow: 0 0 40px rgba(167,139,250,0.18); }
+  @media (max-width: 760px) { .founder-portrait { margin: 0 auto; width: 148px; height: 148px; font-size: 62px; } }
+  .founder-name { font-family: "Fraunces", serif; font-weight: 400; font-size: 30px; letter-spacing: -0.01em; margin-bottom: 6px; }
+  .founder-name em { font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula); font-weight: 400; }
+  .founder-role { font-family: "Instrument Serif", serif; font-style: italic; color: var(--nebula); font-size: 16px; margin-bottom: 24px; }
+  .founder-bio p { color: var(--dim); font-size: 15px; line-height: 1.8; margin-bottom: 16px; max-width: 660px; }
+  .founder-quote { margin-top: 10px; padding-left: 20px; border-left: 2px solid var(--nebula); font-family: "Instrument Serif", serif; font-style: italic; font-size: 19px; color: var(--mist-2); line-height: 1.5; max-width: 660px; }
 
   .value-pair {
     display: grid; grid-template-columns: 80px 1fr; gap: 32px;
@@ -187,13 +198,21 @@
       We are deliberately small. Every person here holds the pen on something that ships. Our leadership circle steers the roadmap, the craft, and the culture — but they build too.
     </p>
 
-    <div class="grid-3">
-      <div class="lead-card reveal">
-        <div class="lead-portrait">S</div>
-        <div class="lead-name">S. K. Jeevan</div>
-        <div class="lead-role">Founder &amp; Chief Executive</div>
-        <div class="lead-bio">Founded NextSpace Labs on the belief that software should feel human before it feels smart. Leads product, partnerships, and the long arc of the company.</div>
+    <div class="founder-feature reveal">
+      <div class="founder-portrait" aria-hidden="true">S</div>
+      <div>
+        <div class="founder-name">Saidulu Shaik <em>(Jeevan)</em></div>
+        <div class="founder-role">Founder &amp; CEO</div>
+        <div class="founder-bio">
+          <p>Saidulu Shaik founded NextSpace Labs on a simple conviction — that technology earns its place only when it solves meaningful problems and makes everyday life quietly better. He believes enduring companies are built not by chasing short-term trends, but through integrity, thoughtful engineering, and an unwavering focus on the value they create for the people they serve.</p>
+          <p>His vision is to build globally respected technology products from India — proof that world-class software can be composed anywhere craft and conviction meet. He founded the company to bring innovation, rigorous engineering, and human-centered design under one roof, guided by a deliberately narrow philosophy: build fewer things, build them exceptionally well, and let quality and consistency earn trust over time.</p>
+          <p>His long-term ambition is to build products and platforms that reach — and genuinely improve — the lives of millions, and to leave behind a company remembered for its innovation, its craftsmanship, and its lasting value.</p>
+        </div>
+        <p class="founder-quote">&ldquo;Build fewer things. Build them exceptionally well. Earn trust through quality and consistency.&rdquo;</p>
       </div>
+    </div>
+
+    <div class="grid-2">
       <div class="lead-card reveal d1">
         <div class="lead-portrait">·</div>
         <div class="lead-name"><em style="font-family:'Instrument Serif',serif;color:var(--nebula);">Chief of Craft</em></div>
