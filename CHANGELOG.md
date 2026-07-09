@@ -6,6 +6,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ---
 
+## [1.0.16] — 2026-07-09 — Insights trimmed to a minimal, honest placeholder
+
+Decided not to lead a brand-new company with thought-leadership essays. For a company with no public track record yet, philosophy essays can undercut credibility rather than build it, and a standing blog is a publishing commitment a small team shouldn't take on at launch. Kept Insights in the nav but stripped it to a single honest line — it returns when there are real launches/case studies behind it.
+
+### Changed
+- `insights.html`: removed the 7 placeholder essay teasers, 4 whitepaper/memo cards, and the dead filter CSS/JS. Left the hero + one honest "we write after the work, not before it" statement with a personal notify link.
+
+### Preserved
+- The three drafted essays (calm software, Tuesday evening, ten-day native) are parked in `docs/insights-drafts.md` (not deployed). The ten-day-native piece is earmarked as source material for a forthcoming product case study.
+
+---
+
 ## [1.0.15] — 2026-07-09 — Legal docs: HTML is the single source of truth (removed PDFs)
 
 Adopted the Infosys / modern-enterprise convention — the HTML legal pages are now the only authoritative version.
