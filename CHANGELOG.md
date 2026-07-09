@@ -6,6 +6,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ---
 
+## [1.0.14] — 2026-07-09 — Founder biography: more visionary, less résumé
+
+Refined the founder biography per direction — inspirational, timeless, and vision-led rather than a list of activities. Now foregrounds conviction, values, and the long-arc philosophy (build fewer things, exceptionally well; decades not quarters; earn a lasting place) in the site's premium literary voice. Original and free of exaggerated claims. `company.html`.
+
+---
+
 ## [1.0.13] — 2026-07-09 — Regenerate Terms + Privacy PDFs + fix print stylesheet
 
 The two legal PDFs needed to reflect the corrected grievance-officer name (Saidulu Shaik). Regenerating them surfaced two latent bugs in the print pipeline — now fixed.
