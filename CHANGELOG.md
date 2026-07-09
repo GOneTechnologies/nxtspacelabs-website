@@ -6,6 +6,22 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ---
 
+## [1.0.13] — 2026-07-09 — Regenerate Terms + Privacy PDFs + fix print stylesheet
+
+The two legal PDFs needed to reflect the corrected grievance-officer name (Saidulu Shaik). Regenerating them surfaced two latent bugs in the print pipeline — now fixed.
+
+### Fixed
+- **Legal PDFs rendered nearly blank.** Body sections use `.reveal` (opacity:0 until a scroll-triggered JS observer reveals them). A headless print-to-PDF never scrolls, so everything below the hero stayed invisible — PDFs came out as a title plus an illegible footer. Added `.reveal { opacity:1 !important; transform:none !important }` to the `@media print` block so all content is always visible in print.
+- **Site footer leaked into legal PDFs.** `partials.js` replaces the `#ns-footer` placeholder via `outerHTML`, so the print hide-list (targeting `#ns-footer` / `.foot-grid`) missed the rendered `<footer>` and its `.foot-compliance` block. Now the whole `footer` (plus `.foot-compliance`) is hidden in print.
+
+### Changed
+- Regenerated `legal/nxtspacelabs-terms-of-use.pdf` and `legal/nxtspacelabs-privacy-policy.pdf` via the documented Chrome print pipeline. Both now render fully in the site's premium fonts (Fraunces / Instrument Serif), show the corrected grievance-officer name **Saidulu Shaik**, and end cleanly with no footer. Verified page-by-page.
+
+### Note
+- The other 8 legal PDFs were built before these print fixes; regenerating them would bring the whole set to the same premium, footer-free rendering.
+
+---
+
 ## [1.0.12] — 2026-07-09 — Founder biography + legal-name correction (Saidulu Shaik)
 
 The founder supplied his identity and a visionary bio brief. Two things shipped.

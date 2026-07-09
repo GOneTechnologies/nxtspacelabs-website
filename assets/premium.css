@@ -622,8 +622,11 @@ footer {
   }
   #scene, .grain, .vignette, .cursor-dot, .cursor-ring, .cursor-light,
   nav.top, .menu-overlay, .doc-actions, .skip-link,
-  #ns-nav, #ns-menu, #ns-hidden, footer::before,
-  .foot-coda, .foot-grid, .foot-bottom, .cookie-banner { display: none !important; }
+  #ns-nav, #ns-menu, #ns-hidden, footer, footer::before,
+  .foot-coda, .foot-grid, .foot-bottom, .foot-compliance, .cookie-banner { display: none !important; }
+  /* Scroll-reveal content starts at opacity:0 until JS reveals it on scroll; that
+     never happens in a headless print, so force it all visible for clean PDFs. */
+  .reveal, [class*="reveal"] { opacity: 1 !important; transform: none !important; }
   .legal-version-history { border-color: #ccc !important; color: #444 !important; }
   .legal-version-history h4 { color: #6B21A8 !important; }
   .page-hero { min-height: auto !important; padding: 0 0 20px !important; }
