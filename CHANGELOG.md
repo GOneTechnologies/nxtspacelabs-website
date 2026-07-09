@@ -6,6 +6,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ---
 
+## [1.0.11] — 2026-07-09 — Factual-accuracy cleanup: every public claim now true & verifiable
+
+Pre-content-phase truth pass. The founder's rule: every public statement must be accurate and verifiable today, and unhappened milestones wait until they happen. Three facts were confirmed directly with the founder (company incorporated — CIN issued; PairNow live with tens of thousands of users; **two** other products in development — JeldiGo + PayNest, not three), which set the correct wording.
+
+### Fixed
+- **Newsroom "releases" were fabricated placeholders.** Five dated press rows (`newsroom.html`) were headline-only teasers for articles that don't exist, several with invented specifics (a "MAY · 21" beta date, "feedback from users who used the product for less than five minutes"). None were real published posts, so per the accuracy rule they couldn't stand — even where the underlying milestone (incorporation, product growth) is genuinely true. Replaced the five rows with one honest note; real, correctly-dated posts will land in the content phase.
+- **Product count off by one.** Boilerplate "quietly working on **three** more" → "**two** more" (`newsroom.html`); company stat strip "**03** In the lab" → "**02**" (`company.html`) — matching the two confirmed products in development.
+- **Unverifiable "first hire" claim.** `company.html` "the city where our first product, our first hire, and our first breath began" → dropped "our first hire" (can't be verified; the founder can restore it if a hire has happened).
+
+### Deliberately kept (confirmed true & verifiable)
+- "Incorporated in Hyderabad, India in 2026" and JSON-LD `foundingDate` — CIN issued.
+- "First shipped product … used by tens of thousands of people in India" — PairNow is live at that scale.
+
+---
+
 ## [1.0.10] — 2026-07-09 — Content-audit defect sweep: dead links + absolute wording
 
 Pre-content-phase cleanup. A full-site audit turned up exactly two classes of defect; both fixed.
