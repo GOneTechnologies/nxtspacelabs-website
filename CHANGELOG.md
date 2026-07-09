@@ -6,6 +6,22 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ---
 
+## [1.0.15] — 2026-07-09 — Legal docs: HTML is the single source of truth (removed PDFs)
+
+Adopted the Infosys / modern-enterprise convention — the HTML legal pages are now the only authoritative version.
+
+### Removed
+- Deleted all 10 `/legal/*.pdf` files and the "Download PDF" button on every legal page. Rationale: two public versions of a legal document can drift out of sync (we just saw this with the grievance-officer name), creating ambiguity over which governs. One HTML source is simpler to maintain and legally cleaner.
+
+### Kept
+- The **Print** button on every legal page (`window.print()`) — anyone can Save-as-PDF from the always-current page on demand. Point-in-time reference is preserved by each page's effective-date + version-history block and by git history.
+- The `@media print` styling (now serves Print / Save-as-PDF only).
+
+### Housekeeping
+- Removed dead `.doc-download` CSS; updated `DEVELOPER_GUIDE.md` §10 (no more PDF regeneration step).
+
+---
+
 ## [1.0.14] — 2026-07-09 — Founder biography: more visionary, less résumé
 
 Refined the founder biography per direction — inspirational, timeless, and vision-led rather than a list of activities. Now foregrounds conviction, values, and the long-arc philosophy (build fewer things, exceptionally well; decades not quarters; earn a lasting place) in the site's premium literary voice. Original and free of exaggerated claims. `company.html`.

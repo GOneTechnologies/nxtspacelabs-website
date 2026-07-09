@@ -31,9 +31,6 @@ nxtspacelabs-website/
 │   ├── premium.js           Cursor, reveal-on-scroll, menu wiring, misc interaction glue.
 │   ├── partials.js          Injects shared nav / menu / footer / cookie banner into every page.
 │   └── scene-lite.js        WebGL starfield background (three.js).
-├── legal/
-│   └── *.pdf                Downloadable PDF versions of every legal document.
-│                            Regenerate these whenever the source .html changes — see §9.
 ├── api/
 │   └── contact.js           The ONE serverless function in this repo. Contact form handler.
 ├── docs/                     You are here. Excluded from the live deployment via
@@ -228,28 +225,18 @@ All ten are indexed from `compliance.html` (the Compliance Center), which also h
 Every legal page has:
 - A `.legal-header` block with `.legal-meta` (Effective date / Version / Last updated / a fourth context-specific field) and a `.legal-note` callout.
 - A **version-history** block (`.legal-version-history`) near the bottom — append a new `<li>` every time you materially change the document; never delete old entries.
-- Matching **Download PDF** and **Print** buttons in the hero (`.doc-actions`) — the PDF must be regenerated whenever the source `.html` changes (see §9 below in this same guide — actually see the note directly below).
+- A **Print** button in the hero (`.doc-actions`, `onclick="window.print()"`). Anyone who wants a copy can Save-as-PDF from the always-current page.
 
-**Whenever you edit a legal `.html` file, regenerate its PDF.** The PDFs in `/legal/*.pdf` are static files checked into git — editing the HTML does **not** automatically update the PDF. Process (no dependencies beyond a locally-installed Chrome and Node's `npx serve`):
+**The HTML page is the single authoritative version of each legal document.** There are no stored PDFs to keep in sync — the downloadable `/legal/*.pdf` files were removed on 2026-07-09, following the Infosys / modern-enterprise convention. Rationale: two public versions of a legal document that can drift apart create ambiguity over which one governs; one source of truth is both simpler to maintain and legally cleaner. On-demand copies are the browser's job (Print / Save-as-PDF).
 
-```bash
-npx serve -l <any-free-port> -n            # serve the repo locally
-"/c/Program Files/Google/Chrome/Application/chrome.exe" \
-  --headless=new --disable-gpu --no-sandbox --hide-scrollbars \
-  --virtual-time-budget=15000 \
-  --print-to-pdf=legal/nxtspacelabs-<doc-name>.pdf \
-  --print-to-pdf-no-header \
-  http://localhost:<port>/<page-slug>
-```
-
-The print stylesheet (`@media print` block in `assets/premium.css`) controls exactly what renders in the PDF — it hides the nav, cursor effects, cookie banner, and footer coda, and forces light-background/dark-text for print legibility.
+The **`@media print` block in `assets/premium.css`** styles that print output: it hides the nav, cursor effects, cookie banner, and the whole `footer`; forces `.reveal` content visible (it starts at `opacity:0` for the on-scroll animation, so it would otherwise print blank); and switches to light-background / dark-text for legibility. Keep it working whenever you touch print styling or the legal templates.
 
 **Cross-document consistency to preserve whenever you edit any legal page:**
 - Registered office address, CIN/GSTIN placeholders, and contact emails must read identically across every document (grep for the address string to verify after any edit).
 - Governing law / jurisdiction / arbitration seat (India, Hyderabad, non-exclusive courts) must not diverge between `privacy.html`, `terms.html`, and any new legal doc.
 - `Version` and `Effective`/`Last updated` dates should stay in sync across documents updated in the same round — don't leave one doc on an old date while others advance.
 
-**CIN / GSTIN placeholders** (`U72900TG2026PTCXXXXXX` and `36XXXXXXXXXXXX1ZX`) appear in exactly these files: `assets/partials.js` (footer, every page), `contact.html`, `privacy.html`, `terms.html`. When the real numbers are issued, replace all four occurrences and regenerate the affected PDFs.
+**CIN / GSTIN placeholders** (`U72900TG2026PTCXXXXXX` and `36XXXXXXXXXXXX1ZX`) appear in exactly these files: `assets/partials.js` (footer, every page), `contact.html`, `privacy.html`, `terms.html`. When the real numbers are issued, replace all four occurrences.
 
 ---
 

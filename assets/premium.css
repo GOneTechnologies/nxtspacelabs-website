@@ -598,7 +598,7 @@ footer {
 
 /* Document download / print actions in the page hero */
 .doc-actions { margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap; }
-.doc-download, .doc-print {
+.doc-print {
   display: inline-flex; align-items: center; gap: 10px;
   padding: 12px 22px; border-radius: 999px;
   border: 1px solid var(--line-2);
@@ -608,11 +608,11 @@ footer {
   letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
   transition: border-color 0.4s, background 0.4s, color 0.4s, transform 0.4s;
 }
-.doc-download:hover, .doc-print:hover {
+.doc-print:hover {
   border-color: var(--nebula); background: rgba(167, 139, 250, 0.08);
   color: var(--mist); transform: translateY(-1px);
 }
-.doc-download svg, .doc-print svg { width: 14px; height: 14px; opacity: 0.8; }
+.doc-print svg { width: 14px; height: 14px; opacity: 0.8; }
 
 /* Print stylesheet — legal docs read cleanly as PDF via browser Save-as-PDF */
 @media print {
@@ -691,7 +691,7 @@ footer {
 }
 @media (max-width: 600px) {
   .menu-btn, .search-pill, .menu-close,
-  .doc-download, .doc-print { min-height: 44px; }
+  .doc-print { min-height: 44px; }
   .nav-right { gap: 14px; }
   .cookie-links a { display: inline-block; padding: 4px 0; }
 }
