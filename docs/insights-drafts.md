@@ -17,7 +17,7 @@ Voice: thoughtful, timeless, first-principles — not marketing copy. Keep it.
 > ⚠️ Contains factual claims about our work — fact-check before publishing (the "ten days"
 > figure; keep the product unnamed as "a real-time social platform" per founder).
 
-We gave ourselves ten days to take a product that tens of thousands of people already used — a real-time social app that had grown up on the web — and rebuild it as a first-class native experience. Not a wrapper. Not a webview in a native costume. A real app, with the reflexes people expect from one.
+We gave ourselves ten days to take a product that real people already used — a real-time social app that had grown up on the web — and rebuild it as a first-class native experience. Not a wrapper. Not a webview in a native costume. A real app, with the reflexes people expect from one.
 
 Ten days is not enough time. That was the point.
 

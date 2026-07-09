@@ -6,6 +6,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ---
 
+## [1.0.18] — 2026-07-10 — Conservative traction wording (drop "tens of thousands")
+
+Founder preference: keep copy factual and conservative rather than cite a scale we won't readily substantiate. Replaced "used by tens of thousands of people in India" with "used by real people in India" (true, no specific number) on the Products page (body + meta description) and the Newsroom boilerplate. The qualitative proof strip (Live / Real-time / In-house) was already number-free.
+
+---
+
 ## [1.0.17] — 2026-07-10 — Products page + generic product references site-wide
 
 New Products page, and a decision to keep every product reference generic on the public site until products are officially announced (brand separation between the corporate site and the product brand).
