@@ -119,13 +119,6 @@
         </ul>
       </div>
       <div class="menu-group">
-        <div class="menu-label">Team access</div>
-        <ul>
-          <li><a href="/login" data-hover>Admin login →</a></li>
-          <li><a href="/dashboard" data-hover>Dashboard →</a></li>
-        </ul>
-      </div>
-      <div class="menu-group">
         <div class="menu-label">Reach</div>
         <ul>
           <li><a href="mailto:connect@nxtspacelabs.com" data-hover>connect@nxtspacelabs.com</a></li>
@@ -186,7 +179,6 @@
         <li><a href="/newsroom.html">Newsroom</a></li>
         <li><a href="/insights.html">Insights</a></li>
         <li><a href="mailto:connect@nxtspacelabs.com">Email us</a></li>
-        <li><a href="/login">Team login ↗</a></li>
       </ul>
     </div>
     <div class="foot-col">
