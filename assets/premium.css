@@ -148,6 +148,20 @@ nav.top {
 .nav-right .search-pill::after { content: none; }
 @media (max-width: 900px) { .search-pill .search-label, .search-pill kbd { display: none; } .search-pill { padding: 7px 10px; } }
 
+/* Team login — the one visible door; points at the isolated admin domain. */
+.nav-right .login-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 16px 8px 13px;
+  border: 1px solid var(--line-2); border-radius: 999px;
+  background: rgba(247, 245, 240, 0.02);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  color: var(--mist); font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+  transition: border-color 0.4s, background 0.4s, transform 0.4s;
+}
+.nav-right .login-pill:hover { border-color: var(--nebula); background: rgba(167, 139, 250, 0.08); transform: translateY(-1px); }
+.nav-right .login-pill svg { width: 11px; height: 11px; opacity: 0.75; }
+.nav-right .login-pill::after { content: none; }
+
 /* ═══ Menu button + full-screen menu ═══ */
 .menu-btn {
   display: inline-flex; align-items: center; gap: 12px;
@@ -690,7 +704,7 @@ footer {
   .menu-group a { display: inline-block; padding: 7px 0; }
 }
 @media (max-width: 600px) {
-  .menu-btn, .search-pill, .menu-close,
+  .menu-btn, .search-pill, .login-pill, .menu-close,
   .doc-print { min-height: 44px; }
   .nav-right { gap: 14px; }
   .cookie-links a { display: inline-block; padding: 4px 0; }

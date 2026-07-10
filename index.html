@@ -216,6 +216,19 @@
   }
   .search-pill::after { content: none; }
   @media (max-width: 900px) { .search-pill .search-label, .search-pill kbd { display: none; } .search-pill { padding: 7px 10px; } }
+  /* Team login — the one visible door; points at the isolated admin domain. */
+  .nav-right .login-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 16px 8px 13px;
+    border: 1px solid var(--line-2); border-radius: 999px;
+    background: rgba(247, 245, 240, 0.02);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    color: var(--mist); font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+    transition: border-color 0.4s, background 0.4s, transform 0.4s;
+  }
+  .nav-right .login-pill:hover { border-color: var(--nebula); background: rgba(167, 139, 250, 0.08); transform: translateY(-1px); }
+  .nav-right .login-pill svg { width: 11px; height: 11px; opacity: 0.75; }
+  .nav-right .login-pill::after { content: none; }
   .nav-right a { position: relative; padding-bottom: 4px; }
   .nav-right a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.7, 0, 0.3, 1); }
   .nav-right a:hover::after { width: 100%; }
@@ -996,7 +1009,7 @@
     .menu-group a { display: inline-block; padding: 7px 0; }
   }
   @media (max-width: 600px) {
-    .menu-btn, .search-pill { min-height: 44px; }
+    .menu-btn, .search-pill, .login-pill { min-height: 44px; }
     .cookie-links a { display: inline-block; padding: 4px 0; }
   }
 </style>
@@ -1056,6 +1069,10 @@
       <span class="search-label">Search</span>
       <kbd>⌘K</kbd>
     </button>
+    <a href="https://admin.nxtspacelabs.com/login" class="login-pill" data-hover rel="noopener" aria-label="Team login">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="10" height="6.5" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" stroke-linecap="round"/></svg>
+      <span>Login</span>
+    </a>
     <button class="menu-btn" data-hover id="menuBtn" aria-label="Open menu">
       <span class="menu-btn-icon"><span></span><span></span><span></span></span>
       <span>Menu</span>
